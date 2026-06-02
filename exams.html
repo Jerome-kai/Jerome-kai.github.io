@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>examens</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0a;
+    color: #d0d0d0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+  pre {
+    white-space: pre;
+    line-height: 1.6;
+  }
+  .header {
+    color: #888;
+    margin-bottom: 30px;
+  }
+  .exam-block {
+    margin-bottom: 30px;
+    border-left: 2px solid #333;
+    padding-left: 16px;
+  }
+  .exam-code {
+    color: #c0c0c0;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  .exam-info {
+    color: #666;
+    margin-top: 2px;
+    margin-bottom: 8px;
+  }
+  .countdown {
+    color: #e0e0e0;
+    font-size: 22px;
+    letter-spacing: 1px;
+    font-variant-numeric: tabular-nums;
+  }
+  .countdown.urgent {
+    color: #cc4444;
+  }
+  .countdown.soon {
+    color: #cc8844;
+  }
+  .countdown.done {
+    color: #444;
+    font-size: 14px;
+  }
+  .label {
+    color: #555;
+    font-size: 11px;
+    margin-top: 3px;
+  }
+  .separator {
+    color: #333;
+    margin: 30px 0;
+  }
+</style>
+</head>
+<body>
+<pre class="header">
+┌─────────────────────────────────────────────┐
+│  examens finaux  //  juin 2026              │
+│  jerome  //  countdown                      │
+└─────────────────────────────────────────────┘
+</pre>
+
+<div id="exams"></div>
+
+<pre class="separator">─────────────────────────────────────────────</pre>
+<pre id="clock" class="label"></pre>
+
+<script>
+  const exams = [
+    {
+      code: "HE01",
+      date: "samedi 20 juin 2026",
+      time: "08h00 – 10h00",
+      room: "48",
+      location: "BFA300",
+      start: new Date(2026, 5, 20, 8, 0, 0)
+    },
+    {
+      code: "TF01",
+      date: "jeudi 25 juin 2026",
+      time: "14h30 – 16h30",
+      room: "105",
+      location: "Halle des Sports",
+      start: new Date(2026, 5, 25, 14, 30, 0)
+    },
+    {
+      code: "MC01",
+      date: "vendredi 26 juin 2026",
+      time: "11h00 – 13h00",
+      room: "31",
+      location: "Halle des Sports",
+      start: new Date(2026, 5, 26, 11, 0, 0)
+    },
+    {
+      code: "GE36",
+      date: "samedi 27 juin 2026",
+      time: "17h45 – 19h45",
+      room: "72",
+      location: "Halle des Sports",
+      start: new Date(2026, 5, 27, 17, 45, 0)
+    }
+  ];
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function formatCountdown(ms) {
+    if (ms <= 0) return null;
+    const totalSec = Math.floor(ms / 1000);
+    const d = Math.floor(totalSec / 86400);
+    const h = Math.floor((totalSec % 86400) / 3600);
+    const m = Math.floor((totalSec % 3600) / 60);
+    const s = totalSec % 60;
+    if (d > 0) return `${d}j ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+    return `${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+  }
+
+  function urgencyClass(ms) {
+    const hours = ms / 3600000;
+    if (hours < 24) return 'urgent';
+    if (hours < 72) return 'soon';
+    return '';
+  }
+
+  function render() {
+    const now = new Date();
+    const container = document.getElementById('exams');
+    container.innerHTML = exams.map(e => {
+      const diff = e.start - now;
+      const cd = formatCountdown(diff);
+      let countdownHtml;
+      if (!cd) {
+        countdownHtml = `<div class="countdown done">terminé</div>`;
+      } else {
+        const cls = urgencyClass(diff);
+        countdownHtml = `<div class="countdown ${cls}">${cd}</div>`;
+      }
+      return `
+<div class="exam-block">
+  <div class="exam-code">${e.code}</div>
+  <div class="exam-info">${e.date}  //  ${e.time}  //  salle ${e.room} ${e.location}</div>
+  ${countdownHtml}
+  <div class="label">temps restant avant le début</div>
+</div>`;
+    }).join('');
+
+    document.getElementById('clock').textContent =
+      `maintenant : ${now.toLocaleDateString('fr-FR', {weekday:'long', day:'2-digit', month:'long', year:'numeric'})}  ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  }
+
+  render();
+  setInterval(render, 1000);
+</script>
+</body>
+</html>
