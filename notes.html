@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>notes // privé</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0a;
+    color: #d0d0d0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+  pre { white-space: pre; line-height: 1.6; }
+
+  .header { color: #888; margin-bottom: 30px; }
+
+  .separator { color: #333; margin: 30px 0; }
+
+  .subject-block {
+    margin-bottom: 40px;
+    border-left: 2px solid #333;
+    padding-left: 16px;
+  }
+  .subject-code {
+    color: #c0c0c0;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .subject-label {
+    color: #555;
+    font-size: 11px;
+    margin-bottom: 14px;
+  }
+
+  iframe {
+    display: block;
+    border: 1px solid #2a2a2a;
+    background: #111;
+    width: 100%;
+    max-width: 600px;
+    height: 420px;
+  }
+
+  .overall-block {
+    margin-bottom: 40px;
+    border-left: 2px solid #555;
+    padding-left: 16px;
+  }
+  .overall-title {
+    color: #888;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .overall-label {
+    color: #555;
+    font-size: 11px;
+    margin-bottom: 14px;
+  }
+
+  .quick-calc {
+    margin-top: 40px;
+    border-left: 2px solid #333;
+    padding-left: 16px;
+    margin-bottom: 40px;
+  }
+  .quick-title {
+    color: #888;
+    letter-spacing: 2px;
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .input-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .input-row label {
+    color: #666;
+    font-size: 12px;
+    width: 55px;
+    flex-shrink: 0;
+  }
+  .input-row input {
+    background: #111;
+    border: 1px solid #2a2a2a;
+    color: #d0d0d0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    padding: 4px 8px;
+    width: 80px;
+    outline: none;
+  }
+  .input-row input:focus { border-color: #555; }
+  .input-row .result {
+    color: #888;
+    font-size: 12px;
+  }
+  #avg-result {
+    margin-top: 16px;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+  #avg-result span {
+    color: #e0e0e0;
+    font-size: 20px;
+  }
+  #avg-result.pass span { color: #559955; }
+  #avg-result.fail span { color: #cc4444; }
+  #avg-result.close span { color: #cc8844; }
+
+  .label { color: #555; font-size: 11px; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<pre class="header">
+┌─────────────────────────────────────────────┐
+│  estimateur de notes  //  juin 2026         │
+│  jerome  //  privé                          │
+└─────────────────────────────────────────────┘
+</pre>
+
+<!-- ─── HE01 ─────────────────────────────────── -->
+<div class="subject-block">
+  <div class="subject-code">HE01</div>
+  <div class="subject-label">samedi 20 juin  //  calculateur</div>
+  <iframe src="https://www.desmos.com/calculator/prhgm89nf5?embed" frameborder="0"></iframe>
+</div>
+
+<pre class="separator">─────────────────────────────────────────────</pre>
+
+<!-- ─── TF01 ─────────────────────────────────── -->
+<div class="subject-block">
+  <div class="subject-code">TF01</div>
+  <div class="subject-label">jeudi 25 juin  //  calculateur</div>
+  <iframe src="https://www.desmos.com/calculator/yckomsdlrt?embed" frameborder="0"></iframe>
+</div>
+
+<pre class="separator">─────────────────────────────────────────────</pre>
+
+<!-- ─── MC01 ─────────────────────────────────── -->
+<div class="subject-block">
+  <div class="subject-code">MC01</div>
+  <div class="subject-label">vendredi 26 juin  //  calculateur</div>
+  <iframe src="https://www.desmos.com/calculator/gy4jpwvb15?embed" frameborder="0"></iframe>
+</div>
+
+<pre class="separator">─────────────────────────────────────────────</pre>
+
+<!-- ─── GE36 ─────────────────────────────────── -->
+<div class="subject-block">
+  <div class="subject-code">GE36</div>
+  <div class="subject-label">samedi 27 juin  //  calculateur</div>
+  <iframe src="https://www.desmos.com/calculator/ylu20gckre?embed" frameborder="0"></iframe>
+</div>
+
+<pre class="separator">─────────────────────────────────────────────</pre>
+
+<!-- ─── MOYENNE GLOBALE ────────────────────────── -->
+<div class="overall-block">
+  <div class="overall-title">MOYENNE</div>
+  <div class="overall-label">vue d'ensemble  //  calculateur global</div>
+  <iframe src="https://www.desmos.com/calculator/ukg6g8m65l?embed" frameborder="0"></iframe>
+</div>
+
+<pre class="separator">─────────────────────────────────────────────</pre>
+
+<!-- ─── ESTIMATEUR RAPIDE ─────────────────────── -->
+<div class="quick-calc">
+  <div class="quick-title">estimateur rapide  //  moyenne simple</div>
+
+  <div class="input-row">
+    <label>HE01</label>
+    <input type="number" id="n-he01" min="0" max="20" step="0.5" placeholder="—" oninput="calcAvg()">
+    <span class="result" id="r-he01"></span>
+  </div>
+  <div class="input-row">
+    <label>TF01</label>
+    <input type="number" id="n-tf01" min="0" max="20" step="0.5" placeholder="—" oninput="calcAvg()">
+    <span class="result" id="r-tf01"></span>
+  </div>
+  <div class="input-row">
+    <label>MC01</label>
+    <input type="number" id="n-mc01" min="0" max="20" step="0.5" placeholder="—" oninput="calcAvg()">
+    <span class="result" id="r-mc01"></span>
+  </div>
+  <div class="input-row">
+    <label>GE36</label>
+    <input type="number" id="n-ge36" min="0" max="20" step="0.5" placeholder="—" oninput="calcAvg()">
+    <span class="result" id="r-ge36"></span>
+  </div>
+
+  <div id="avg-result" class="label">moyenne : —</div>
+</div>
+
+<pre class="separator">─────────────────────────────────────────────</pre>
+<pre class="label">accès privé  //  jerome  //  2026</pre>
+
+<script>
+  function calcAvg() {
+    const ids = ['n-he01', 'n-tf01', 'n-mc01', 'n-ge36'];
+    const codes = ['HE01', 'TF01', 'MC01', 'GE36'];
+    const vals = ids.map(id => {
+      const v = parseFloat(document.getElementById(id).value);
+      return isNaN(v) ? null : Math.min(20, Math.max(0, v));
+    });
+
+    const filled = vals.filter(v => v !== null);
+    const el = document.getElementById('avg-result');
+
+    if (filled.length === 0) {
+      el.innerHTML = 'moyenne : <span>—</span>';
+      el.className = 'label';
+      return;
+    }
+
+    const avg = filled.reduce((a, b) => a + b, 0) / filled.length;
+    const avgStr = avg.toFixed(2);
+
+    el.innerHTML = `moyenne (${filled.length}/4) : <span>${avgStr} / 20</span>`;
+    el.className = avg >= 10 ? 'pass' : avg >= 8 ? 'close' : 'fail';
+  }
+</script>
+</body>
+</html>
