@@ -13,222 +13,204 @@
     font-size: 14px;
     padding: 40px 20px;
     min-height: 100vh;
+    max-width: 700px;
   }
   pre { white-space: pre; line-height: 1.6; }
+  .hdr { color: #888; margin-bottom: 30px; }
+  .sep { color: #333; margin: 36px 0; }
 
-  .header { color: #888; margin-bottom: 30px; }
-
-  .separator { color: #333; margin: 30px 0; }
-
-  .subject-block {
-    margin-bottom: 40px;
-    border-left: 2px solid #333;
-    padding-left: 16px;
-  }
-  .subject-code {
+  .course { border-left: 2px solid #333; padding-left: 20px; }
+  .course-code {
     color: #c0c0c0;
     font-weight: bold;
-    letter-spacing: 2px;
-    font-size: 16px;
+    letter-spacing: 3px;
+    font-size: 28px;
     margin-bottom: 4px;
   }
-  .subject-label {
-    color: #555;
-    font-size: 11px;
-    margin-bottom: 14px;
-  }
+  .course-formula { color: #303030; font-size: 11px; margin-bottom: 24px; }
 
-  iframe {
-    display: block;
-    border: 1px solid #2a2a2a;
-    background: #111;
-    width: 100%;
-    max-width: 600px;
-    height: 420px;
-  }
+  .comp { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .comp-lbl { color: #555; font-size: 13px; width: 16px; text-align: center; flex-shrink: 0; }
 
-  .overall-block {
-    margin-bottom: 40px;
-    border-left: 2px solid #555;
-    padding-left: 16px;
-  }
-  .overall-title {
-    color: #888;
-    font-weight: bold;
-    letter-spacing: 2px;
-    font-size: 15px;
-    margin-bottom: 4px;
-  }
-  .overall-label {
-    color: #555;
-    font-size: 11px;
-    margin-bottom: 14px;
-  }
-
-  .quick-calc {
-    margin-top: 40px;
-    border-left: 2px solid #333;
-    padding-left: 16px;
-    margin-bottom: 40px;
-  }
-  .quick-title {
-    color: #888;
-    letter-spacing: 2px;
-    font-size: 13px;
-    margin-bottom: 16px;
-  }
-  .input-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 10px;
-  }
-  .input-row label {
-    color: #666;
-    font-size: 12px;
-    width: 55px;
-    flex-shrink: 0;
-  }
-  .input-row input {
-    background: #111;
-    border: 1px solid #2a2a2a;
-    color: #d0d0d0;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 13px;
-    padding: 4px 8px;
-    width: 80px;
+  input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    flex: 1;
+    max-width: 300px;
+    height: 2px;
+    background: #222;
     outline: none;
+    cursor: pointer;
   }
-  .input-row input:focus { border-color: #555; }
-  .input-row .result {
-    color: #888;
-    font-size: 12px;
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #666;
+    cursor: pointer;
+    transition: background .1s;
   }
-  #avg-result {
-    margin-top: 16px;
-    font-size: 15px;
-    letter-spacing: 1px;
+  input[type=range]::-webkit-slider-thumb:hover { background: #b0b0b0; }
+  input[type=range]::-moz-range-thumb {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #666;
+    border: none;
+    cursor: pointer;
   }
-  #avg-result span {
-    color: #e0e0e0;
-    font-size: 20px;
-  }
-  #avg-result.pass span { color: #559955; }
-  #avg-result.fail span { color: #cc4444; }
-  #avg-result.close span { color: #cc8844; }
 
-  .label { color: #555; font-size: 11px; margin-top: 8px; }
+  .comp-num { color: #d0d0d0; font-size: 14px; width: 34px; text-align: right; flex-shrink: 0; }
+  .comp-w   { color: #2e2e2e; font-size: 11px; width: 40px; flex-shrink: 0; }
+
+  .score { margin-top: 20px; font-size: 36px; font-weight: bold; letter-spacing: 1px; color: #444; transition: color .2s; }
+  .score.pass  { color: #559955; }
+  .score.close { color: #cc8844; }
+  .score.fail  { color: #cc4444; }
+  .score-lbl   { color: #383838; font-size: 11px; margin-top: 4px; }
+
+  .overall { border-left: 2px solid #555; padding-left: 20px; }
+  .ov-title { color: #777; letter-spacing: 3px; font-size: 14px; margin-bottom: 20px; }
+
+  .ov-row { display: flex; align-items: center; gap: 12px; margin-bottom: 9px; font-size: 12px; }
+  .ov-code { color: #555; width: 46px; }
+  .ov-val  { color: #888; width: 42px; text-align: right; }
+  .ov-bar  { flex: 1; height: 2px; background: #1a1a1a; }
+  .ov-fill { height: 100%; background: #3a3a3a; transition: width .2s; }
+
+  .ov-score { font-size: 38px; font-weight: bold; margin-top: 18px; color: #444; transition: color .2s; }
+  .ov-score.pass  { color: #559955; }
+  .ov-score.close { color: #cc8844; }
+  .ov-score.fail  { color: #cc4444; }
+
+  .foot { color: #2e2e2e; font-size: 11px; margin-top: 6px; }
 </style>
 </head>
 <body>
 
-<pre class="header">
-┌─────────────────────────────────────────────┐
+<pre class="hdr">┌─────────────────────────────────────────────┐
 │  estimateur de notes  //  juin 2026         │
 │  jerome  //  privé                          │
-└─────────────────────────────────────────────┘
-</pre>
+└─────────────────────────────────────────────┘</pre>
 
-<!-- ─── HE01 ─────────────────────────────────── -->
-<div class="subject-block">
-  <div class="subject-code">HE01</div>
-  <div class="subject-label">samedi 20 juin  //  calculateur</div>
-  <iframe src="https://www.desmos.com/calculator/prhgm89nf5?embed" frameborder="0"></iframe>
+<div id="root"></div>
+
+<pre class="sep">─────────────────────────────────────────────</pre>
+
+<div class="overall">
+  <div class="ov-title">MOYENNE</div>
+  <div id="ov-rows"></div>
+  <div class="ov-score" id="ov-score">—</div>
+  <div class="foot">/ 20</div>
 </div>
 
-<pre class="separator">─────────────────────────────────────────────</pre>
-
-<!-- ─── TF01 ─────────────────────────────────── -->
-<div class="subject-block">
-  <div class="subject-code">TF01</div>
-  <div class="subject-label">jeudi 25 juin  //  calculateur</div>
-  <iframe src="https://www.desmos.com/calculator/yckomsdlrt?embed" frameborder="0"></iframe>
-</div>
-
-<pre class="separator">─────────────────────────────────────────────</pre>
-
-<!-- ─── MC01 ─────────────────────────────────── -->
-<div class="subject-block">
-  <div class="subject-code">MC01</div>
-  <div class="subject-label">vendredi 26 juin  //  calculateur</div>
-  <iframe src="https://www.desmos.com/calculator/gy4jpwvb15?embed" frameborder="0"></iframe>
-</div>
-
-<pre class="separator">─────────────────────────────────────────────</pre>
-
-<!-- ─── GE36 ─────────────────────────────────── -->
-<div class="subject-block">
-  <div class="subject-code">GE36</div>
-  <div class="subject-label">samedi 27 juin  //  calculateur</div>
-  <iframe src="https://www.desmos.com/calculator/ylu20gckre?embed" frameborder="0"></iframe>
-</div>
-
-<pre class="separator">─────────────────────────────────────────────</pre>
-
-<!-- ─── MOYENNE GLOBALE ────────────────────────── -->
-<div class="overall-block">
-  <div class="overall-title">MOYENNE</div>
-  <div class="overall-label">vue d'ensemble  //  calculateur global</div>
-  <iframe src="https://www.desmos.com/calculator/ukg6g8m65l?embed" frameborder="0"></iframe>
-</div>
-
-<pre class="separator">─────────────────────────────────────────────</pre>
-
-<!-- ─── ESTIMATEUR RAPIDE ─────────────────────── -->
-<div class="quick-calc">
-  <div class="quick-title">estimateur rapide  //  moyenne simple</div>
-
-  <div class="input-row">
-    <label>HE01</label>
-    <input type="number" id="n-he01" min="0" max="20" step="0.5" placeholder="—" oninput="calcAvg()">
-    <span class="result" id="r-he01"></span>
-  </div>
-  <div class="input-row">
-    <label>TF01</label>
-    <input type="number" id="n-tf01" min="0" max="20" step="0.5" placeholder="—" oninput="calcAvg()">
-    <span class="result" id="r-tf01"></span>
-  </div>
-  <div class="input-row">
-    <label>MC01</label>
-    <input type="number" id="n-mc01" min="0" max="20" step="0.5" placeholder="—" oninput="calcAvg()">
-    <span class="result" id="r-mc01"></span>
-  </div>
-  <div class="input-row">
-    <label>GE36</label>
-    <input type="number" id="n-ge36" min="0" max="20" step="0.5" placeholder="—" oninput="calcAvg()">
-    <span class="result" id="r-ge36"></span>
-  </div>
-
-  <div id="avg-result" class="label">moyenne : —</div>
-</div>
-
-<pre class="separator">─────────────────────────────────────────────</pre>
-<pre class="label">accès privé  //  jerome  //  2026</pre>
+<pre class="sep">─────────────────────────────────────────────</pre>
+<pre class="foot">accès privé  //  jerome  //  2026</pre>
 
 <script>
-  function calcAvg() {
-    const ids = ['n-he01', 'n-tf01', 'n-mc01', 'n-ge36'];
-    const codes = ['HE01', 'TF01', 'MC01', 'GE36'];
-    const vals = ids.map(id => {
-      const v = parseFloat(document.getElementById(id).value);
-      return isNaN(v) ? null : Math.min(20, Math.max(0, v));
-    });
+const COURSES = [
+  {
+    code: 'TN12',
+    formula: 'y = (a/20·0.33 + b/20·0.33 + c/20·0.33)·20',
+    comps: [{l:'a',w:0.33},{l:'b',w:0.33},{l:'c',w:0.33}]
+  },
+  {
+    code: 'HE01',
+    formula: 'y = (a/20·0.2 + b/20·0.40 + c/20·0.40)·20',
+    comps: [{l:'a',w:0.2},{l:'b',w:0.4},{l:'c',w:0.4}]
+  },
+  {
+    code: 'MC01',
+    formula: 'y = (a/20·0.33 + b/20·0.33 + c/20·0.333)·20',
+    comps: [{l:'a',w:0.33},{l:'b',w:0.33},{l:'c',w:0.333}]
+  },
+  {
+    code: 'TF01',
+    formula: 'y = (a/20·0.3 + b/20·0.3 + c/20·0.4)·20',
+    comps: [{l:'a',w:0.3},{l:'b',w:0.3},{l:'c',w:0.4}]
+  },
+  {
+    code: 'GE36',
+    formula: 'y = (a/20·0.2 + b/20·0.35 + c/20·0.35 + d/20·0.1)·20',
+    comps: [{l:'a',w:0.2},{l:'b',w:0.35},{l:'c',w:0.35},{l:'d',w:0.1}]
+  },
+];
 
-    const filled = vals.filter(v => v !== null);
-    const el = document.getElementById('avg-result');
+const scores = {};
 
-    if (filled.length === 0) {
-      el.innerHTML = 'moyenne : <span>—</span>';
-      el.className = 'label';
-      return;
-    }
+function cls(v) {
+  return v >= 10 ? 'pass' : v >= 8 ? 'close' : 'fail';
+}
 
-    const avg = filled.reduce((a, b) => a + b, 0) / filled.length;
-    const avgStr = avg.toFixed(2);
+function update(code) {
+  const course = COURSES.find(c => c.code === code);
+  let total = 0;
+  course.comps.forEach(comp => {
+    const v = parseFloat(document.getElementById(`${code}_${comp.l}`).value);
+    const display = Number.isInteger(v) ? String(v) : v.toFixed(1);
+    document.getElementById(`${code}_${comp.l}_n`).textContent = display;
+    total += v * comp.w;
+  });
+  scores[code] = total;
 
-    el.innerHTML = `moyenne (${filled.length}/4) : <span>${avgStr} / 20</span>`;
-    el.className = avg >= 10 ? 'pass' : avg >= 8 ? 'close' : 'fail';
+  const el = document.getElementById(`${code}_score`);
+  el.textContent = total.toFixed(2) + ' / 20';
+  el.className = 'score ' + cls(total);
+
+  updateOverall();
+}
+
+function updateOverall() {
+  const vals = COURSES.map(c => scores[c.code] ?? 0);
+  const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
+
+  const el = document.getElementById('ov-score');
+  el.textContent = avg.toFixed(2) + ' / 20';
+  el.className = 'ov-score ' + cls(avg);
+
+  document.getElementById('ov-rows').innerHTML = COURSES.map(c => {
+    const v = scores[c.code] ?? 0;
+    const pct = (v / 20 * 100).toFixed(1);
+    return `<div class="ov-row">
+      <span class="ov-code">${c.code}</span>
+      <span class="ov-val">${v.toFixed(2)}</span>
+      <span class="ov-bar"><span class="ov-fill" style="width:${pct}%"></span></span>
+    </div>`;
+  }).join('');
+}
+
+// Build DOM
+const root = document.getElementById('root');
+COURSES.forEach((course, i) => {
+  if (i > 0) {
+    const s = document.createElement('pre');
+    s.className = 'sep';
+    s.textContent = '─────────────────────────────────────────────';
+    root.appendChild(s);
   }
+
+  const div = document.createElement('div');
+  div.className = 'course';
+  div.innerHTML = `
+    <div class="course-code">${course.code}</div>
+    <div class="course-formula">${course.formula}</div>
+    ${course.comps.map(comp => `
+      <div class="comp">
+        <span class="comp-lbl">${comp.l}</span>
+        <input type="range" id="${course.code}_${comp.l}"
+               min="0" max="20" step="0.5" value="10"
+               oninput="update('${course.code}')">
+        <span class="comp-num" id="${course.code}_${comp.l}_n">10</span>
+        <span class="comp-w">×${comp.w}</span>
+      </div>
+    `).join('')}
+    <div class="score" id="${course.code}_score">—</div>
+    <div class="score-lbl">note estimée / 20</div>
+  `;
+  root.appendChild(div);
+});
+
+// Init
+COURSES.forEach(c => update(c.code));
 </script>
 </body>
 </html>
