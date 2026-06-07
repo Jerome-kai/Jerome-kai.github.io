@@ -111,31 +111,35 @@ const COURSES = [
   {
     code: 'TN12',
     formula: 'y = (a/20·0.33 + b/20·0.33 + c/20·0.33)·20',
-    comps: [{l:'a',w:0.33},{l:'b',w:0.33},{l:'c',w:0.33}]
+    comps: [{l:'a',w:0.33,d:13.5},{l:'b',w:0.33,d:16},{l:'c',w:0.33,d:13}]
   },
   {
     code: 'HE01',
     formula: 'y = (a/20·0.2 + b/20·0.40 + c/20·0.40)·20',
-    comps: [{l:'a',w:0.2},{l:'b',w:0.4},{l:'c',w:0.4}]
+    comps: [{l:'a',w:0.2,d:9},{l:'b',w:0.4,d:15},{l:'c',w:0.4,d:16}]
   },
   {
     code: 'MC01',
     formula: 'y = (a/20·0.33 + b/20·0.33 + c/20·0.333)·20',
-    comps: [{l:'a',w:0.33},{l:'b',w:0.33},{l:'c',w:0.333}]
+    comps: [{l:'a',w:0.33,d:6.7},{l:'b',w:0.33,d:18},{l:'c',w:0.333,d:17}]
   },
   {
     code: 'TF01',
     formula: 'y = (a/20·0.3 + b/20·0.3 + c/20·0.4)·20',
-    comps: [{l:'a',w:0.3},{l:'b',w:0.3},{l:'c',w:0.4}]
+    comps: [{l:'a',w:0.3,d:9.5},{l:'b',w:0.3,d:17},{l:'c',w:0.4,d:15}]
   },
   {
     code: 'GE36',
     formula: 'y = (a/20·0.2 + b/20·0.35 + c/20·0.35 + d/20·0.1)·20',
-    comps: [{l:'a',w:0.2},{l:'b',w:0.35},{l:'c',w:0.35},{l:'d',w:0.1}]
+    comps: [{l:'a',w:0.2,d:6},{l:'b',w:0.35,d:17},{l:'c',w:0.35,d:14},{l:'d',w:0.1,d:20}]
   },
 ];
 
 const scores = {};
+
+function fmt(v) {
+  return Number.isInteger(v) ? String(v) : v.toFixed(1);
+}
 
 function cls(v) {
   return v >= 10 ? 'pass' : v >= 8 ? 'close' : 'fail';
@@ -146,27 +150,22 @@ function update(code) {
   let total = 0;
   course.comps.forEach(comp => {
     const v = parseFloat(document.getElementById(`${code}_${comp.l}`).value);
-    const display = Number.isInteger(v) ? String(v) : v.toFixed(1);
-    document.getElementById(`${code}_${comp.l}_n`).textContent = display;
+    document.getElementById(`${code}_${comp.l}_n`).textContent = fmt(v);
     total += v * comp.w;
   });
   scores[code] = total;
-
   const el = document.getElementById(`${code}_score`);
   el.textContent = total.toFixed(2) + ' / 20';
   el.className = 'score ' + cls(total);
-
   updateOverall();
 }
 
 function updateOverall() {
   const vals = COURSES.map(c => scores[c.code] ?? 0);
   const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
-
   const el = document.getElementById('ov-score');
   el.textContent = avg.toFixed(2) + ' / 20';
   el.className = 'ov-score ' + cls(avg);
-
   document.getElementById('ov-rows').innerHTML = COURSES.map(c => {
     const v = scores[c.code] ?? 0;
     const pct = (v / 20 * 100).toFixed(1);
@@ -178,7 +177,6 @@ function updateOverall() {
   }).join('');
 }
 
-// Build DOM
 const root = document.getElementById('root');
 COURSES.forEach((course, i) => {
   if (i > 0) {
@@ -187,7 +185,6 @@ COURSES.forEach((course, i) => {
     s.textContent = '─────────────────────────────────────────────';
     root.appendChild(s);
   }
-
   const div = document.createElement('div');
   div.className = 'course';
   div.innerHTML = `
@@ -197,9 +194,9 @@ COURSES.forEach((course, i) => {
       <div class="comp">
         <span class="comp-lbl">${comp.l}</span>
         <input type="range" id="${course.code}_${comp.l}"
-               min="0" max="20" step="0.5" value="10"
+               min="0" max="20" step="0.1" value="${comp.d}"
                oninput="update('${course.code}')">
-        <span class="comp-num" id="${course.code}_${comp.l}_n">10</span>
+        <span class="comp-num" id="${course.code}_${comp.l}_n">${fmt(comp.d)}</span>
         <span class="comp-w">×${comp.w}</span>
       </div>
     `).join('')}
@@ -209,7 +206,6 @@ COURSES.forEach((course, i) => {
   root.appendChild(div);
 });
 
-// Init
 COURSES.forEach(c => update(c.code));
 </script>
 </body>
