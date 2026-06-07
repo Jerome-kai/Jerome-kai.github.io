@@ -36,7 +36,7 @@
     -webkit-appearance: none;
     appearance: none;
     flex: 1;
-    max-width: 300px;
+    max-width: 240px;
     height: 2px;
     background: #222;
     outline: none;
@@ -59,8 +59,24 @@
     cursor: pointer;
   }
 
-  .comp-num { color: #d0d0d0; font-size: 14px; width: 34px; text-align: right; flex-shrink: 0; }
-  .comp-w   { color: #2e2e2e; font-size: 11px; width: 40px; flex-shrink: 0; }
+  input[type=number] {
+    background: #111;
+    border: 1px solid #2a2a2a;
+    color: #d0d0d0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    padding: 3px 6px;
+    width: 54px;
+    text-align: right;
+    outline: none;
+    -moz-appearance: textfield;
+    flex-shrink: 0;
+  }
+  input[type=number]:focus { border-color: #555; }
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+  .comp-w { color: #2e2e2e; font-size: 11px; width: 40px; flex-shrink: 0; }
 
   .score { margin-top: 20px; font-size: 36px; font-weight: bold; letter-spacing: 1px; color: #444; transition: color .2s; }
   .score.pass  { color: #559955; }
@@ -137,20 +153,48 @@ const COURSES = [
 
 const scores = {};
 
+function clamp(v) {
+  const n = parseFloat(v);
+  if (!isFinite(n)) return 0;
+  return Math.min(20, Math.max(0, n));
+}
+
 function fmt(v) {
-  return Number.isInteger(v) ? String(v) : v.toFixed(1);
+  const n = parseFloat(v);
+  return Number.isInteger(n) ? String(n) : n.toFixed(1);
 }
 
 function cls(v) {
   return v >= 10 ? 'pass' : v >= 8 ? 'close' : 'fail';
 }
 
-function update(code) {
+function onSlider(code, l) {
+  const s = document.getElementById(`${code}_${l}_s`);
+  const n = document.getElementById(`${code}_${l}_i`);
+  const v = clamp(s.value);
+  n.value = fmt(v);
+  calc(code);
+}
+
+function onNumber(code, l) {
+  const n = document.getElementById(`${code}_${l}_i`);
+  const s = document.getElementById(`${code}_${l}_s`);
+  const v = clamp(n.value);
+  s.value = v;
+  calc(code);
+}
+
+function onNumberBlur(code, l) {
+  const n = document.getElementById(`${code}_${l}_i`);
+  const v = clamp(n.value);
+  n.value = fmt(v);
+}
+
+function calc(code) {
   const course = COURSES.find(c => c.code === code);
   let total = 0;
   course.comps.forEach(comp => {
-    const v = parseFloat(document.getElementById(`${code}_${comp.l}`).value);
-    document.getElementById(`${code}_${comp.l}_n`).textContent = fmt(v);
+    const v = clamp(document.getElementById(`${code}_${comp.l}_s`).value);
     total += v * comp.w;
   });
   scores[code] = total;
@@ -169,6 +213,10 @@ function updateOverall() {
   document.getElementById('ov-rows').innerHTML = COURSES.map(c => {
     const v = scores[c.code] ?? 0;
     const pct = (v / 20 * 100).toFixed(1);
+    const barEl = document.createElement('span');
+    barEl.className = 'ov-fill';
+    barEl.style.width = pct + '%';
+    // Build safe text-only content for the row
     return `<div class="ov-row">
       <span class="ov-code">${c.code}</span>
       <span class="ov-val">${v.toFixed(2)}</span>
@@ -177,6 +225,7 @@ function updateOverall() {
   }).join('');
 }
 
+// Build DOM
 const root = document.getElementById('root');
 COURSES.forEach((course, i) => {
   if (i > 0) {
@@ -185,28 +234,75 @@ COURSES.forEach((course, i) => {
     s.textContent = '─────────────────────────────────────────────';
     root.appendChild(s);
   }
-  const div = document.createElement('div');
-  div.className = 'course';
-  div.innerHTML = `
-    <div class="course-code">${course.code}</div>
-    <div class="course-formula">${course.formula}</div>
-    ${course.comps.map(comp => `
-      <div class="comp">
-        <span class="comp-lbl">${comp.l}</span>
-        <input type="range" id="${course.code}_${comp.l}"
-               min="0" max="20" step="0.1" value="${comp.d}"
-               oninput="update('${course.code}')">
-        <span class="comp-num" id="${course.code}_${comp.l}_n">${fmt(comp.d)}</span>
-        <span class="comp-w">×${comp.w}</span>
-      </div>
-    `).join('')}
-    <div class="score" id="${course.code}_score">—</div>
-    <div class="score-lbl">note estimée / 20</div>
-  `;
-  root.appendChild(div);
+
+  const block = document.createElement('div');
+  block.className = 'course';
+
+  // Course name — set via textContent, never innerHTML
+  const nameEl = document.createElement('div');
+  nameEl.className = 'course-code';
+  nameEl.textContent = course.code;
+
+  const formulaEl = document.createElement('div');
+  formulaEl.className = 'course-formula';
+  formulaEl.textContent = course.formula;
+
+  block.appendChild(nameEl);
+  block.appendChild(formulaEl);
+
+  course.comps.forEach(comp => {
+    const row = document.createElement('div');
+    row.className = 'comp';
+
+    const lbl = document.createElement('span');
+    lbl.className = 'comp-lbl';
+    lbl.textContent = comp.l;
+
+    const slider = document.createElement('input');
+    slider.type = 'range';
+    slider.id = `${course.code}_${comp.l}_s`;
+    slider.min = 0;
+    slider.max = 20;
+    slider.step = 0.1;
+    slider.value = comp.d;
+    slider.addEventListener('input', () => onSlider(course.code, comp.l));
+
+    const numInput = document.createElement('input');
+    numInput.type = 'number';
+    numInput.id = `${course.code}_${comp.l}_i`;
+    numInput.min = 0;
+    numInput.max = 20;
+    numInput.step = 0.1;
+    numInput.value = fmt(comp.d);
+    numInput.addEventListener('input', () => onNumber(course.code, comp.l));
+    numInput.addEventListener('blur',  () => onNumberBlur(course.code, comp.l));
+
+    const weight = document.createElement('span');
+    weight.className = 'comp-w';
+    weight.textContent = `×${comp.w}`;
+
+    row.appendChild(lbl);
+    row.appendChild(slider);
+    row.appendChild(numInput);
+    row.appendChild(weight);
+    block.appendChild(row);
+  });
+
+  const scoreEl = document.createElement('div');
+  scoreEl.className = 'score';
+  scoreEl.id = `${course.code}_score`;
+  scoreEl.textContent = '—';
+
+  const scoreLbl = document.createElement('div');
+  scoreLbl.className = 'score-lbl';
+  scoreLbl.textContent = 'note estimée / 20';
+
+  block.appendChild(scoreEl);
+  block.appendChild(scoreLbl);
+  root.appendChild(block);
 });
 
-COURSES.forEach(c => update(c.code));
+COURSES.forEach(c => calc(c.code));
 </script>
 </body>
 </html>
