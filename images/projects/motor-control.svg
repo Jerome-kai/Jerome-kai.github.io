@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+  <rect width="600" height="450" fill="#242943"/>
+  <rect width="600" height="450" fill="url(#g)" opacity="0.25"/>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9bf1ff"/>
+      <stop offset="1" stop-color="#242943"/>
+    </linearGradient>
+  </defs>
+  <!-- motor body -->
+  <rect x="150" y="160" width="200" height="130" rx="12" fill="none" stroke="#9bf1ff" stroke-width="5"/>
+  <line x1="180" y1="160" x2="180" y2="290" stroke="#9bf1ff" stroke-width="3" opacity="0.5"/>
+  <line x1="210" y1="160" x2="210" y2="290" stroke="#9bf1ff" stroke-width="3" opacity="0.5"/>
+  <line x1="240" y1="160" x2="240" y2="290" stroke="#9bf1ff" stroke-width="3" opacity="0.5"/>
+  <rect x="350" y="205" width="60" height="40" fill="none" stroke="#9bf1ff" stroke-width="5"/>
+  <line x1="410" y1="225" x2="450" y2="225" stroke="#9bf1ff" stroke-width="6"/>
+  <!-- PWM waveform -->
+  <polyline points="90,370 130,370 130,330 180,330 180,370 230,370 230,330 300,330 300,370 340,370 340,330 420,330 420,370 470,370 470,330 510,330"
+            fill="none" stroke="#9bf1ff" stroke-width="4" stroke-linecap="round"/>
+  <!-- speed dial -->
+  <circle cx="470" cy="120" r="50" fill="none" stroke="#9bf1ff" stroke-width="4"/>
+  <line x1="470" y1="120" x2="500" y2="90" stroke="#9bf1ff" stroke-width="4" stroke-linecap="round"/>
+  <text x="60" y="80" font-family="Arial, sans-serif" font-size="30" fill="#ffffff" opacity="0.85">PWM · PLECS</text>
+</svg>

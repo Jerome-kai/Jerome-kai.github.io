@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+  <rect width="600" height="450" fill="#242943"/>
+  <!-- server tower -->
+  <rect x="200" y="80" width="200" height="290" rx="10" fill="none" stroke="#9bf1ff" stroke-width="5"/>
+  <rect x="220" y="105" width="160" height="55" rx="6" fill="none" stroke="#9bf1ff" stroke-width="4"/>
+  <rect x="220" y="180" width="160" height="55" rx="6" fill="none" stroke="#9bf1ff" stroke-width="4"/>
+  <rect x="220" y="255" width="160" height="55" rx="6" fill="none" stroke="#9bf1ff" stroke-width="4"/>
+  <circle cx="245" cy="132" r="7" fill="#9bf1ff"/>
+  <circle cx="245" cy="207" r="7" fill="#9bf1ff"/>
+  <circle cx="245" cy="282" r="7" fill="#9bf1ff" opacity="0.4"/>
+  <line x1="290" y1="132" x2="365" y2="132" stroke="#9bf1ff" stroke-width="4" opacity="0.6"/>
+  <line x1="290" y1="207" x2="365" y2="207" stroke="#9bf1ff" stroke-width="4" opacity="0.6"/>
+  <line x1="290" y1="282" x2="365" y2="282" stroke="#9bf1ff" stroke-width="4" opacity="0.6"/>
+  <!-- network -->
+  <line x1="400" y1="225" x2="480" y2="225" stroke="#9bf1ff" stroke-width="4"/>
+  <circle cx="500" cy="225" r="20" fill="none" stroke="#9bf1ff" stroke-width="4"/>
+  <line x1="120" y1="225" x2="200" y2="225" stroke="#9bf1ff" stroke-width="4"/>
+  <circle cx="100" cy="225" r="20" fill="none" stroke="#9bf1ff" stroke-width="4"/>
+  <text x="215" y="415" font-family="Arial, sans-serif" font-size="30" fill="#ffffff" opacity="0.85">DIY NAS</text>
+</svg>

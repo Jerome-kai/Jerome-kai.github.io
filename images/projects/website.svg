@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+  <rect width="600" height="450" fill="#242943"/>
+  <!-- browser window -->
+  <rect x="110" y="90" width="380" height="260" rx="10" fill="none" stroke="#9bf1ff" stroke-width="5"/>
+  <line x1="110" y1="135" x2="490" y2="135" stroke="#9bf1ff" stroke-width="4"/>
+  <circle cx="140" cy="113" r="7" fill="#9bf1ff"/>
+  <circle cx="165" cy="113" r="7" fill="#9bf1ff" opacity="0.6"/>
+  <circle cx="190" cy="113" r="7" fill="#9bf1ff" opacity="0.3"/>
+  <!-- steering wheel -->
+  <circle cx="230" cy="240" r="55" fill="none" stroke="#9bf1ff" stroke-width="5"/>
+  <circle cx="230" cy="240" r="14" fill="none" stroke="#9bf1ff" stroke-width="4"/>
+  <line x1="230" y1="254" x2="230" y2="295" stroke="#9bf1ff" stroke-width="4"/>
+  <line x1="217" y1="234" x2="177" y2="222" stroke="#9bf1ff" stroke-width="4"/>
+  <line x1="243" y1="234" x2="283" y2="222" stroke="#9bf1ff" stroke-width="4"/>
+  <!-- text lines -->
+  <line x1="330" y1="195" x2="450" y2="195" stroke="#9bf1ff" stroke-width="5" opacity="0.8"/>
+  <line x1="330" y1="230" x2="430" y2="230" stroke="#9bf1ff" stroke-width="4" opacity="0.5"/>
+  <line x1="330" y1="260" x2="450" y2="260" stroke="#9bf1ff" stroke-width="4" opacity="0.5"/>
+  <line x1="330" y1="290" x2="410" y2="290" stroke="#9bf1ff" stroke-width="4" opacity="0.5"/>
+  <text x="165" y="410" font-family="Arial, sans-serif" font-size="30" fill="#ffffff" opacity="0.85">Driving School Website</text>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+  <rect width="600" height="450" fill="#242943"/>
+  <!-- big gear -->
+  <g stroke="#9bf1ff" stroke-width="5" fill="none">
+    <circle cx="250" cy="220" r="80"/>
+    <circle cx="250" cy="220" r="28"/>
+    <g stroke-width="14">
+      <line x1="250" y1="120" x2="250" y2="140"/>
+      <line x1="250" y1="300" x2="250" y2="320"/>
+      <line x1="150" y1="220" x2="170" y2="220"/>
+      <line x1="330" y1="220" x2="350" y2="220"/>
+      <line x1="179" y1="149" x2="193" y2="163"/>
+      <line x1="307" y1="277" x2="321" y2="291"/>
+      <line x1="321" y1="149" x2="307" y2="163"/>
+      <line x1="193" y1="277" x2="179" y2="291"/>
+    </g>
+  </g>
+  <!-- small gear -->
+  <g stroke="#9bf1ff" stroke-width="4" fill="none" opacity="0.8">
+    <circle cx="430" cy="150" r="48"/>
+    <circle cx="430" cy="150" r="16"/>
+    <g stroke-width="10">
+      <line x1="430" y1="90" x2="430" y2="102"/>
+      <line x1="430" y1="198" x2="430" y2="210"/>
+      <line x1="370" y1="150" x2="382" y2="150"/>
+      <line x1="478" y1="150" x2="490" y2="150"/>
+    </g>
+  </g>
+  <!-- caliper -->
+  <line x1="120" y1="370" x2="480" y2="370" stroke="#9bf1ff" stroke-width="4" opacity="0.7"/>
+  <line x1="150" y1="358" x2="150" y2="382" stroke="#9bf1ff" stroke-width="4" opacity="0.7"/>
+  <line x1="450" y1="358" x2="450" y2="382" stroke="#9bf1ff" stroke-width="4" opacity="0.7"/>
+  <text x="185" y="70" font-family="Arial, sans-serif" font-size="30" fill="#ffffff" opacity="0.85">CAD &amp; Machining</text>
+</svg>
