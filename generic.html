@@ -48,12 +48,34 @@
 									<header class="major">
 										<h1>Projects</h1>
 									</header>
-									<p>A selection of projects I have worked on, from motor control and drones to web development and machining. They reflect what I enjoy most: understanding how things work and building them myself.</p>
+									<p>A selection of projects I have worked on, from an AI camera and motor control to drones, web development and machining. They reflect what I enjoy most: understanding how things work and building them myself.</p>
 								</div>
 							</section>
 
 						<!-- Projects -->
 							<section id="projects" class="spotlights">
+								<section>
+									<a href="imagegencam.html" class="image"><img src="images/projects/imagegencam.svg" alt="ImageGenCam illustration" data-position="center center" /></a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>ImageGenCam — AI Camera on an Orange Pi Zero 2</h3>
+											</header>
+											<p>Embedded systems · Python · Hardware design</p>
+											<p>A handheld point-and-shoot that doesn't save what it sees — it saves what an AI reimagines. Press the shutter and the photo is sent to an image model with a chosen prompt; the transformed result comes back on the panel a few seconds later. Forked from the Raspberry Pi original and fully ported to the Orange Pi Zero 2.</p>
+											<ul>
+												<li>320×480 SPI display, USB camera soldered to the header, 18650 power pack and an opto-isolated hot shoe</li>
+												<li>Threaded Python controller plus a phone web UI: gallery, prompt presets, Wi-Fi switching and a remote shutter</li>
+												<li>Persistent job queue surviving reboots, "magic mode" that has an LLM write the prompt, 63 passing tests</li>
+												<li>Custom branch using SiliconFlow models to work around blocked API endpoints</li>
+											</ul>
+											<ul class="actions">
+												<li><a href="imagegencam.html" class="button">Read more</a></li>
+												<li><a href="https://github.com/Jerome-kai/sickcamera" class="button">Repository</a></li>
+											</ul>
+										</div>
+									</div>
+								</section>
 								<section>
 									<a class="image"><img src="images/projects/motor-control.svg" alt="Motor control illustration" data-position="center center" /></a>
 									<div class="content">

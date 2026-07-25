@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+  <rect width="600" height="450" fill="#242943"/>
+  <!-- camera body -->
+  <rect x="120" y="140" width="360" height="210" rx="18" fill="none" stroke="#9bf1ff" stroke-width="5"/>
+  <!-- hot shoe -->
+  <rect x="265" y="112" width="70" height="28" rx="5" fill="none" stroke="#9bf1ff" stroke-width="4"/>
+  <!-- shutter button -->
+  <rect x="170" y="118" width="46" height="24" rx="8" fill="none" stroke="#9bf1ff" stroke-width="4"/>
+  <!-- screen -->
+  <rect x="145" y="170" width="150" height="150" rx="8" fill="none" stroke="#9bf1ff" stroke-width="4"/>
+  <!-- generated image hint inside screen -->
+  <path d="M 155 300 L 195 245 L 225 285 L 250 255 L 285 300 Z" fill="none" stroke="#9bf1ff" stroke-width="3" opacity="0.7"/>
+  <circle cx="255" cy="200" r="13" fill="none" stroke="#9bf1ff" stroke-width="3" opacity="0.7"/>
+  <!-- lens -->
+  <circle cx="390" cy="245" r="62" fill="none" stroke="#9bf1ff" stroke-width="5"/>
+  <circle cx="390" cy="245" r="34" fill="none" stroke="#9bf1ff" stroke-width="4"/>
+  <circle cx="374" cy="228" r="9" fill="#9bf1ff" opacity="0.55"/>
+  <!-- button cluster (diamond) -->
+  <circle cx="320" cy="180" r="9" fill="none" stroke="#9bf1ff" stroke-width="3"/>
+  <circle cx="320" cy="230" r="9" fill="none" stroke="#9bf1ff" stroke-width="3"/>
+  <circle cx="297" cy="205" r="9" fill="none" stroke="#9bf1ff" stroke-width="3"/>
+  <circle cx="343" cy="205" r="9" fill="none" stroke="#9bf1ff" stroke-width="3"/>
+  <!-- AI sparkles -->
+  <g stroke="#9bf1ff" stroke-width="4" stroke-linecap="round">
+    <path d="M 470 105 v 34 M 453 122 h 34" opacity="0.85"/>
+    <path d="M 522 165 v 22 M 511 176 h 22" opacity="0.6"/>
+    <path d="M 100 105 v 22 M 89 116 h 22" opacity="0.5"/>
+  </g>
+  <text x="150" y="410" font-family="Arial, sans-serif" font-size="30" fill="#ffffff" opacity="0.85">ImageGenCam · Orange Pi</text>
+</svg>
