@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/projects.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -42,159 +43,217 @@
 				<!-- Main -->
 					<div id="main" class="alt">
 
-						<!-- One -->
-							<section id="one">
-								<div class="inner">
-									<header class="major">
-										<h1>Projects</h1>
-									</header>
-									<p>A selection of projects I have worked on, from an AI camera and motor control to drones, web development and machining. They reflect what I enjoy most: understanding how things work and building them myself.</p>
+					<!-- Intro -->
+						<section id="one">
+							<div class="inner">
+								<header class="major">
+									<h1>Projects</h1>
+								</header>
+								<div class="projects-intro">
+									<p>A selection of what I have built, from an AI camera and a motor-control test bench to drones, mechanical design and the web. They reflect what I enjoy most: understanding how things work, then building them myself.</p>
 								</div>
-							</section>
+							</div>
+						</section>
 
-						<!-- Projects -->
-							<section id="projects" class="spotlights">
-								<section>
-									<a href="imagegencam.html" class="image"><img src="images/projects/imagegencam.svg" alt="ImageGenCam illustration" data-position="center center" /></a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>ImageGenCam — AI Camera on an Orange Pi Zero 2</h3>
-											</header>
-											<p>Embedded systems · Python · Hardware design</p>
-											<p>A handheld point-and-shoot that doesn't save what it sees — it saves what an AI reimagines. Press the shutter and the photo is sent to an image model with a chosen prompt; the transformed result comes back on the panel a few seconds later. Forked from the Raspberry Pi original and fully ported to the Orange Pi Zero 2.</p>
-											<ul>
-												<li>320×480 SPI display, USB camera soldered to the header, 18650 power pack and an opto-isolated hot shoe</li>
-												<li>Threaded Python controller plus a phone web UI: gallery, prompt presets, Wi-Fi switching and a remote shutter</li>
-												<li>Persistent job queue surviving reboots, "magic mode" that has an LLM write the prompt, 63 passing tests</li>
-												<li>Custom branch using SiliconFlow models to work around blocked API endpoints</li>
-											</ul>
-											<ul class="actions">
-												<li><a href="imagegencam.html" class="button">Read more</a></li>
-												<li><a href="https://github.com/Jerome-kai/sickcamera" class="button">Repository</a></li>
-											</ul>
-										</div>
-									</div>
-								</section>
-								<section>
-									<a class="image"><img src="images/projects/msap-inverter.jpg" alt="Three-phase inverter of the test bench" data-position="center center" /></a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>PMSM Drive Control – University Project (TX)</h3>
-											</header>
-											<p>02/2026 – 07/2026 · UTC, Compiègne</p>
-											<p>Bringing a permanent-magnet synchronous motor test bench from simulation to working hardware: closed-loop vector control running in real time on a PLECS RT Box, driving a three-phase inverter.</p>
-											<ul>
-												<li>Rebuilt the IR2110 gate-driver circuit — the inherited version tied the SD shutdown pin to VDD, keeping the drivers permanently off</li>
-												<li>Fixed the resolver feedback chain by adding the missing electrical-to-mechanical conversion (3 pole pairs)</li>
-												<li>Integrated the full chain into a single real-time PLECS model and added phase-current measurement with clamp meters</li>
-												<li>Motor turning under closed-loop control at low frequency; synchronism above ~10 Hz still to be tuned</li>
-											</ul>
-											<div class="project-gallery">
-												<a href="images/projects/msap-architecture.png"><img src="images/projects/msap-architecture.png" alt="Overall control architecture of the PMSM drive" /></a>
-												<a href="images/projects/msap-gate-driver.jpg"><img src="images/projects/msap-gate-driver.jpg" alt="IR2110 gate driver circuit on breadboard" /></a>
-												<a href="images/projects/msap-rtbox.jpg"><img src="images/projects/msap-rtbox.jpg" alt="PLECS RT Box real-time control platform" /></a>
-												<a href="images/projects/msap-plecs.png"><img src="images/projects/msap-plecs.png" alt="Complete PLECS model of the integrated drive" /></a>
+					<!-- Projects -->
+						<section id="projects">
+							<div class="inner">
+								<ul class="project-grid">
+
+									<li class="is-featured">
+										<article class="project-card">
+											<a href="imagegencam.html" class="project-card__media project-card__media--contain">
+												<img src="images/projects/imagegencam.svg" alt="ImageGenCam illustration" />
+											</a>
+											<div class="project-card__body">
+												<h3 class="project-card__title"><a href="imagegencam.html">ImageGenCam — AI Camera on an Orange Pi Zero 2</a></h3>
+												<span class="project-card__meta">Embedded systems · Featured</span>
+												<p>A handheld point-and-shoot that doesn't save what it sees — it saves what an AI reimagines. Press the shutter and the photo is sent to an image model with a chosen prompt; the transformed result comes back on the panel a few seconds later. Forked from the Raspberry Pi original and fully ported to the Orange Pi Zero 2.</p>
+												<ul>
+													<li>320×480 SPI display, USB camera soldered to the header, 18650 power pack and an opto-isolated hot shoe</li>
+													<li>Threaded Python controller plus a phone web UI: gallery, prompt presets, Wi-Fi switching and a remote shutter</li>
+													<li>Persistent job queue surviving reboots, a "magic mode" that has an LLM write the prompt, 63 passing tests</li>
+												</ul>
+												<ul class="project-tags">
+													<li>Python</li>
+													<li>Linux</li>
+													<li>SPI</li>
+													<li>GPIO</li>
+													<li>SolidWorks</li>
+												</ul>
+												<div class="project-card__spacer"></div>
+												<ul class="actions">
+													<li><a href="imagegencam.html" class="button primary">Read more</a></li>
+													<li><a href="https://github.com/Jerome-kai/sickcamera" class="button">Repository</a></li>
+												</ul>
 											</div>
-										</div>
-									</div>
-								</section>
-								<section>
-									<a class="image"><img src="images/projects/drone.svg" alt="Drone illustration" data-position="center center" /></a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>UTC – Drone Club</h3>
-											</header>
-											<p>Member · 02/2026 – present</p>
-											<ul>
-												<li>Debugging drone systems (flight controller, sensors, power)</li>
-												<li>PCB soldering and hardware repair</li>
-												<li>Embedded software development</li>
-											</ul>
-											<video class="project-video" controls preload="none" playsinline poster="media/drone-flight-poster.jpg">
-												<source src="media/drone-flight.mp4" type="video/mp4" />
-												Your browser does not support the video tag.
-											</video>
-											<p><em>Flight test of one of the club's quadcopters.</em></p>
-										</div>
-									</div>
-								</section>
-								<section>
-									<a class="image"><img src="images/projects/nas.svg" alt="NAS server illustration" data-position="center center" /></a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>DIY NAS from a Microcontroller</h3>
-											</header>
-											<p>Personal project</p>
-											<p>Set up a network-attached storage server from a microcontroller board: installed and configured the system, set up network file sharing, and made it accessible from all devices at home for backups and file storage.</p>
-										</div>
-									</div>
-								</section>
-								<section>
-									<a class="image"><img src="images/projects/website.svg" alt="Driving school website illustration" data-position="center center" /></a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Driving School Website</h3>
-											</header>
-											<p>Web development</p>
-											<p>Designed and built a website for a driving school: presentation of the school and its courses, pricing, and contact information — built with HTML/CSS with a focus on a clear and simple user experience.</p>
-										</div>
-									</div>
-								</section>
-								<section>
-									<a class="image"><img src="images/projects/cheese-machine-3d.png" alt="CAD model of the cheese handling machine" data-position="center center" /></a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Cheese Handling Machine — CAD Design (TN12)</h3>
-											</header>
-											<p>06/2026 · UTC · Mechanical design, with C. Zheng</p>
-											<p>A full mechanical assembly designed in Creo: a machine that grips a cheese wheel, turns it and raises or lowers it for handling in a ripening cellar. About 90 parts, from the welded frame down to the standard fasteners, bearings and springs.</p>
-											<ul>
-												<li>Clamping through a screw-and-nut mechanism driven by a hand crank</li>
-												<li>Rotation of the wheel between vertical and horizontal via the pivoting gripper arms</li>
-												<li>Vertical travel of the carriages along the frame, with a belt-and-pulley transmission</li>
-												<li>Complete 2D drawing produced from the assembly</li>
-											</ul>
-											<div class="project-gallery">
-												<a href="images/projects/cheese-machine-3d.png"><img src="images/projects/cheese-machine-3d.png" alt="Isometric view of the machine" /></a>
-												<a href="images/projects/cheese-machine-plan.jpg"><img src="images/projects/cheese-machine-plan.jpg" alt="2D drawing of the assembly" /></a>
+										</article>
+									</li>
+
+									<li>
+										<article class="project-card">
+											<span class="project-card__media">
+												<img src="images/projects/msap-inverter.jpg" alt="Three-phase inverter of the test bench" />
+											</span>
+											<div class="project-card__body">
+												<h3 class="project-card__title">PMSM Drive Control — University Project (TX)</h3>
+												<span class="project-card__meta">02/2026 – 07/2026 · UTC</span>
+												<p>Bringing a permanent-magnet synchronous motor test bench from simulation to working hardware: closed-loop vector control running in real time on a PLECS RT Box, driving a three-phase inverter.</p>
+												<ul>
+													<li>Rebuilt the IR2110 gate-driver circuit — the inherited version tied the SD shutdown pin to VDD, keeping the drivers permanently off</li>
+													<li>Fixed the resolver feedback by adding the missing electrical-to-mechanical conversion (3 pole pairs)</li>
+													<li>Integrated the full chain into one real-time model and added phase-current measurement with clamp meters</li>
+												</ul>
+												<ul class="project-tags">
+													<li>PLECS</li>
+													<li>Power electronics</li>
+													<li>PWM</li>
+													<li>Control</li>
+												</ul>
+												<ul class="project-figures">
+													<li><a href="images/projects/msap-architecture.png"><img src="images/projects/msap-architecture.png" alt="Overall control architecture" /></a></li>
+													<li><a href="images/projects/msap-gate-driver.jpg"><img src="images/projects/msap-gate-driver.jpg" alt="Gate driver circuit on breadboard" /></a></li>
+													<li><a href="images/projects/msap-rtbox.jpg"><img src="images/projects/msap-rtbox.jpg" alt="PLECS RT Box" /></a></li>
+													<li><a href="images/projects/msap-plecs.png"><img src="images/projects/msap-plecs.png" alt="Complete PLECS model" /></a></li>
+												</ul>
+																<p><em>Motor turning under closed-loop control at low frequency; synchronism above ~10 Hz still to be tuned.</em></p>
 											</div>
-										</div>
-									</div>
-								</section>
-								<section>
-									<a class="image"><img src="images/projects/machining.svg" alt="Machining and CAD illustration" data-position="center center" /></a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Design &amp; Manufacturing of Metallic Parts</h3>
-											</header>
-											<p>Mechanical engineering</p>
-											<p>Designed and manufactured a small batch of metallic parts: CAD modelling (Creo), preparation of the manufacturing process, machining, and dimensional control of the finished parts.</p>
-										</div>
-									</div>
-								</section>
-								<section>
-									<a href="https://moodle.utc.fr/mod/data/view.php?d=261&rid=13186" class="image"><img src="images/projects/game.svg" alt="Interactive fiction game illustration" data-position="center center" /></a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Interactive Fiction Game in Twine</h3>
-											</header>
-											<p>Game development</p>
-											<p>Wrote and built a branching interactive story with Twine, combining narrative design with scripting for choices, variables, and multiple endings.</p>
-											<ul class="actions">
-												<li><a href="https://moodle.utc.fr/mod/data/view.php?d=261&rid=13186" class="button">Click here to play</a></li>
-											</ul>
-										</div>
-									</div>
-								</section>
-							</section>
+										</article>
+									</li>
+
+									<li>
+										<article class="project-card">
+											<span class="project-card__media">
+												<video controls preload="none" playsinline poster="media/drone-flight-poster.jpg">
+													<source src="media/drone-flight.mp4" type="video/mp4" />
+													Your browser does not support the video tag.
+												</video>
+											</span>
+											<div class="project-card__body">
+												<h3 class="project-card__title">UTC — Drone Club</h3>
+												<span class="project-card__meta">Member · 02/2026 – present</span>
+												<p>Building, repairing and flying the club's multirotors — from soldering the electronics to getting them in the air.</p>
+												<ul>
+													<li>Debugging drone systems (flight controller, sensors, power)</li>
+													<li>PCB soldering and hardware repair</li>
+													<li>Embedded software development</li>
+												</ul>
+												<ul class="project-tags">
+													<li>Embedded</li>
+													<li>Soldering</li>
+													<li>Flight control</li>
+												</ul>
+																<p><em>Flight test of one of the club's quadcopters.</em></p>
+											</div>
+										</article>
+									</li>
+
+									<li>
+										<article class="project-card">
+											<span class="project-card__media project-card__media--contain">
+												<img src="images/projects/cheese-machine-3d.png" alt="CAD model of the cheese handling machine" />
+											</span>
+											<div class="project-card__body">
+												<h3 class="project-card__title">Cheese Handling Machine — CAD Design (TN12)</h3>
+												<span class="project-card__meta">06/2026 · UTC · with C. Zheng</span>
+												<p>A full mechanical assembly designed in Creo: a machine that grips a cheese wheel, turns it and raises or lowers it for handling in a ripening cellar. About 90 parts, from the welded frame down to the standard fasteners, bearings and springs.</p>
+												<ul>
+													<li>Clamping through a screw-and-nut mechanism driven by a hand crank</li>
+													<li>Rotation of the wheel between vertical and horizontal via the pivoting gripper arms</li>
+													<li>Vertical travel of the carriages, with a belt-and-pulley transmission</li>
+												</ul>
+												<ul class="project-tags">
+													<li>Creo</li>
+													<li>Mechanical design</li>
+													<li>Technical drawing</li>
+												</ul>
+												<ul class="project-figures">
+													<li><a href="images/projects/cheese-machine-3d.png"><img src="images/projects/cheese-machine-3d.png" alt="Isometric view of the machine" /></a></li>
+													<li><a href="images/projects/cheese-machine-plan.jpg"><img src="images/projects/cheese-machine-plan.jpg" alt="2D drawing of the assembly" /></a></li>
+												</ul>
+																							</div>
+										</article>
+									</li>
+
+									<li>
+										<article class="project-card">
+											<span class="project-card__media project-card__media--contain">
+												<img src="images/projects/nas.svg" alt="NAS server illustration" />
+											</span>
+											<div class="project-card__body">
+												<h3 class="project-card__title">DIY NAS from a Microcontroller</h3>
+												<span class="project-card__meta">Personal project</span>
+												<p>Set up a network-attached storage server from a microcontroller board: installed and configured the system, set up network file sharing, and made it reachable from every device at home for backups and file storage.</p>
+												<ul class="project-tags">
+													<li>Linux</li>
+													<li>Networking</li>
+													<li>Self-hosting</li>
+												</ul>
+																							</div>
+										</article>
+									</li>
+
+									<li>
+										<article class="project-card">
+											<span class="project-card__media project-card__media--contain">
+												<img src="images/projects/website.svg" alt="Driving school website illustration" />
+											</span>
+											<div class="project-card__body">
+												<h3 class="project-card__title">Driving School Website</h3>
+												<span class="project-card__meta">Web development</span>
+												<p>Designed and built a website for a driving school: presentation of the school and its courses, pricing and contact information — built with HTML/CSS around a clear and simple user experience.</p>
+												<ul class="project-tags">
+													<li>HTML</li>
+													<li>CSS</li>
+													<li>UX</li>
+												</ul>
+																							</div>
+										</article>
+									</li>
+
+									<li>
+										<article class="project-card">
+											<span class="project-card__media project-card__media--contain">
+												<img src="images/projects/machining.svg" alt="Machining and CAD illustration" />
+											</span>
+											<div class="project-card__body">
+												<h3 class="project-card__title">Design &amp; Manufacturing of Metallic Parts</h3>
+												<span class="project-card__meta">Mechanical engineering</span>
+												<p>Designed and manufactured a small batch of metallic parts: CAD modelling in Creo, preparation of the manufacturing process, machining, and dimensional control of the finished parts.</p>
+												<ul class="project-tags">
+													<li>Creo</li>
+													<li>Machining</li>
+													<li>Metrology</li>
+												</ul>
+																							</div>
+										</article>
+									</li>
+
+									<li>
+										<article class="project-card">
+											<a href="https://moodle.utc.fr/mod/data/view.php?d=261&amp;rid=13186" class="project-card__media project-card__media--contain">
+												<img src="images/projects/game.svg" alt="Interactive fiction game illustration" />
+											</a>
+											<div class="project-card__body">
+												<h3 class="project-card__title"><a href="https://moodle.utc.fr/mod/data/view.php?d=261&amp;rid=13186">Interactive Fiction Game in Twine</a></h3>
+												<span class="project-card__meta">Game development</span>
+												<p>Wrote and built a branching interactive story with Twine, combining narrative design with scripting for choices, variables and multiple endings.</p>
+												<ul class="project-tags">
+													<li>Twine</li>
+													<li>Narrative design</li>
+													<li>Scripting</li>
+												</ul>
+												<div class="project-card__spacer"></div>
+												<ul class="actions">
+													<li><a href="https://moodle.utc.fr/mod/data/view.php?d=261&amp;rid=13186" class="button">Play it</a></li>
+												</ul>
+											</div>
+										</article>
+									</li>
+
+								</ul>
+							</div>
+						</section>
 
 						<!-- Back -->
 							<section id="back">
