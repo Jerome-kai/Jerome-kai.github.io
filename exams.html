@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>examens</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="alternate icon" href="favicon-32.png" sizes="32x32" />
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -17,6 +19,8 @@
   pre {
     white-space: pre;
     line-height: 1.6;
+    overflow-x: auto;
+    max-width: 100%;
   }
   .header {
     color: #888;
@@ -61,6 +65,10 @@
   .separator {
     color: #333;
     margin: 30px 0;
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 12px; padding: 24px 14px; }
   }
 </style>
 </head>

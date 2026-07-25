@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>notes // privé</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="alternate icon" href="favicon-32.png" sizes="32x32" />
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -15,7 +17,7 @@
     min-height: 100vh;
     max-width: 700px;
   }
-  pre { white-space: pre; line-height: 1.6; }
+  pre { white-space: pre; line-height: 1.6; overflow-x: auto; max-width: 100%; }
   .hdr { color: #888; margin-bottom: 30px; }
   .sep { color: #333; margin: 36px 0; }
 
@@ -99,6 +101,10 @@
   .ov-score.fail  { color: #cc4444; }
 
   .foot { color: #2e2e2e; font-size: 11px; margin-top: 6px; }
+
+  @media (max-width: 480px) {
+    body { font-size: 12px; padding: 24px 14px; }
+  }
 </style>
 </head>
 <body>

@@ -6,10 +6,23 @@
 -->
 <html>
 	<head>
-		<title>ImageGenCam - Jérôme-Kai Wu</title>
+		<title>ImageGenCam — Jérôme-Kai Wu</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="ImageGenCam: a handheld AI camera built on an Orange Pi Zero 2 that saves what an image model reimagines rather than what the lens sees." />
+		<meta name="author" content="Jérôme-Kai Wu" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Jérôme-Kai Wu" />
+		<meta property="og:title" content="ImageGenCam — Jérôme-Kai Wu" />
+		<meta property="og:description" content="ImageGenCam: a handheld AI camera built on an Orange Pi Zero 2 that saves what an image model reimagines rather than what the lens sees." />
+		<meta property="og:url" content="https://jerome-kai.github.io/imagegencam.html" />
+		<meta property="og:image" content="https://jerome-kai.github.io/images/social-card.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+		<link rel="alternate icon" href="favicon-32.png" sizes="32x32" />
+		<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/site.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -49,7 +62,7 @@
 									<header class="major">
 										<h1>ImageGenCam</h1>
 									</header>
-									<span class="image main"><img src="images/projects/imagegencam.svg" alt="ImageGenCam illustration" /></span>
+									<span class="image main" style="max-width: 24em; margin: 0 auto 2.5em auto;"><img src="images/projects/imagegencam-built.jpg" alt="The finished ImageGenCam held in one hand" /></span>
 									<p><strong>A handheld point-and-shoot that doesn't save what it sees — it saves what an AI reimagines.</strong> Press the shutter, the photo goes to an image model with a chosen prompt, and the transformed result comes back on the panel a few seconds later.</p>
 									<p>Forked from <a href="https://github.com/openai/imagegencam">openai/imagegencam</a> (Raspberry Pi original) and ported to the Orange Pi Zero 2.</p>
 									<ul class="actions">
@@ -63,6 +76,11 @@
 							<section id="hardware">
 								<div class="inner">
 									<h2>Hardware</h2>
+									<figure class="figure figure--tall">
+										<img src="images/projects/imagegencam-hardware.jpg" alt="Camera module, Orange Pi Zero 2 and the SPI display wired together on the bench" />
+										<figcaption>The camera module, the Orange Pi Zero 2 and the 3.5" SPI panel, wired up before going into the case.</figcaption>
+									</figure>
+
 									<div class="table-wrapper">
 										<table>
 											<thead>
@@ -107,6 +125,10 @@
 								<div class="inner">
 									<h2>Software</h2>
 									<p>Python, no framework. A threaded controller drives the display, camera and GPIO; a stdlib HTTP server serves a phone UI from the same box.</p>
+									<figure class="figure">
+										<img src="images/projects/imagegencam-ui-screen.jpg" alt="The 320x480 panel showing the live preview, the selected prompt and the on-screen buttons" />
+										<figcaption>Running on the bench: live preview, the selected prompt across the top, flash and shutter on the right.</figcaption>
+									</figure>
 									<ul>
 										<li><strong>5 prompt presets</strong>, including a custom <em>Graduation Day</em> 🎓, editable from the phone</li>
 										<li><strong>Magic mode</strong> — a long press shoots a reference photo and has an LLM invent a new prompt from it</li>
@@ -197,6 +219,13 @@
 										<li><a href="models/imagegencam-chassis.step" download class="button">Download STEP</a></li>
 										<li><a href="models/imagegencam-chassis.glb" download class="button">Download GLB</a></li>
 									</ul>
+
+									<h3 style="margin-top: 1.5em;">Printing it</h3>
+									<p>The shell coming off the printer.</p>
+									<video controls preload="none" playsinline poster="media/imagegencam-printing-poster.jpg" style="display: block; width: 100%; max-width: 34em; border-radius: 4px; background-color: #000000;">
+										<source src="media/imagegencam-printing.mp4" type="video/mp4" />
+										Your browser does not support the video tag.
+									</video>
 								</div>
 							</section>
 
@@ -204,7 +233,7 @@
 							<section id="status">
 								<div class="inner">
 									<h2>Status</h2>
-									<p>Working end to end: power, display, camera, buttons (via the web remote), AI generation, gallery and autostart. The physical buttons need reseating (loose jumpers) and the hot shoe isn't wired yet. The case is designed and virtually assembled; the full enclosure and wiring reference live at the docs site (REV G).</p>
+									<p>Working end to end: power, display, camera, buttons (via the web remote), AI generation, gallery and autostart. The physical buttons need reseating (loose jumpers) and the hot shoe isn't wired yet. The case is designed and printed; the full enclosure and wiring reference live at the docs site (REV G).</p>
 									<ul class="actions">
 										<li><a href="https://github.com/Jerome-kai/sickcamera" class="button primary">View the repository</a></li>
 										<li><a href="generic.html" class="button">Back to projects</a></li>
@@ -225,9 +254,14 @@
 											<input type="text" name="name" id="name" required/>
 										</div>
 
+										<div class="field half">
+										<label for="email">Email</label>
+										<input type="email" name="email" id="email" required/>
+										</div>
+
 										<div class="field">
 											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="6"></textarea>
+											<textarea name="message" id="message" rows="6" required></textarea>
 										</div>
 									</div>
 									<ul class="actions">
@@ -241,7 +275,7 @@
 									<div class="contact-method">
 										<span class="icon solid alt fa-envelope"></span>
 										<h3>Email</h3>
-										<a href="mailto:wujerome.kai@gmail.com">wu.jerome.kai@gmail.com</a>
+										<a href="mailto:wu.jerome.kai@gmail.com">wu.jerome.kai@gmail.com</a>
 									</div>
 								</section>
 							</section>

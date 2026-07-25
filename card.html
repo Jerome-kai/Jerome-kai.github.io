@@ -5,12 +5,24 @@
 -->
 <html>
 	<head>
-		<title>Business Card - Jérôme-Kai Wu</title>
+		<title>Business Card — Jérôme-Kai Wu</title>
 		<meta charset="utf-8" />
+		<meta name="description" content="Digital business card of Jérôme-Kai Wu, with contact details and a QR code to his engineering projects." />
+		<meta name="author" content="Jérôme-Kai Wu" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Jérôme-Kai Wu" />
+		<meta property="og:title" content="Business Card — Jérôme-Kai Wu" />
+		<meta property="og:description" content="Digital business card of Jérôme-Kai Wu, with contact details and a QR code to his engineering projects." />
+		<meta property="og:url" content="https://jerome-kai.github.io/card.html" />
+		<meta property="og:image" content="https://jerome-kai.github.io/images/social-card.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+		<link rel="alternate icon" href="favicon-32.png" sizes="32x32" />
+		<link rel="apple-touch-icon" href="apple-touch-icon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
 		<style>
-			@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i&display=swap");
+			@import url("assets/css/fonts.css");
 
 			:root {
 				--navy: #242943;
@@ -180,7 +192,7 @@
 			}
 
 			/* ---- page chrome (hidden when printing) ---- */
-			.actions { display: flex; gap: 1rem; }
+			.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
 
 			.actions a, .actions button {
 				font-family: inherit;
