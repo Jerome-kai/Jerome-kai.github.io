@@ -4021,3 +4021,14 @@ input, select, textarea {
 		}
 
 	}
+
+/* Project video */
+
+	.project-video {
+		display: block;
+		width: 100%;
+		max-width: 22em;
+		border-radius: 4px;
+		background-color: #000000;
+		margin: 0 0 1em 0;
+	}
