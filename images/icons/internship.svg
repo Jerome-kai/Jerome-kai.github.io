@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <g fill="none" stroke="#9bf1ff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- plant / works -->
+    <path d="M 60 240 v -96 l 70 44 v -44 l 70 44 v -80 h 110 v 132 z"/>
+    <path d="M 240 148 h 44 M 240 186 h 44"/>
+    <!-- flask -->
+    <path d="M 316 60 h 44 M 330 60 v 40 l -26 52 a 14 14 0 0 0 12 22 h 52 a 14 14 0 0 0 12 -22 l -26 -52 v -40"/>
+  </g>
+  <line x1="40" y1="252" x2="380" y2="252" stroke="#9bf1ff" stroke-width="4" opacity="0.6"/>
+</svg>

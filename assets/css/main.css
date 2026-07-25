@@ -1,5 +1,5 @@
 @import url(fontawesome-all.min.css);
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic");
+@import url("fonts.css");
 
 /*
 	Forty by HTML5 UP
@@ -18,10 +18,11 @@
 	background-color: transparent;
 	border: 0;
 	border-radius: 0;
+	width: auto;
 	box-shadow: inset 0 0 0 2px #ffffff;
 	color: #ffffff;
 	cursor: pointer;
-	display: block;
+	display: inline-block;
 	font-size: 0.8em;
 	font-weight: 600;
 	height: 3.5em;
@@ -32,7 +33,6 @@
 	text-decoration: none;
 	text-transform: uppercase;
 	white-space: nowrap;
-	margin: 0 auto;
 }
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
