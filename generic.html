@@ -77,19 +77,26 @@
 									</div>
 								</section>
 								<section>
-									<a class="image"><img src="images/projects/motor-control.svg" alt="Motor control illustration" data-position="center center" /></a>
+									<a class="image"><img src="images/projects/msap-inverter.jpg" alt="Three-phase inverter of the test bench" data-position="center center" /></a>
 									<div class="content">
 										<div class="inner">
 											<header class="major">
-												<h3>Motor Control – University Project</h3>
+												<h3>PMSM Drive Control – University Project (TX)</h3>
 											</header>
-											<p>02/2026 – present · Compiègne, France</p>
+											<p>02/2026 – 07/2026 · UTC, Compiègne</p>
+											<p>Bringing a permanent-magnet synchronous motor test bench from simulation to working hardware: closed-loop vector control running in real time on a PLECS RT Box, driving a three-phase inverter.</p>
 											<ul>
-												<li>Implemented a speed-measurement module for rotor position estimation</li>
-												<li>Developed the control system for a Semikron SemiTeach inverter (PWM via PLECS)</li>
-												<li>Integrated a regulation loop with speed setpoint and torque limiting</li>
-												<li>Validated the full system experimentally on a test bench</li>
+												<li>Rebuilt the IR2110 gate-driver circuit — the inherited version tied the SD shutdown pin to VDD, keeping the drivers permanently off</li>
+												<li>Fixed the resolver feedback chain by adding the missing electrical-to-mechanical conversion (3 pole pairs)</li>
+												<li>Integrated the full chain into a single real-time PLECS model and added phase-current measurement with clamp meters</li>
+												<li>Motor turning under closed-loop control at low frequency; synchronism above ~10 Hz still to be tuned</li>
 											</ul>
+											<div class="project-gallery">
+												<a href="images/projects/msap-architecture.png"><img src="images/projects/msap-architecture.png" alt="Overall control architecture of the PMSM drive" /></a>
+												<a href="images/projects/msap-gate-driver.jpg"><img src="images/projects/msap-gate-driver.jpg" alt="IR2110 gate driver circuit on breadboard" /></a>
+												<a href="images/projects/msap-rtbox.jpg"><img src="images/projects/msap-rtbox.jpg" alt="PLECS RT Box real-time control platform" /></a>
+												<a href="images/projects/msap-plecs.png"><img src="images/projects/msap-plecs.png" alt="Complete PLECS model of the integrated drive" /></a>
+											</div>
 										</div>
 									</div>
 								</section>
