@@ -288,3 +288,10 @@
 	.figure--tall {
 		max-width: 20em;
 	}
+
+/* header.major is width:max-content, so a long heading could not wrap and
+   pushed the page wider than the viewport. */
+
+	header.major {
+		max-width: 100%;
+	}
