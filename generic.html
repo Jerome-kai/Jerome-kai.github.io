@@ -33,6 +33,7 @@
 							<li><a href="generic.html">Projects</a></li>
 							<li><a href="generic copy.html">Skills / Interests</a></li>
 							<li><a href="generic copy 2.html">CV / Resume</a></li>
+							<li><a href="card.html">Business Card</a></li>
 						</ul>
 						<ul class="actions stacked">
 							<li><a href="mailto:wu.jerome.kai@gmail.com" class="button primary fit">Contact me by email</a></li>
@@ -47,33 +48,158 @@
 									<header class="major">
 										<h1>Projects</h1>
 									</header>
-									<ul>
-										<li>Made a game in Twine — <a href="https://moodle.utc.fr/mod/data/view.php?d=261&rid=13186" class="back-btn">click here to play</a></li>
-										<li>Set up a NAS from a microcontroller</li>
-										<li>Made a driving school's website</li>
-										<li>Designed and manufactured a small batch of metallic parts</li>
-									</ul>
+									<p>A selection of projects I have worked on, from an AI camera and motor control to drones, web development and machining. They reflect what I enjoy most: understanding how things work and building them myself.</p>
+								</div>
+							</section>
 
-									<h2>Activities</h2>
-									<h4>UTC – Drone Club</h4>
-									<p>Member · 02/2026 – present</p>
-									<ul>
-										<li>Debugging drone systems</li>
-										<li>PCB soldering</li>
-										<li>Embedded software development</li>
-									</ul>
+						<!-- Projects -->
+							<section id="projects" class="spotlights">
+								<section>
+									<a href="imagegencam.html" class="image"><img src="images/projects/imagegencam.svg" alt="ImageGenCam illustration" data-position="center center" /></a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>ImageGenCam — AI Camera on an Orange Pi Zero 2</h3>
+											</header>
+											<p>Embedded systems · Python · Hardware design</p>
+											<p>A handheld point-and-shoot that doesn't save what it sees — it saves what an AI reimagines. Press the shutter and the photo is sent to an image model with a chosen prompt; the transformed result comes back on the panel a few seconds later. Forked from the Raspberry Pi original and fully ported to the Orange Pi Zero 2.</p>
+											<ul>
+												<li>320×480 SPI display, USB camera soldered to the header, 18650 power pack and an opto-isolated hot shoe</li>
+												<li>Threaded Python controller plus a phone web UI: gallery, prompt presets, Wi-Fi switching and a remote shutter</li>
+												<li>Persistent job queue surviving reboots, "magic mode" that has an LLM write the prompt, 63 passing tests</li>
+												<li>Custom branch using SiliconFlow models to work around blocked API endpoints</li>
+											</ul>
+											<ul class="actions">
+												<li><a href="imagegencam.html" class="button">Read more</a></li>
+												<li><a href="https://github.com/Jerome-kai/sickcamera" class="button">Repository</a></li>
+											</ul>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a class="image"><img src="images/projects/msap-inverter.jpg" alt="Three-phase inverter of the test bench" data-position="center center" /></a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>PMSM Drive Control – University Project (TX)</h3>
+											</header>
+											<p>02/2026 – 07/2026 · UTC, Compiègne</p>
+											<p>Bringing a permanent-magnet synchronous motor test bench from simulation to working hardware: closed-loop vector control running in real time on a PLECS RT Box, driving a three-phase inverter.</p>
+											<ul>
+												<li>Rebuilt the IR2110 gate-driver circuit — the inherited version tied the SD shutdown pin to VDD, keeping the drivers permanently off</li>
+												<li>Fixed the resolver feedback chain by adding the missing electrical-to-mechanical conversion (3 pole pairs)</li>
+												<li>Integrated the full chain into a single real-time PLECS model and added phase-current measurement with clamp meters</li>
+												<li>Motor turning under closed-loop control at low frequency; synchronism above ~10 Hz still to be tuned</li>
+											</ul>
+											<div class="project-gallery">
+												<a href="images/projects/msap-architecture.png"><img src="images/projects/msap-architecture.png" alt="Overall control architecture of the PMSM drive" /></a>
+												<a href="images/projects/msap-gate-driver.jpg"><img src="images/projects/msap-gate-driver.jpg" alt="IR2110 gate driver circuit on breadboard" /></a>
+												<a href="images/projects/msap-rtbox.jpg"><img src="images/projects/msap-rtbox.jpg" alt="PLECS RT Box real-time control platform" /></a>
+												<a href="images/projects/msap-plecs.png"><img src="images/projects/msap-plecs.png" alt="Complete PLECS model of the integrated drive" /></a>
+											</div>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a class="image"><img src="images/projects/drone.svg" alt="Drone illustration" data-position="center center" /></a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>UTC – Drone Club</h3>
+											</header>
+											<p>Member · 02/2026 – present</p>
+											<ul>
+												<li>Debugging drone systems (flight controller, sensors, power)</li>
+												<li>PCB soldering and hardware repair</li>
+												<li>Embedded software development</li>
+											</ul>
+											<video class="project-video" controls preload="none" playsinline poster="media/drone-flight-poster.jpg">
+												<source src="media/drone-flight.mp4" type="video/mp4" />
+												Your browser does not support the video tag.
+											</video>
+											<p><em>Flight test of one of the club's quadcopters.</em></p>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a class="image"><img src="images/projects/nas.svg" alt="NAS server illustration" data-position="center center" /></a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>DIY NAS from a Microcontroller</h3>
+											</header>
+											<p>Personal project</p>
+											<p>Set up a network-attached storage server from a microcontroller board: installed and configured the system, set up network file sharing, and made it accessible from all devices at home for backups and file storage.</p>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a class="image"><img src="images/projects/website.svg" alt="Driving school website illustration" data-position="center center" /></a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Driving School Website</h3>
+											</header>
+											<p>Web development</p>
+											<p>Designed and built a website for a driving school: presentation of the school and its courses, pricing, and contact information — built with HTML/CSS with a focus on a clear and simple user experience.</p>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a class="image"><img src="images/projects/cheese-machine-3d.png" alt="CAD model of the cheese handling machine" data-position="center center" /></a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Cheese Handling Machine — CAD Design (TN12)</h3>
+											</header>
+											<p>06/2026 · UTC · Mechanical design, with C. Zheng</p>
+											<p>A full mechanical assembly designed in Creo: a machine that grips a cheese wheel, turns it and raises or lowers it for handling in a ripening cellar. About 90 parts, from the welded frame down to the standard fasteners, bearings and springs.</p>
+											<ul>
+												<li>Clamping through a screw-and-nut mechanism driven by a hand crank</li>
+												<li>Rotation of the wheel between vertical and horizontal via the pivoting gripper arms</li>
+												<li>Vertical travel of the carriages along the frame, with a belt-and-pulley transmission</li>
+												<li>Complete 2D drawing produced from the assembly</li>
+											</ul>
+											<div class="project-gallery">
+												<a href="images/projects/cheese-machine-3d.png"><img src="images/projects/cheese-machine-3d.png" alt="Isometric view of the machine" /></a>
+												<a href="images/projects/cheese-machine-plan.jpg"><img src="images/projects/cheese-machine-plan.jpg" alt="2D drawing of the assembly" /></a>
+											</div>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a class="image"><img src="images/projects/machining.svg" alt="Machining and CAD illustration" data-position="center center" /></a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Design &amp; Manufacturing of Metallic Parts</h3>
+											</header>
+											<p>Mechanical engineering</p>
+											<p>Designed and manufactured a small batch of metallic parts: CAD modelling (Creo), preparation of the manufacturing process, machining, and dimensional control of the finished parts.</p>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a href="https://moodle.utc.fr/mod/data/view.php?d=261&rid=13186" class="image"><img src="images/projects/game.svg" alt="Interactive fiction game illustration" data-position="center center" /></a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Interactive Fiction Game in Twine</h3>
+											</header>
+											<p>Game development</p>
+											<p>Wrote and built a branching interactive story with Twine, combining narrative design with scripting for choices, variables, and multiple endings.</p>
+											<ul class="actions">
+												<li><a href="https://moodle.utc.fr/mod/data/view.php?d=261&rid=13186" class="button">Click here to play</a></li>
+											</ul>
+										</div>
+									</div>
+								</section>
+							</section>
 
-									<h4>University Project</h4>
-									<p>02/2026 – present</p>
-									<ul>
-										<li>Implemented a speed-measurement module for rotor position estimation</li>
-										<li>Developed the control system for a Semikron SemiTeach inverter (PWM via PLECS)</li>
-										<li>Integrated a regulation loop with speed setpoint and torque limiting</li>
-										<li>Validated experimentally on a test bench</li>
-									</ul>
-
+						<!-- Back -->
+							<section id="back">
+								<div class="inner">
 									<a href="javascript:history.back()" class="back-btn">Back</a>
-
 								</div>
 							</section>
 
