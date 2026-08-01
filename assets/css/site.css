@@ -341,3 +341,25 @@
 			background-color: #9bf1ff;
 			border-color: #9bf1ff;
 		}
+
+/* Language links in the header */
+
+	#header nav a.lang-link {
+		font-size: 0.7em;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		opacity: 0.75;
+	}
+
+		#header nav a.lang-link:hover {
+			opacity: 1;
+			color: #9bf1ff;
+		}
+
+	@media screen and (max-width: 736px) {
+
+		#header nav a.lang-link {
+			padding: 0 0.5em;
+		}
+
+	}
