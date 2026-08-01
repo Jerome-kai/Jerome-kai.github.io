@@ -4,17 +4,17 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html lang="en">
+<html lang="zh-Hans">
 	<head>
-		<title>Cheese Handling Machine · Jérôme-Kai Wu</title>
+		<title>奶酪搬运机 · 吴 Jérôme-Kai</title>
 		<meta charset="utf-8" />
-		<meta name="description" content="A cheese handling machine designed in Creo: about 90 parts that grip a cheese wheel, turn it and raise it for handling in a ripening cellar." />
+		<meta name="description" content="用 Creo 设计的奶酪搬运机：约 90 个零件，用来夹取奶酪轮、翻转并升降，方便在熟成窖里搬运。" />
 		<meta name="author" content="Jérôme-Kai Wu" />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Jérôme-Kai Wu" />
-		<meta property="og:title" content="Cheese Handling Machine · Jérôme-Kai Wu" />
-		<meta property="og:description" content="A cheese handling machine designed in Creo: about 90 parts that grip a cheese wheel, turn it and raise it for handling in a ripening cellar." />
-		<meta property="og:url" content="https://jerome-kai.github.io/cheese-machine.html" />
+		<meta property="og:title" content="奶酪搬运机 · 吴 Jérôme-Kai" />
+		<meta property="og:description" content="用 Creo 设计的奶酪搬运机：约 90 个零件，用来夹取奶酪轮、翻转并升降，方便在熟成窖里搬运。" />
+		<meta property="og:url" content="https://jerome-kai.github.io/cheese-machine-zh.html" />
 		<meta property="og:image" content="https://jerome-kai.github.io/images/social-card.png" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<link rel="alternate" hreflang="en" href="https://jerome-kai.github.io/cheese-machine.html" />
@@ -63,18 +63,18 @@
 							<section id="intro">
 								<div class="inner">
 									<header class="major">
-										<h1>Cheese Handling Machine</h1>
+										<h1>奶酪搬运机</h1>
 									</header>
 									<ul class="lang-switch">
-									<li><span>English</span></li>
+									<li><a href="cheese-machine.html" hreflang="en">English</a></li>
 									<li><a href="cheese-machine-fr.html" hreflang="fr">Français</a></li>
-									<li><a href="cheese-machine-zh.html" hreflang="zh-Hans">中文</a></li>
+									<li><span>中文</span></li>
 									</ul>
-									<span class="image main" style="max-width: 28em; margin: 0 auto 2.5em auto;"><img src="images/projects/cheese-machine-3d.png" alt="Isometric view of the cheese handling machine" /></span>
-									<p><strong>A machine that grips a cheese wheel, turns it, and raises or lowers it for handling in a ripening cellar.</strong> It was designed in Creo as a complete assembly of about 90 parts, from the welded frame down to the standard fasteners, bearings and springs.</p>
-									<p>TN12 mechanical design project at UTC, June 2026, with C. Zheng.</p>
+									<span class="image main" style="max-width: 28em; margin: 0 auto 2.5em auto;"><img src="images/projects/cheese-machine-3d.png" alt="奶酪搬运机的轴测视图" /></span>
+									<p><strong>一台用来夹取奶酪轮、把它翻转并升降的机器，方便在熟成窖里搬运奶酪。</strong>整机用 Creo 设计，是一个约 90 个零件的完整装配体，从焊接机架到标准紧固件、轴承和弹簧都包含在内。</p>
+									<p>UTC TN12 机械设计课程项目，2026 年 6 月，与 C. Zheng 合作。</p>
 									<ul class="actions">
-										<li><a href="generic.html" class="button primary">All projects</a></li>
+										<li><a href="generic.html" class="button primary">全部项目</a></li>
 									</ul>
 								</div>
 							</section>
@@ -82,25 +82,25 @@
 						<!-- Mechanism -->
 							<section id="mechanism">
 								<div class="inner">
-									<h2>How it works</h2>
-									<p>Three motions, all driven by hand, so the machine needs no power in the cellar:</p>
+									<h2>工作原理</h2>
+									<p>三个动作全部靠手动完成，机器在窖内不需要任何动力：</p>
 									<ul>
-										<li><strong>Clamping</strong>: a screw and nut mechanism, turned by a hand crank, closes the two gripper arms onto the wheel.</li>
-										<li><strong>Rotation</strong>: the arms pivot so the wheel can go from vertical to horizontal.</li>
-										<li><strong>Lifting</strong>: the carriages travel up and down the frame through a belt and pulley transmission.</li>
+										<li><strong>夹紧</strong>：手摇曲柄带动丝杠螺母，把两只夹臂合拢在奶酪轮上。</li>
+										<li><strong>翻转</strong>：夹臂绕轴转动，把奶酪轮从竖直位置转到水平位置。</li>
+										<li><strong>升降</strong>：滑架通过带轮传动，沿机架上下移动。</li>
 									</ul>
-									<p>The assembly is fully parametric. The clamping travel, the arm angle and the carriage height are all driven by sketch dimensions, so any position can be posed directly in the model.</p>
+									<p>整个装配体是全参数化的。夹紧行程、夹臂角度和滑架高度都由草图尺寸驱动，因此可以直接在模型里摆出任意位置。</p>
 								</div>
 							</section>
 
 						<!-- Model -->
 							<section id="model">
 								<div class="inner">
-									<h2>The assembly</h2>
-									<p>The full Creo assembly, exported to STEP. Drag to rotate the model, scroll to zoom.</p>
+									<h2>装配体</h2>
+									<p>完整的 Creo 装配体，导出为 STEP 格式。拖动可旋转模型，滚动可缩放。</p>
 									<model-viewer
 										src="models/cheese-machine.glb"
-										alt="3D model of the cheese handling machine"
+										alt="奶酪搬运机的三维模型"
 										camera-controls
 										touch-action="pan-y"
 										auto-rotate
@@ -114,8 +114,8 @@
 										style="width: 100%; height: 26em; background-color: #21263d; border-radius: 4px; margin-bottom: 2em;">
 									</model-viewer>
 									<ul class="actions">
-										<li><a href="models/cheese-machine.step" download class="button">Download the STEP</a></li>
-										<li><a href="models/cheese-machine.glb" download class="button">Download the GLB</a></li>
+										<li><a href="models/cheese-machine.step" download class="button">下载 STEP</a></li>
+										<li><a href="models/cheese-machine.glb" download class="button">下载 GLB</a></li>
 									</ul>
 								</div>
 							</section>
@@ -123,14 +123,14 @@
 						<!-- Drawing -->
 							<section id="drawing">
 								<div class="inner">
-									<h2>Technical drawing</h2>
-									<p>The general arrangement drawn from the assembly: three orthographic views, an isometric and the title block.</p>
+									<h2>工程图</h2>
+									<p>由装配体生成的总装图：三个正投影视图、一个轴测图和标题栏。</p>
 									<figure class="figure" style="max-width: 44em;">
-										<a href="images/projects/cheese-machine-plan.jpg"><img src="images/projects/cheese-machine-plan.jpg" alt="General arrangement drawing of the machine" /></a>
-										<figcaption>Scale 1:20 on A4. Click to enlarge.</figcaption>
+										<a href="images/projects/cheese-machine-plan.jpg"><img src="images/projects/cheese-machine-plan.jpg" alt="机器的总装图" /></a>
+										<figcaption>比例 1:20，A4 图幅。点击可放大。</figcaption>
 									</figure>
 									<ul class="actions">
-										<li><a href="generic.html" class="button">Back to projects</a></li>
+										<li><a href="generic.html" class="button">返回项目页</a></li>
 									</ul>
 								</div>
 							</section>
@@ -144,23 +144,23 @@
 								<form method="post" action="https://formspree.io/f/meorezqb">
 									<div class="fields">
 										<div class="field half">
-											<label for="name">Name</label>
+											<label for="name">姓名</label>
 											<input type="text" name="name" id="name" required/>
 										</div>
 
 										<div class="field half">
-											<label for="email">Email</label>
+											<label for="email">邮箱</label>
 											<input type="email" name="email" id="email" required/>
 										</div>
 
 										<div class="field">
-											<label for="message">Message</label>
+											<label for="message">留言</label>
 											<textarea name="message" id="message" rows="6" required></textarea>
 										</div>
 									</div>
 									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="primary" /></li>
-										<li><input type="reset" value="Clear" /></li>
+										<li><input type="submit" value="发送" class="primary" /></li>
+										<li><input type="reset" value="清空" /></li>
 									</ul>
 								</form>
 							</section>

@@ -295,3 +295,49 @@
 	header.major {
 		max-width: 100%;
 	}
+
+/* Language switcher */
+
+	.lang-switch {
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		gap: 0.5em;
+		list-style: none;
+		margin: 0 0 2em 0;
+		padding: 0;
+	}
+
+		.lang-switch li {
+			padding: 0;
+			margin: 0;
+		}
+
+		.lang-switch a,
+		.lang-switch span {
+			display: inline-block;
+			padding: 0.4em 0.9em;
+			font-size: 0.66em;
+			font-weight: 600;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			border: 1px solid rgba(155, 241, 255, 0.3);
+			border-radius: 3px;
+			border-bottom: 1px solid rgba(155, 241, 255, 0.3);
+		}
+
+		.lang-switch a {
+			color: rgba(255, 255, 255, 0.75);
+		}
+
+			.lang-switch a:hover {
+				color: #9bf1ff;
+				border-color: #9bf1ff;
+			}
+
+		.lang-switch span {
+			color: #242943;
+			background-color: #9bf1ff;
+			border-color: #9bf1ff;
+		}
