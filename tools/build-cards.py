@@ -7,6 +7,8 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 HERE = pathlib.Path(tempfile.mkdtemp(prefix="cards-"))
 
 SITE = "https://jerome-kai.github.io"
+NAME = "J&eacute;r&ocirc;me-Kai Wu"
+NAME_CN = "吴锴"
 EMAIL = "wu.jerome.kai@gmail.com"
 PHONE = "+33 6 21 22 29 93"
 GITHUB = "github.com/Jerome-kai"
@@ -26,9 +28,7 @@ L = {
         "desc": "Digital business card of Jérôme-Kai Wu, with contact details and a QR code to his engineering projects.",
         "h1": "Business Card",
         "role": "Mechanical Engineering Student · UTC",
-        "tagline": "Mechanical design · CAD · Embedded systems",
-        "proj_head": "My Projects",
-        "scan": "Scan to see what I have designed and built.",
+        "qr_cap": "My projects",
         "front_label": "Front",
         "back_label": "Back",
         "print": "Print / Save as PDF",
@@ -49,9 +49,7 @@ L = {
         "desc": "Carte de visite numérique de Jérôme-Kai Wu, avec ses coordonnées et un QR code vers ses projets d'ingénierie.",
         "h1": "Carte de visite",
         "role": "Étudiant en génie mécanique · UTC",
-        "tagline": "Conception mécanique · CAO · Systèmes embarqués",
-        "proj_head": "Mes projets",
-        "scan": "Scannez pour voir ce que j'ai conçu et fabriqué.",
+        "qr_cap": "Mes projets",
         "front_label": "Recto",
         "back_label": "Verso",
         "print": "Imprimer / Enregistrer en PDF",
@@ -68,13 +66,11 @@ L = {
         "home": "index-zh.html",
         "projects": "projects-zh.html",
         "qr": "images/qr-projects-zh.png",
-        "title": "名片 · 吴 Jérôme-Kai",
-        "desc": "吴 Jérôme-Kai 的电子名片，包含联系方式和通往工程项目页的二维码。",
+        "title": "名片 · 吴锴",
+        "desc": "吴锴（Jérôme-Kai Wu）的电子名片，包含联系方式和通往工程项目页的二维码。",
         "h1": "名片",
         "role": "机械工程专业学生 · 贡比涅技术大学",
-        "tagline": "机械设计 · CAD · 嵌入式系统",
-        "proj_head": "我的项目",
-        "scan": "扫码查看我设计与制作的项目。",
+        "qr_cap": "我的项目",
         "front_label": "正面",
         "back_label": "背面",
         "print": "打印 / 保存为 PDF",
@@ -125,6 +121,8 @@ IC = {
     "github_d": icon_filled("#3d4468", PATH_GITHUB),
     "linkedin_d": icon_filled("#3d4468", PATH_LINKEDIN),
     "globe_d": icon("#3d4468", PATH_GLOBE),
+    "mail_d": icon("#3d4468", PATH_MAIL),
+    "phone_d": icon("#3d4468", PATH_PHONE),
 }
 
 
@@ -176,150 +174,138 @@ CARD_CSS = """
 }
 
 .face.front .portrait-col img {
-	width: 21mm;
-	height: 21mm;
+	width: 22.5mm;
+	height: 22.5mm;
 	object-fit: cover;
 	object-position: top center;
 	border-radius: 50%;
 	border: 0.55mm solid #9bf1ff;
 }
 
+/* The front carries the name and nothing else, so it needs room, not columns. */
 .face.front .info-col {
 	width: 67%;
-	padding: 5.4mm 5mm 5mm 4.6mm;
+	padding: 5mm 5.5mm 5mm 1mm;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
 
 .face .name {
-	font-size: 12pt;
+	font-size: 15pt;
 	font-weight: 600;
-	letter-spacing: 0.01em;
-	line-height: 1.1;
+	letter-spacing: 0.005em;
+	line-height: 1.05;
+}
+
+.face .name.cjk { font-size: 19pt; font-weight: 500; letter-spacing: 0.06em; }
+
+.face .name-alt {
+	font-size: 8pt;
+	font-weight: 300;
+	color: rgba(255, 255, 255, 0.68);
+	margin-top: 0.9mm;
+	letter-spacing: 0.02em;
+}
+
+.face .accent {
+	height: 0.45mm;
+	width: 11mm;
+	background: #9bf1ff;
+	margin: 2.6mm 0;
 }
 
 .face .role {
-	font-size: 5.9pt;
+	font-size: 6.2pt;
 	color: #9bf1ff;
-	margin-top: 1.1mm;
 }
 
-.face .role.caps { letter-spacing: 0.1em; text-transform: uppercase; }
-
-.face .divider {
-	height: 0.25mm;
-	background: rgba(155, 241, 255, 0.32);
-	margin: 2.2mm 0 2mm 0;
-	width: 78%;
-}
-
-.face .tagline {
-	font-size: 5.6pt;
-	color: rgba(255, 255, 255, 0.62);
-	letter-spacing: 0.01em;
-}
-
-.face ul.contact {
-	list-style: none;
-	margin: 3.4mm 0 0 0;
-	padding: 0;
-	display: flex;
-	flex-direction: column;
-	gap: 1.5mm;
-	font-size: 6.8pt;
-}
-
-.face ul.contact li { display: flex; align-items: center; gap: 1.9mm; }
-.face ul.contact img.ic { width: 2.9mm; height: 2.9mm; flex: 0 0 auto; }
-.face ul.contact a { color: inherit; text-decoration: none; }
+.face .role.caps { letter-spacing: 0.09em; text-transform: uppercase; }
 
 /* ---------- back ---------- */
 .face.back {
 	background: #ffffff;
 	color: #242943;
-	--rule: rgba(36, 41, 67, 0.18);
+	--rule: rgba(36, 41, 67, 0.16);
 }
 
 .face.back .inner {
 	align-items: center;
-	gap: 5mm;
-	padding: 0 6mm;
+	gap: 5.5mm;
+	padding: 0 6.5mm;
 }
 
-.face.back img.qr { width: 30mm; height: 30mm; flex: 0 0 auto; }
-
-.face.back .scan { display: flex; flex-direction: column; min-width: 0; }
-
-.face.back .scan strong { font-size: 8.6pt; font-weight: 600; }
-.face.back .scan strong.caps { letter-spacing: 0.06em; text-transform: uppercase; }
-
-.face.back .scan .lede {
-	font-size: 6.2pt;
-	color: #4a5178;
-	margin-top: 1.3mm;
-	line-height: 1.45;
+.face.back .qr-col {
+	flex: 0 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.6mm;
 }
 
-.face.back .scan .divider { background: rgba(36, 41, 67, 0.16); margin: 2.6mm 0 2.2mm 0; width: 100%; }
+.face.back img.qr { width: 27mm; height: 27mm; display: block; }
 
-.face.back ul.links {
+.face.back .qr-col .cap { font-size: 5.4pt; color: #6b7192; }
+.face.back .qr-col .cap.caps { letter-spacing: 0.14em; text-transform: uppercase; }
+
+.face.back ul.contact {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	display: flex;
 	flex-direction: column;
-	gap: 1.3mm;
-	font-size: 5.9pt;
-	color: #3d4468;
+	gap: 1.9mm;
+	font-size: 6.3pt;
+	color: #2f3554;
+	min-width: 0;
 }
 
-.face.back ul.links li { display: flex; align-items: center; gap: 1.7mm; }
-.face.back ul.links img.ic { width: 2.6mm; height: 2.6mm; flex: 0 0 auto; }
-.face.back ul.links a { color: inherit; text-decoration: none; }
+.face.back ul.contact li { display: flex; align-items: center; gap: 1.9mm; }
+.face.back ul.contact img.ic { width: 2.7mm; height: 2.7mm; flex: 0 0 auto; }
+.face.back ul.contact a { color: inherit; text-decoration: none; }
 """
 
 
 # ---------------------------------------------------------------- faces
 def front(lang, prefix=""):
+    """Name, role, portrait. Everything else lives on the back."""
     t = L[lang]
     caps = " caps" if t["upper"] else ""
+    # The Chinese card leads with 吴锴 and keeps the Latin name underneath.
+    primary, secondary = (NAME_CN, NAME) if lang == "zh" else (NAME, NAME_CN)
+    pcls = " cjk" if lang == "zh" else ""
     return f"""<div class="face front">
 	<div class="inner">
 		<div class="portrait-col">
 			<img src="{prefix}images/profile.jpg" alt="" />
 		</div>
 		<div class="info-col">
-			<div class="name">J&eacute;r&ocirc;me-Kai Wu</div>
+			<div class="name{pcls}">{primary}</div>
+			<div class="name-alt">{secondary}</div>
+			<div class="accent"></div>
 			<div class="role{caps}">{t['role']}</div>
-			<div class="divider"></div>
-			<div class="tagline">{t['tagline']}</div>
-			<ul class="contact">
-				<li><img class="ic" src="{IC['mail']}" alt="" /><a href="mailto:{EMAIL}">{EMAIL}</a></li>
-				<li><img class="ic" src="{IC['phone']}" alt="" /><a href="tel:+33621222993">{PHONE}</a></li>
-				<li><img class="ic" src="{IC['globe']}" alt="" /><a href="{SITE}">jerome-kai.github.io</a></li>
-			</ul>
 		</div>
 	</div>
 </div>"""
 
 
 def back(lang, prefix=""):
+    """The QR, and every way of reaching me."""
     t = L[lang]
     caps = " caps" if t["upper"] else ""
     return f"""<div class="face back">
 	<div class="inner">
-		<img class="qr" src="{prefix}{t['qr']}" alt="" />
-		<div class="scan">
-			<strong class="{caps.strip()}">{t['proj_head']}</strong>
-			<div class="lede">{t['scan']}</div>
-			<div class="divider"></div>
-			<ul class="links">
-				<li><img class="ic" src="{IC['globe_d']}" alt="" />jerome-kai.github.io</li>
-				<li><img class="ic" src="{IC['github_d']}" alt="" />{GITHUB}</li>
-				<li><img class="ic" src="{IC['linkedin_d']}" alt="" />{LINKEDIN_TXT}</li>
-			</ul>
+		<div class="qr-col">
+			<img class="qr" src="{prefix}{t['qr']}" alt="" />
+			<span class="cap{caps}">{t['qr_cap']}</span>
 		</div>
+		<ul class="contact">
+			<li><img class="ic" src="{IC['mail_d']}" alt="" /><a href="mailto:{EMAIL}">{EMAIL}</a></li>
+			<li><img class="ic" src="{IC['phone_d']}" alt="" /><a href="tel:+33621222993">{PHONE}</a></li>
+			<li><img class="ic" src="{IC['globe_d']}" alt="" /><a href="{SITE}">jerome-kai.github.io</a></li>
+			<li><img class="ic" src="{IC['github_d']}" alt="" />{GITHUB}</li>
+			<li><img class="ic" src="{IC['linkedin_d']}" alt="" />{LINKEDIN_TXT}</li>
+		</ul>
 	</div>
 </div>"""
 
@@ -335,7 +321,7 @@ def screen_page(lang):
     alts = "\n\t\t".join(
         f'<link rel="alternate" hreflang="{HREFLANG[c]}" href="{SITE}/{L[c]["page"]}" />' for c in LANGS
     )
-    font = ('"Source Sans Pro", "PingFang SC", "Microsoft YaHei", Helvetica, sans-serif'
+    font = ('"Source Sans Pro", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", Helvetica, sans-serif'
             if lang == "zh" else '"Source Sans Pro", Helvetica, sans-serif')
 
     return f"""<!DOCTYPE HTML>
@@ -598,11 +584,11 @@ body {{ --card-font: {font}; -webkit-print-color-adjust: exact; print-color-adju
 
 
 PRINT_FONT = {
-    "en": '"Source Sans Pro", Helvetica, sans-serif',
-    "fr": '"Source Sans Pro", Helvetica, sans-serif',
-    "zh": '"Source Sans Pro", "WenQuanYi Zen Hei", sans-serif',
+    "en": '"Source Sans Pro", "Noto Sans CJK SC", "WenQuanYi Zen Hei", Helvetica, sans-serif',
+    "fr": '"Source Sans Pro", "Noto Sans CJK SC", "WenQuanYi Zen Hei", Helvetica, sans-serif',
+    "zh": '"Source Sans Pro", "Noto Sans CJK SC", "WenQuanYi Zen Hei", sans-serif',
 }
-FONT_ALL = '"Source Sans Pro", "WenQuanYi Zen Hei", sans-serif'
+FONT_ALL = '"Source Sans Pro", "Noto Sans CJK SC", "WenQuanYi Zen Hei", sans-serif'
 
 # Any Chrome/Chromium will do; override with the CHROME environment variable.
 CHROME = os.environ.get("CHROME") or shutil.which("chromium") or shutil.which("chromium-browser") \
@@ -616,6 +602,22 @@ def to_pdf(html_path, pdf_path):
          f"--print-to-pdf={pdf_path}", f"file://{html_path}"],
         check=True, capture_output=True,
     )
+
+
+def outline_text(pdf_path):
+    """Convert text to vector paths so a print shop needs no fonts at all."""
+    gs = os.environ.get("GS") or shutil.which("gs")
+    if not gs:
+        print(f"  (ghostscript not found, leaving fonts in {pdf_path.name})")
+        return
+    tmp = pdf_path.with_suffix(".tmp.pdf")
+    subprocess.run(
+        [gs, "-q", "-dBATCH", "-dNOPAUSE", "-sDEVICE=pdfwrite", "-dNoOutputFonts",
+         "-dAutoRotatePages=/None", "-dColorConversionStrategy=/LeaveColorUnchanged",
+         f"-sOutputFile={tmp}", str(pdf_path)],
+        check=True, capture_output=True,
+    )
+    tmp.replace(pdf_path)
 
 
 def build_qr():
@@ -646,7 +648,10 @@ def build():
         for bleed, suffix in ((False, ""), (True, "-print")):
             h = HERE / f"print-{lang}{suffix}.html"
             h.write_text(print_doc(faces, PRINT_FONT[lang], bleed), encoding="utf-8")
-            to_pdf(h, out / f"business-card-{lang}{suffix}.pdf")
+            pdf = out / f"business-card-{lang}{suffix}.pdf"
+            to_pdf(h, pdf)
+            if bleed:
+                outline_text(pdf)
 
     # all three languages, trim size
     faces = []
