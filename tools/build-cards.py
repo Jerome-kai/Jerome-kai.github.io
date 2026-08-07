@@ -22,7 +22,7 @@ L = {
         "html_lang": "en",
         "page": "card.html",
         "home": "index.html",
-        "projects": "generic.html",
+        "projects": "projects.html",
         "qr": "images/qr-projects.png",
         "title": "Business Card · Jérôme-Kai Wu",
         "desc": "Digital business card of Jérôme-Kai Wu, with contact details and a QR code to his engineering projects.",
