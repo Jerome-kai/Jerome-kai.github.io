@@ -135,10 +135,9 @@
 /* No panel or rule here: any hard edge near the trim line shows up as a sliver
    if the guillotine wanders, so the left third is just gradient plus portrait. */
 .face.front .portrait-col {
-	width: 33%;
+	flex: 0 0 auto;
 	display: flex;
 	align-items: center;
-	justify-content: center;
 }
 
 .face.front .portrait-col img {
@@ -150,13 +149,20 @@
 	border: 0.55mm solid #9bf1ff;
 }
 
-/* The front carries the name and nothing else, so it needs room, not columns. */
+/* Portrait and text are sized to their content and centred as one group, so the
+   pair stays optically centred whatever the length of the name and the role. */
+.face.front .inner {
+	align-items: center;
+	justify-content: center;
+	gap: 4.5mm;
+	padding: 0 4.5mm;
+}
+
 .face.front .info-col {
-	width: 67%;
-	padding: 5mm 5.5mm 5mm 1mm;
+	flex: 0 1 auto;
+	min-width: 0;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 }
 
 .face .name {
@@ -167,14 +173,6 @@
 }
 
 .face .name.cjk { font-size: 19pt; font-weight: 500; letter-spacing: 0.06em; }
-
-.face .name-alt {
-	font-size: 8pt;
-	font-weight: 300;
-	color: rgba(255, 255, 255, 0.68);
-	margin-top: 0.9mm;
-	letter-spacing: 0.02em;
-}
 
 .face .accent {
 	height: 0.45mm;
@@ -307,9 +305,8 @@
 		</div>
 		<div class="info-col">
 			<div class="name">J&eacute;r&ocirc;me-Kai Wu</div>
-			<div class="name-alt">吴锴</div>
 			<div class="accent"></div>
-			<div class="role caps">Étudiant en génie mécanique · UTC</div>
+			<div class="role caps">Étudiant en ingénierie mécanique · UTC</div>
 		</div>
 	</div>
 </div></div>

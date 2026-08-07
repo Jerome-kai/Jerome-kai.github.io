@@ -7,7 +7,10 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 HERE = pathlib.Path(tempfile.mkdtemp(prefix="cards-"))
 
 SITE = "https://jerome-kai.github.io"
-NAME = "J&eacute;r&ocirc;me-Kai Wu"
+NAME_FR = "J&eacute;r&ocirc;me-Kai Wu"
+NAME_EN = "Jerome-Kai Wu"
+# same names without HTML entities, for comments and meta tags
+PLAIN = {"en": "Jerome-Kai Wu", "fr": "Jérôme-Kai Wu", "zh": "吴锴"}
 NAME_CN = "吴锴"
 EMAIL = "wu.jerome.kai@gmail.com"
 PHONE = "+33 6 21 22 29 93"
@@ -20,12 +23,13 @@ LANGS = ("en", "fr", "zh")
 L = {
     "en": {
         "html_lang": "en",
+        "name": NAME_EN,
         "page": "card.html",
         "home": "index.html",
         "projects": "projects.html",
         "qr": "images/qr-projects.png",
-        "title": "Business Card · Jérôme-Kai Wu",
-        "desc": "Digital business card of Jérôme-Kai Wu, with contact details and a QR code to his engineering projects.",
+        "title": "Business Card · Jerome-Kai Wu",
+        "desc": "Digital business card of Jerome-Kai Wu, with contact details and a QR code to his engineering projects.",
         "h1": "Business Card",
         "role": "Mechanical Engineering Student · UTC",
         "qr_cap": "My projects",
@@ -41,6 +45,7 @@ L = {
     },
     "fr": {
         "html_lang": "fr",
+        "name": NAME_FR,
         "page": "card-fr.html",
         "home": "index-fr.html",
         "projects": "projects-fr.html",
@@ -48,7 +53,7 @@ L = {
         "title": "Carte de visite · Jérôme-Kai Wu",
         "desc": "Carte de visite numérique de Jérôme-Kai Wu, avec ses coordonnées et un QR code vers ses projets d'ingénierie.",
         "h1": "Carte de visite",
-        "role": "Étudiant en génie mécanique · UTC",
+        "role": "Étudiant en ingénierie mécanique · UTC",
         "qr_cap": "Mes projets",
         "front_label": "Recto",
         "back_label": "Verso",
@@ -62,12 +67,13 @@ L = {
     },
     "zh": {
         "html_lang": "zh-Hans",
+        "name": NAME_CN,
         "page": "card-zh.html",
         "home": "index-zh.html",
         "projects": "projects-zh.html",
         "qr": "images/qr-projects-zh.png",
         "title": "名片 · 吴锴",
-        "desc": "吴锴（Jérôme-Kai Wu）的电子名片，包含联系方式和通往工程项目页的二维码。",
+        "desc": "吴锴的电子名片，包含联系方式和通往工程项目页的二维码。",
         "h1": "名片",
         "role": "机械工程专业学生 · 贡比涅技术大学",
         "qr_cap": "我的项目",
@@ -167,10 +173,9 @@ CARD_CSS = """
 /* No panel or rule here: any hard edge near the trim line shows up as a sliver
    if the guillotine wanders, so the left third is just gradient plus portrait. */
 .face.front .portrait-col {
-	width: 33%;
+	flex: 0 0 auto;
 	display: flex;
 	align-items: center;
-	justify-content: center;
 }
 
 .face.front .portrait-col img {
@@ -182,13 +187,20 @@ CARD_CSS = """
 	border: 0.55mm solid #9bf1ff;
 }
 
-/* The front carries the name and nothing else, so it needs room, not columns. */
+/* Portrait and text are sized to their content and centred as one group, so the
+   pair stays optically centred whatever the length of the name and the role. */
+.face.front .inner {
+	align-items: center;
+	justify-content: center;
+	gap: 4.5mm;
+	padding: 0 4.5mm;
+}
+
 .face.front .info-col {
-	width: 67%;
-	padding: 5mm 5.5mm 5mm 1mm;
+	flex: 0 1 auto;
+	min-width: 0;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 }
 
 .face .name {
@@ -199,14 +211,6 @@ CARD_CSS = """
 }
 
 .face .name.cjk { font-size: 19pt; font-weight: 500; letter-spacing: 0.06em; }
-
-.face .name-alt {
-	font-size: 8pt;
-	font-weight: 300;
-	color: rgba(255, 255, 255, 0.68);
-	margin-top: 0.9mm;
-	letter-spacing: 0.02em;
-}
 
 .face .accent {
 	height: 0.45mm;
@@ -271,8 +275,8 @@ def front(lang, prefix=""):
     """Name, role, portrait. Everything else lives on the back."""
     t = L[lang]
     caps = " caps" if t["upper"] else ""
-    # The Chinese card leads with 吴锴 and keeps the Latin name underneath.
-    primary, secondary = (NAME_CN, NAME) if lang == "zh" else (NAME, NAME_CN)
+    # Each card is written in one language only: no Latin name on the Chinese
+    # card, no Chinese name on the English or French ones.
     pcls = " cjk" if lang == "zh" else ""
     return f"""<div class="face front">
 	<div class="inner">
@@ -280,8 +284,7 @@ def front(lang, prefix=""):
 			<img src="{prefix}images/profile.jpg" alt="" />
 		</div>
 		<div class="info-col">
-			<div class="name{pcls}">{primary}</div>
-			<div class="name-alt">{secondary}</div>
+			<div class="name{pcls}">{t['name']}</div>
 			<div class="accent"></div>
 			<div class="role{caps}">{t['role']}</div>
 		</div>
@@ -326,7 +329,7 @@ def screen_page(lang):
 
     return f"""<!DOCTYPE HTML>
 <!--
-	Business card of Jérôme-Kai Wu.
+	Business card of {PLAIN[lang]}.
 	Generated: the faces below are laid out in millimetres, so what you see here is
 	the same artwork as the PDFs in downloads/.
 -->
@@ -335,9 +338,9 @@ def screen_page(lang):
 		<title>{t['title']}</title>
 		<meta charset="utf-8" />
 		<meta name="description" content="{t['desc']}" />
-		<meta name="author" content="Jérôme-Kai Wu" />
+		<meta name="author" content="{PLAIN[lang]}" />
 		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="Jérôme-Kai Wu" />
+		<meta property="og:site_name" content="{PLAIN[lang]}" />
 		<meta property="og:title" content="{t['title']}" />
 		<meta property="og:description" content="{t['desc']}" />
 		<meta property="og:url" content="{SITE}/{t['page']}" />
