@@ -142,107 +142,95 @@
 }
 
 .face.front .portrait-col img {
-	width: 21mm;
-	height: 21mm;
+	width: 22.5mm;
+	height: 22.5mm;
 	object-fit: cover;
 	object-position: top center;
 	border-radius: 50%;
 	border: 0.55mm solid #9bf1ff;
 }
 
+/* The front carries the name and nothing else, so it needs room, not columns. */
 .face.front .info-col {
 	width: 67%;
-	padding: 5.4mm 5mm 5mm 4.6mm;
+	padding: 5mm 5.5mm 5mm 1mm;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
 
 .face .name {
-	font-size: 12pt;
+	font-size: 15pt;
 	font-weight: 600;
-	letter-spacing: 0.01em;
-	line-height: 1.1;
+	letter-spacing: 0.005em;
+	line-height: 1.05;
+}
+
+.face .name.cjk { font-size: 19pt; font-weight: 500; letter-spacing: 0.06em; }
+
+.face .name-alt {
+	font-size: 8pt;
+	font-weight: 300;
+	color: rgba(255, 255, 255, 0.68);
+	margin-top: 0.9mm;
+	letter-spacing: 0.02em;
+}
+
+.face .accent {
+	height: 0.45mm;
+	width: 11mm;
+	background: #9bf1ff;
+	margin: 2.6mm 0;
 }
 
 .face .role {
-	font-size: 5.9pt;
+	font-size: 6.2pt;
 	color: #9bf1ff;
-	margin-top: 1.1mm;
 }
 
-.face .role.caps { letter-spacing: 0.1em; text-transform: uppercase; }
-
-.face .divider {
-	height: 0.25mm;
-	background: rgba(155, 241, 255, 0.32);
-	margin: 2.2mm 0 2mm 0;
-	width: 78%;
-}
-
-.face .tagline {
-	font-size: 5.6pt;
-	color: rgba(255, 255, 255, 0.62);
-	letter-spacing: 0.01em;
-}
-
-.face ul.contact {
-	list-style: none;
-	margin: 3.4mm 0 0 0;
-	padding: 0;
-	display: flex;
-	flex-direction: column;
-	gap: 1.5mm;
-	font-size: 6.8pt;
-}
-
-.face ul.contact li { display: flex; align-items: center; gap: 1.9mm; }
-.face ul.contact img.ic { width: 2.9mm; height: 2.9mm; flex: 0 0 auto; }
-.face ul.contact a { color: inherit; text-decoration: none; }
+.face .role.caps { letter-spacing: 0.09em; text-transform: uppercase; }
 
 /* ---------- back ---------- */
 .face.back {
 	background: #ffffff;
 	color: #242943;
-	--rule: rgba(36, 41, 67, 0.18);
+	--rule: rgba(36, 41, 67, 0.16);
 }
 
 .face.back .inner {
 	align-items: center;
-	gap: 5mm;
-	padding: 0 6mm;
+	gap: 5.5mm;
+	padding: 0 6.5mm;
 }
 
-.face.back img.qr { width: 30mm; height: 30mm; flex: 0 0 auto; }
-
-.face.back .scan { display: flex; flex-direction: column; min-width: 0; }
-
-.face.back .scan strong { font-size: 8.6pt; font-weight: 600; }
-.face.back .scan strong.caps { letter-spacing: 0.06em; text-transform: uppercase; }
-
-.face.back .scan .lede {
-	font-size: 6.2pt;
-	color: #4a5178;
-	margin-top: 1.3mm;
-	line-height: 1.45;
+.face.back .qr-col {
+	flex: 0 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.6mm;
 }
 
-.face.back .scan .divider { background: rgba(36, 41, 67, 0.16); margin: 2.6mm 0 2.2mm 0; width: 100%; }
+.face.back img.qr { width: 27mm; height: 27mm; display: block; }
 
-.face.back ul.links {
+.face.back .qr-col .cap { font-size: 5.4pt; color: #6b7192; }
+.face.back .qr-col .cap.caps { letter-spacing: 0.14em; text-transform: uppercase; }
+
+.face.back ul.contact {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	display: flex;
 	flex-direction: column;
-	gap: 1.3mm;
-	font-size: 5.9pt;
-	color: #3d4468;
+	gap: 1.9mm;
+	font-size: 6.3pt;
+	color: #2f3554;
+	min-width: 0;
 }
 
-.face.back ul.links li { display: flex; align-items: center; gap: 1.7mm; }
-.face.back ul.links img.ic { width: 2.6mm; height: 2.6mm; flex: 0 0 auto; }
-.face.back ul.links a { color: inherit; text-decoration: none; }
+.face.back ul.contact li { display: flex; align-items: center; gap: 1.9mm; }
+.face.back ul.contact img.ic { width: 2.7mm; height: 2.7mm; flex: 0 0 auto; }
+.face.back ul.contact a { color: inherit; text-decoration: none; }
 
 
 			/* ---- page chrome ---- */
@@ -319,14 +307,9 @@
 		</div>
 		<div class="info-col">
 			<div class="name">J&eacute;r&ocirc;me-Kai Wu</div>
+			<div class="name-alt">吴锴</div>
+			<div class="accent"></div>
 			<div class="role caps">Mechanical Engineering Student · UTC</div>
-			<div class="divider"></div>
-			<div class="tagline">Mechanical design · CAD · Embedded systems</div>
-			<ul class="contact">
-				<li><img class="ic" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%239bf1ff%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%222.5%22%20y%3D%225%22%20width%3D%2219%22%20height%3D%2214%22%20rx%3D%222%22/%3E%3Cpath%20d%3D%22M3%207l9%206%209-6%22/%3E%3C/svg%3E" alt="" /><a href="mailto:wu.jerome.kai@gmail.com">wu.jerome.kai@gmail.com</a></li>
-				<li><img class="ic" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%239bf1ff%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4.5%203h4l2%205-2.5%201.8a12.5%2012.5%200%200%200%206.2%206.2L16%2013.5l5%202v4a1.5%201.5%200%200%201-1.6%201.5C10.4%2020.4%203.6%2013.6%203%204.6A1.5%201.5%200%200%201%204.5%203z%22/%3E%3C/svg%3E" alt="" /><a href="tel:+33621222993">+33 6 21 22 29 93</a></li>
-				<li><img class="ic" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%239bf1ff%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22/%3E%3Cpath%20d%3D%22M3%2012h18%22/%3E%3Cpath%20d%3D%22M12%203a15%2015%200%200%201%200%2018a15%2015%200%200%201%200-18z%22/%3E%3C/svg%3E" alt="" /><a href="https://jerome-kai.github.io">jerome-kai.github.io</a></li>
-			</ul>
 		</div>
 	</div>
 </div></div>
@@ -335,17 +318,17 @@
 				<span class="cap">Back</span>
 				<div class="frame"><div class="face back">
 	<div class="inner">
-		<img class="qr" src="images/qr-projects.png" alt="" />
-		<div class="scan">
-			<strong class="caps">My Projects</strong>
-			<div class="lede">Scan to see what I have designed and built.</div>
-			<div class="divider"></div>
-			<ul class="links">
-				<li><img class="ic" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%233d4468%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22/%3E%3Cpath%20d%3D%22M3%2012h18%22/%3E%3Cpath%20d%3D%22M12%203a15%2015%200%200%201%200%2018a15%2015%200%200%201%200-18z%22/%3E%3C/svg%3E" alt="" />jerome-kai.github.io</li>
-				<li><img class="ic" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%233d4468%22%3E%3Cpath%20d%3D%22M12%202a10%2010%200%200%200-3.2%2019.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6%201%20.1%201.5%201%201.5%201%20.9%201.5%202.4%201.1%203%20.8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5%200-1.1.4-2%201-2.7-.1-.2-.4-1.3.1-2.6%200%200%20.8-.3%202.7%201a9.4%209.4%200%200%201%205%200c1.9-1.3%202.7-1%202.7-1%20.5%201.3.2%202.4.1%202.6.6.7%201%201.6%201%202.7%200%203.9-2.4%204.7-4.6%205%20.4.3.7.9.7%201.9v2.8c0%20.3.2.6.7.5A10%2010%200%200%200%2012%202z%22/%3E%3C/svg%3E" alt="" />github.com/Jerome-kai</li>
-				<li><img class="ic" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%233d4468%22%3E%3Cpath%20d%3D%22M4%204h4v4H4zM4%2010h4v10H4zM10%2010h4v1.5c.6-1%201.8-1.7%203.2-1.7%202.7%200%203.8%201.6%203.8%204.4V20h-4v-5.2c0-1.3-.4-2.1-1.5-2.1-1%200-1.5.7-1.5%202.1V20h-4z%22/%3E%3C/svg%3E" alt="" />in/jerome-kai-wu-137653386</li>
-			</ul>
+		<div class="qr-col">
+			<img class="qr" src="images/qr-projects.png" alt="" />
+			<span class="cap caps">My projects</span>
 		</div>
+		<ul class="contact">
+			<li><img class="ic" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%233d4468%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%222.5%22%20y%3D%225%22%20width%3D%2219%22%20height%3D%2214%22%20rx%3D%222%22/%3E%3Cpath%20d%3D%22M3%207l9%206%209-6%22/%3E%3C/svg%3E" alt="" /><a href="mailto:wu.jerome.kai@gmail.com">wu.jerome.kai@gmail.com</a></li>
+			<li><img class="ic" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%233d4468%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4.5%203h4l2%205-2.5%201.8a12.5%2012.5%200%200%200%206.2%206.2L16%2013.5l5%202v4a1.5%201.5%200%200%201-1.6%201.5C10.4%2020.4%203.6%2013.6%203%204.6A1.5%201.5%200%200%201%204.5%203z%22/%3E%3C/svg%3E" alt="" /><a href="tel:+33621222993">+33 6 21 22 29 93</a></li>
+			<li><img class="ic" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%233d4468%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22/%3E%3Cpath%20d%3D%22M3%2012h18%22/%3E%3Cpath%20d%3D%22M12%203a15%2015%200%200%201%200%2018a15%2015%200%200%201%200-18z%22/%3E%3C/svg%3E" alt="" /><a href="https://jerome-kai.github.io">jerome-kai.github.io</a></li>
+			<li><img class="ic" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%233d4468%22%3E%3Cpath%20d%3D%22M12%202a10%2010%200%200%200-3.2%2019.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6%201%20.1%201.5%201%201.5%201%20.9%201.5%202.4%201.1%203%20.8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5%200-1.1.4-2%201-2.7-.1-.2-.4-1.3.1-2.6%200%200%20.8-.3%202.7%201a9.4%209.4%200%200%201%205%200c1.9-1.3%202.7-1%202.7-1%20.5%201.3.2%202.4.1%202.6.6.7%201%201.6%201%202.7%200%203.9-2.4%204.7-4.6%205%20.4.3.7.9.7%201.9v2.8c0%20.3.2.6.7.5A10%2010%200%200%200%2012%202z%22/%3E%3C/svg%3E" alt="" />github.com/Jerome-kai</li>
+			<li><img class="ic" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%233d4468%22%3E%3Cpath%20d%3D%22M4%204h4v4H4zM4%2010h4v10H4zM10%2010h4v1.5c.6-1%201.8-1.7%203.2-1.7%202.7%200%203.8%201.6%203.8%204.4V20h-4v-5.2c0-1.3-.4-2.1-1.5-2.1-1%200-1.5.7-1.5%202.1V20h-4z%22/%3E%3C/svg%3E" alt="" />in/jerome-kai-wu-137653386</li>
+		</ul>
 	</div>
 </div></div>
 			</div>
