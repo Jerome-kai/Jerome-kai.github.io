@@ -13,7 +13,12 @@ NAME_EN = "Jerome-Kai Wu"
 PLAIN = {"en": "Jerome-Kai Wu", "fr": "Jérôme-Kai Wu", "zh": "吴锴"}
 NAME_CN = "吴锴"
 EMAIL = "wu.jerome.kai@gmail.com"
-PHONE = "+33 6 21 22 29 93"
+PHONE_FR = "+33 6 21 22 29 93"
+PHONE_CN = "+86 134 7270 4378"
+# The Chinese card carries both numbers, since the people it is handed to are the
+# ones most likely to dial the +86 one. The English and French cards carry only
+# the French number.
+PHONES = {"en": [PHONE_FR], "fr": [PHONE_FR], "zh": [PHONE_CN, PHONE_FR]}
 GITHUB = "github.com/Jerome-kai"
 LINKEDIN_URL = "https://www.linkedin.com/in/jerome-kai-wu-137653386/"
 LINKEDIN_TXT = "in/jerome-kai-wu-137653386"
@@ -296,6 +301,11 @@ def back(lang, prefix=""):
     """The QR, and every way of reaching me."""
     t = L[lang]
     caps = " caps" if t["upper"] else ""
+    phones = "\n\t\t\t".join(
+        f'<li><img class="ic" src="{IC["phone_d"]}" alt="" />'
+        f'<a href="tel:{p.replace(" ", "")}">{p}</a></li>'
+        for p in PHONES[lang]
+    )
     return f"""<div class="face back">
 	<div class="inner">
 		<div class="qr-col">
@@ -304,7 +314,7 @@ def back(lang, prefix=""):
 		</div>
 		<ul class="contact">
 			<li><img class="ic" src="{IC['mail_d']}" alt="" /><a href="mailto:{EMAIL}">{EMAIL}</a></li>
-			<li><img class="ic" src="{IC['phone_d']}" alt="" /><a href="tel:+33621222993">{PHONE}</a></li>
+			{phones}
 			<li><img class="ic" src="{IC['globe_d']}" alt="" /><a href="{SITE}">jerome-kai.github.io</a></li>
 			<li><img class="ic" src="{IC['github_d']}" alt="" />{GITHUB}</li>
 			<li><img class="ic" src="{IC['linkedin_d']}" alt="" />{LINKEDIN_TXT}</li>
