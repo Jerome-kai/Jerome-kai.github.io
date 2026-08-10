@@ -371,6 +371,7 @@ def screen_page(lang):
 		<meta property="og:url" content="{SITE}/{t['page']}" />
 		<meta property="og:image" content="{SITE}/images/social-card.png" />
 		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="canonical" href="{SITE}/{t['page']}" />
 		{alts}
 		<link rel="icon" href="favicon.svg" type="image/svg+xml" />
 		<link rel="alternate icon" href="favicon-32.png" sizes="32x32" />
