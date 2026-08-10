@@ -1,0 +1,7 @@
+# Build tooling lives in .tools/ rather than tools/ so that GitHub Pages does
+# not serve it: Jekyll leaves dot-directories out of the built site.
+__pycache__/
+*.pyc
+
+# Chromium's print-to-PDF scratch directories
+.tmp.pdf

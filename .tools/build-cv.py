@@ -10,7 +10,7 @@
 # margins, the portrait's placement), and the body font is Carlito, which is
 # metric-compatible with the Calibri the original uses.
 #
-#   python3 tools/build-cv.py            # needs CHROME= if chromium is not on PATH
+#   python3 .tools/build-cv.py            # needs CHROME= if chromium is not on PATH
 import os, pathlib, shutil, subprocess, tempfile
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
