@@ -1,9 +1,10 @@
-# Builds the English and Chinese CVs from the French one.
+# Builds the CV in French, English and Chinese from one source.
 #
-# The French PDF is authored in Word and committed as-is; this script does not
-# touch it. It reproduces that document's design in CSS and pours the two
-# translations into it, so all three read as the same CV in three languages
-# rather than three different documents.
+# It started as a reproduction of a Word-authored French PDF and still follows
+# that document's design exactly. The French version is generated here too, so
+# that an edit lands in all three languages at once instead of one of them
+# silently falling behind - which is what happened the first time the CV
+# changed and only the translations could be regenerated.
 #
 # Every measurement below was taken off the French PDF (colours, point sizes,
 # margins, the portrait's placement), and the body font is Carlito, which is
@@ -34,6 +35,70 @@ PHONE_CN = "+86 134 7270 4378"
 # nothing on that line. Sub-lines are for the two-dates-one-school case in the
 # education section, which the French original sets as its own indented rows.
 CV = {
+    "fr": {
+        "lang": "fr",
+        "font": "'Carlito', 'Noto Sans CJK SC', sans-serif",
+        "role_style": "italic",
+        "name": "J&eacute;r&ocirc;me-Kai WU",
+        "mobility": "Mobilit&eacute; : France et international",
+        "phones": [PHONE_FR],
+        "sections": [
+            ("Formation", [
+                {"org": "Universit&eacute; de Technologie de Compi&egrave;gne &mdash; Compi&egrave;gne, France",
+                 "role": "Pr&eacute;paration du dipl&ocirc;me d'ing&eacute;nieur m&eacute;canique",
+                 "rows": [("Classe pr&eacute;paratoire int&eacute;gr&eacute;e [GPA : 3.74/5]", "09/2023 &ndash; 07/2025"),
+                          ("1&egrave;re ann&eacute;e du cycle ing&eacute;nieur [GPA : 4.26/5]", "09/2025 &ndash; 07/2028")],
+                 "bullets": ["Cours : Analyse et dimensionnement m&eacute;caniques (RDM, Statique, M&eacute;canique "
+                             "des fluides), CAO, Programmation, &Eacute;lectronique et microcontr&ocirc;leur, "
+                             "Math&eacute;matique (alg&egrave;bre lin&eacute;aire, analyse), Conception, optique "
+                             "g&eacute;om&eacute;trique, Machine &Eacute;lectrique."]},
+                {"org": "Lyc&eacute;e Fran&ccedil;ais de Shanghai &mdash; Shanghai, Chine",
+                 "role": "Baccalaur&eacute;at g&eacute;n&eacute;ral &mdash; Mention Tr&egrave;s Bien",
+                 "dates": "09/2020 &ndash; 07/2023",
+                 "bullets": ["Sp&eacute;cialit&eacute;s : Math&eacute;matiques, Physique-Chimie."]},
+            ]),
+            ("Exp&eacute;rience", [
+                {"org": "Zhejiang Ruicheng New Materials Co., Ltd. &mdash; Zhejiang, Chine",
+                 "role": "Stage ouvrier", "dates": "07/2024 &ndash; 08/2024",
+                 "bullets": ["Effectu&eacute; des rotations en logistique, laboratoire R&amp;D et atelier "
+                             "d'hydrolyse au sein d'une entreprise de chimie.",
+                             "Acquis une compr&eacute;hension concr&egrave;te de l'organisation industrielle et "
+                             "des processus de production ; participation active &agrave; des t&acirc;ches "
+                             "techniques en atelier."]},
+            ]),
+            ("Projets", [
+                {"org": "UTC &mdash; Club Drone &middot; Compi&egrave;gne, France",
+                 "role": "Membre", "dates": "02/2026 &ndash; pr&eacute;sent",
+                 "bullets": ["Lors de la conception et fabrication d'un prototype de drone &agrave; voilure fixe, "
+                             "j'ai conceptualis&eacute; des sous-syst&egrave;mes sous Fusion 360 et r&eacute;alis&eacute; "
+                             "des impressions 3D.",
+                             "Dans ce m&ecirc;me contexte j'ai particip&eacute; &agrave; la conception des "
+                             "syst&egrave;mes &eacute;lectroniques embarqu&eacute;s (Pixhawk, Arduino)."]},
+                {"org": "UTC &mdash; Projet universitaire : Onduleur SemiTeach &middot; Compi&egrave;gne, France",
+                 "role": "Projet individuel encadr&eacute;", "dates": "02/2026 &ndash; pr&eacute;sent",
+                 "bullets": ["R&eacute;alisation d'une maquette de TP &eacute;tudiant le fonctionnement et le "
+                             "pilotage d'un onduleur SemiTeach (Semikron).",
+                             "D&eacute;veloppement du syst&egrave;me de contr&ocirc;le via PLECS en C."]},
+                {"org": "UTC &mdash; Projet universitaire : Retourneur de meules &middot; Compi&egrave;gne, France",
+                 "role": "Projet en bin&ocirc;me", "dates": "02/2026 &ndash; pr&eacute;sent",
+                 "bullets": ["Conception compl&egrave;te d'un retourneur manuel de meules de fromage : analyse "
+                             "fonctionnelle, dimensionnement m&eacute;canique et mod&eacute;lisation CAO sous "
+                             "PTC Creo Parametric."]},
+            ]),
+        ],
+        "skills_head": "Comp&eacute;tences &amp; Int&eacute;r&ecirc;ts",
+        "skills": [
+            ("CAO &amp; FAO :", "Creo (interm&eacute;diaire), SOLIDWORKS (interm&eacute;diaire), "
+                                "Fusion 360 (interm&eacute;diaire), G-code (notions)"),
+            ("Programmation :", "Python (interm&eacute;diaire), HTML/CSS (interm&eacute;diaire), "
+                                "SQL (interm&eacute;diaire), Assembleur HC12 (interm&eacute;diaire), "
+                                "C (notions), Java (notions), PHP (notions)"),
+            ("Langues :", "Fran&ccedil;ais C2 (langue maternelle), Mandarin C2 (langue maternelle), "
+                          "Anglais B2 (interm&eacute;diaire avanc&eacute;), Japonais A1, Espagnol A1"),
+            ("Int&eacute;r&ecirc;ts :", "Calcul m&eacute;canique, &eacute;lectronique embarqu&eacute;e, "
+                                        "programmation, intelligence artificielle"),
+        ],
+    },
     "en": {
         "lang": "en",
         "font": "'Carlito', 'Noto Sans CJK SC', sans-serif",
@@ -41,8 +106,6 @@ CV = {
         "name": "Jerome-Kai WU",
         "mobility": "Mobility: France and international",
         "phones": [PHONE_FR],
-        "objective": "Seeking a 6-month mechanical engineering assistant internship "
-                     "(4th year) starting 24/08/2026",
         "sections": [
             ("Education", [
                 {"org": "University of Technology of Compi&egrave;gne &mdash; Compi&egrave;gne, France",
@@ -85,7 +148,8 @@ CV = {
         ],
         "skills_head": "Skills &amp; Interests",
         "skills": [
-            ("CAD &amp; CAM:", "Creo (intermediate), Fusion 360 (intermediate), G-code (basics)"),
+            ("CAD &amp; CAM:", "Creo (intermediate), SOLIDWORKS (intermediate), "
+                               "Fusion 360 (intermediate), G-code (basics)"),
             ("Programming:", "Python (intermediate), HTML/CSS (intermediate), SQL (intermediate), "
                              "HC12 assembly (intermediate), C (basics), Java (basics), PHP (basics)"),
             ("Languages:", "French C2 (native), Mandarin C2 (native), English B2 (upper intermediate), "
@@ -104,7 +168,6 @@ CV = {
         # A Chinese-language CV goes to people who would dial the +86 number,
         # so it carries both, the same way the Chinese business card does.
         "phones": [PHONE_CN, PHONE_FR],
-        "objective": "求职意向：2026 年 8 月 24 日起为期六个月的机械工程助理实习（工程师阶段四年级）",
         "sections": [
             ("教育经历", [
                 {"org": "贡比涅技术大学 &mdash; 法国，贡比涅",
@@ -141,7 +204,7 @@ CV = {
         ],
         "skills_head": "技能与兴趣",
         "skills": [
-            ("CAD 与 CAM：", "Creo（中级）、Fusion 360（中级）、G 代码（入门）"),
+            ("CAD 与 CAM：", "Creo（中级）、SOLIDWORKS（中级）、Fusion 360（中级）、G 代码（入门）"),
             ("编程：", "Python（中级）、HTML/CSS（中级）、SQL（中级）、HC12 汇编（中级）、"
                      "C（入门）、Java（入门）、PHP（入门）"),
             ("语言：", "法语 C2（母语）、普通话 C2（母语）、英语 B2（中高级）、日语 A1、西班牙语 A1"),
@@ -169,18 +232,10 @@ body {
 }
 
 /* ---------- header ---------- */
-.head { display: flex; align-items: center; gap: 16pt; margin-bottom: 16pt; }
+.head { display: flex; align-items: center; gap: 16pt; margin-bottom: 20pt; }
 .head img { width: 83.1pt; height: 104.2pt; object-fit: cover; object-position: top center; }
 .head h1 { font-size: 16pt; font-weight: 700; color: %(navy)s; letter-spacing: 0.01em; }
 .head .contact { font-size: 9pt; color: %(muted)s; margin-top: 6pt; }
-
-/* The objective sits on its own rule, narrower than the section rules, exactly
-   as in the French original. */
-.objective {
-	font-size: 11pt; font-weight: 700; color: %(navy)s;
-	display: inline-block; padding-bottom: 3pt; border-bottom: 0.8pt solid %(navy)s;
-	margin-bottom: 12pt;
-}
 
 /* ---------- sections ---------- */
 h2 {
@@ -258,7 +313,6 @@ def render(lang):
 			<div class="contact">{contact}</div>
 		</div>
 	</div>
-	<div class="objective">{c['objective']}</div>
 	{''.join(body)}
 </body>
 </html>"""
@@ -279,7 +333,7 @@ def main():
     shutil.copy(REPO / "images/cv/portrait.jpeg", work / "portrait.jpeg")
 
     import fitz
-    for lang in ("en", "zh"):
+    for lang in ("fr", "en", "zh"):
         html = work / f"cv-{lang}.html"
         html.write_text(render(lang), encoding="utf-8")
         pdf = OUT / f"cv-{lang}.pdf"
@@ -295,7 +349,7 @@ def main():
 
     # The site has linked /resume.pdf for a while; keep that URL alive and
     # generated, so it cannot drift from the French CV it mirrors.
-    shutil.copy(FR_PDF, REPO / "resume.pdf")
+    shutil.copy(OUT / "cv-fr.pdf", REPO / "resume.pdf")
     print("  resume.pdf <- cv-fr.pdf")
 
 
