@@ -1,0 +1,10 @@
+# https://jerome-kai.github.io/
+# Everything here is meant to be read. The two private tools carry a noindex
+# meta tag instead of a Disallow rule: a Disallow would publish their paths in
+# this world-readable file, and would stop crawlers fetching the page that
+# tells them not to index it.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://jerome-kai.github.io/sitemap.xml
