@@ -31,14 +31,14 @@ L = {
         "name": NAME_EN,
         "page": "card.html",
         "home": "index.html",
-        "projects": "projects.html",
-        "qr": "images/qr-projects.png",
+        "qr_url": f"{SITE}/",
+        "qr": "images/qr-home.png",
         "title": "Business Card · Jerome-Kai Wu",
-        "desc": "Digital business card of Jerome-Kai Wu, with contact details and a QR code to his engineering projects.",
+        "desc": "Digital business card of Jerome-Kai Wu, with contact details and a QR code to his website.",
         "h1": "Business Card",
         "role": "Mechanical Engineering Student",
         "org": "University of Technology of Compi&egrave;gne (France)",
-        "qr_cap": "My projects",
+        "qr_cap": "My website",
         "front_label": "Front",
         "back_label": "Back",
         "print": "Print / Save as PDF",
@@ -54,14 +54,14 @@ L = {
         "name": NAME_FR,
         "page": "card-fr.html",
         "home": "index-fr.html",
-        "projects": "projects-fr.html",
-        "qr": "images/qr-projects-fr.png",
+        "qr_url": f"{SITE}/index-fr.html",
+        "qr": "images/qr-home-fr.png",
         "title": "Carte de visite · Jérôme-Kai Wu",
-        "desc": "Carte de visite numérique de Jérôme-Kai Wu, avec ses coordonnées et un QR code vers ses projets d'ingénierie.",
+        "desc": "Carte de visite numérique de Jérôme-Kai Wu, avec ses coordonnées et un QR code vers son site.",
         "h1": "Carte de visite",
         "role": "&Eacute;tudiant en ing&eacute;nierie m&eacute;canique",
         "org": "Universit&eacute; de Technologie de Compi&egrave;gne",
-        "qr_cap": "Mes projets",
+        "qr_cap": "Mon site",
         "front_label": "Recto",
         "back_label": "Verso",
         "print": "Imprimer / Enregistrer en PDF",
@@ -77,14 +77,14 @@ L = {
         "name": NAME_CN,
         "page": "card-zh.html",
         "home": "index-zh.html",
-        "projects": "projects-zh.html",
-        "qr": "images/qr-projects-zh.png",
+        "qr_url": f"{SITE}/index-zh.html",
+        "qr": "images/qr-home-zh.png",
         "title": "名片 · 吴锴",
-        "desc": "吴锴的电子名片，包含联系方式和通往工程项目页的二维码。",
+        "desc": "吴锴的电子名片，包含联系方式和通往个人网站的二维码。",
         "h1": "名片",
         "role": "机械工程专业学生",
         "org": "贡比涅技术大学（法国）",
-        "qr_cap": "我的项目",
+        "qr_cap": "我的网站",
         "front_label": "正面",
         "back_label": "背面",
         "print": "打印 / 保存为 PDF",
@@ -649,12 +649,17 @@ def outline_text(pdf_path):
 
 
 def build_qr():
-    """One QR per language, each pointing at that language's projects page."""
+    """One QR per language, each landing on that language's home page.
+
+    English uses the bare site root rather than /index.html: it is the canonical
+    form the page itself declares, and the shorter payload needs fewer modules,
+    so each one prints larger at the same 27mm.
+    """
     import qrcode
     from qrcode.constants import ERROR_CORRECT_H
     for lang in LANGS:
         qr = qrcode.QRCode(error_correction=ERROR_CORRECT_H, box_size=16, border=2)
-        qr.add_data(f"{SITE}/{L[lang]['projects']}")
+        qr.add_data(L[lang]['qr_url'])
         qr.make(fit=True)
         img = qr.make_image(fill_color=NAVY, back_color="white").convert("RGB")
         img.save(REPO / L[lang]["qr"])
