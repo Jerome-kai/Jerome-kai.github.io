@@ -13,7 +13,12 @@ NAME_EN = "Jerome-Kai Wu"
 PLAIN = {"en": "Jerome-Kai Wu", "fr": "Jérôme-Kai Wu", "zh": "吴锴"}
 NAME_CN = "吴锴"
 EMAIL = "wu.jerome.kai@gmail.com"
-PHONE = "+33 6 21 22 29 93"
+PHONE_FR = "+33 6 21 22 29 93"
+PHONE_CN = "+86 134 7270 4378"
+# The Chinese card carries both numbers, since the people it is handed to are the
+# ones most likely to dial the +86 one. The English and French cards carry only
+# the French number.
+PHONES = {"en": [PHONE_FR], "fr": [PHONE_FR], "zh": [PHONE_CN, PHONE_FR]}
 GITHUB = "github.com/Jerome-kai"
 LINKEDIN_URL = "https://www.linkedin.com/in/jerome-kai-wu-137653386/"
 LINKEDIN_TXT = "in/jerome-kai-wu-137653386"
@@ -26,13 +31,14 @@ L = {
         "name": NAME_EN,
         "page": "card.html",
         "home": "index.html",
-        "projects": "projects.html",
-        "qr": "images/qr-projects.png",
+        "qr_url": f"{SITE}/",
+        "qr": "images/qr-home.png",
         "title": "Business Card · Jerome-Kai Wu",
-        "desc": "Digital business card of Jerome-Kai Wu, with contact details and a QR code to his engineering projects.",
+        "desc": "Digital business card of Jerome-Kai Wu, with contact details and a QR code to his website.",
         "h1": "Business Card",
-        "role": "Mechanical Engineering Student · UTC",
-        "qr_cap": "My projects",
+        "role": "Mechanical Engineering Student",
+        "org": "University of Technology of Compi&egrave;gne (France)",
+        "qr_cap": "My website",
         "front_label": "Front",
         "back_label": "Back",
         "print": "Print / Save as PDF",
@@ -48,13 +54,14 @@ L = {
         "name": NAME_FR,
         "page": "card-fr.html",
         "home": "index-fr.html",
-        "projects": "projects-fr.html",
-        "qr": "images/qr-projects-fr.png",
+        "qr_url": f"{SITE}/index-fr.html",
+        "qr": "images/qr-home-fr.png",
         "title": "Carte de visite · Jérôme-Kai Wu",
-        "desc": "Carte de visite numérique de Jérôme-Kai Wu, avec ses coordonnées et un QR code vers ses projets d'ingénierie.",
+        "desc": "Carte de visite numérique de Jérôme-Kai Wu, avec ses coordonnées et un QR code vers son site.",
         "h1": "Carte de visite",
-        "role": "Étudiant en ingénierie mécanique · UTC",
-        "qr_cap": "Mes projets",
+        "role": "&Eacute;tudiant en ing&eacute;nierie m&eacute;canique",
+        "org": "Universit&eacute; de Technologie de Compi&egrave;gne",
+        "qr_cap": "Mon site",
         "front_label": "Recto",
         "back_label": "Verso",
         "print": "Imprimer / Enregistrer en PDF",
@@ -70,13 +77,14 @@ L = {
         "name": NAME_CN,
         "page": "card-zh.html",
         "home": "index-zh.html",
-        "projects": "projects-zh.html",
-        "qr": "images/qr-projects-zh.png",
+        "qr_url": f"{SITE}/index-zh.html",
+        "qr": "images/qr-home-zh.png",
         "title": "名片 · 吴锴",
-        "desc": "吴锴的电子名片，包含联系方式和通往工程项目页的二维码。",
+        "desc": "吴锴的电子名片，包含联系方式和通往个人网站的二维码。",
         "h1": "名片",
-        "role": "机械工程专业学生 · 贡比涅技术大学",
-        "qr_cap": "我的项目",
+        "role": "机械工程专业学生",
+        "org": "贡比涅技术大学（法国）",
+        "qr_cap": "我的网站",
         "front_label": "正面",
         "back_label": "背面",
         "print": "打印 / 保存为 PDF",
@@ -167,7 +175,7 @@ CARD_CSS = """
 .face.front {
 	background: linear-gradient(135deg, #242943 0%, #2a2f4a 55%, #363c62 100%);
 	color: #fff;
-	--rule: rgba(155, 241, 255, 0.32);
+	--rule: rgba(214, 222, 245, 0.55);
 }
 
 /* No panel or rule here: any hard edge near the trim line shows up as a sliver
@@ -179,8 +187,8 @@ CARD_CSS = """
 }
 
 .face.front .portrait-col img {
-	width: 22.5mm;
-	height: 22.5mm;
+	width: 21mm;
+	height: 21mm;
 	object-fit: cover;
 	object-position: top center;
 	border-radius: 50%;
@@ -192,8 +200,8 @@ CARD_CSS = """
 .face.front .inner {
 	align-items: center;
 	justify-content: center;
-	gap: 4.5mm;
-	padding: 0 4.5mm;
+	gap: 4mm;
+	padding: 0 4mm;
 }
 
 .face.front .info-col {
@@ -204,27 +212,37 @@ CARD_CSS = """
 }
 
 .face .name {
-	font-size: 15pt;
+	font-size: 16pt;
 	font-weight: 600;
 	letter-spacing: 0.005em;
 	line-height: 1.05;
 }
 
-.face .name.cjk { font-size: 19pt; font-weight: 500; letter-spacing: 0.06em; }
+.face .name.cjk { font-size: 20pt; font-weight: 500; letter-spacing: 0.06em; }
 
 .face .accent {
-	height: 0.45mm;
-	width: 11mm;
+	height: 0.6mm;
+	width: 12mm;
 	background: #9bf1ff;
-	margin: 2.6mm 0;
+	margin: 2.2mm 0;
 }
 
 .face .role {
-	font-size: 6.2pt;
-	color: #9bf1ff;
+	font-size: 8.6pt;
+	font-weight: 600;
+	color: #ffffff;
+	line-height: 1.2;
 }
 
-.face .role.caps { letter-spacing: 0.09em; text-transform: uppercase; }
+/* Reversed-out text is far less forgiving than dark-on-white: the first proof
+   failed at 6.2pt, so this line is kept well clear of that. */
+.face .org {
+	font-size: 7.6pt;
+	color: #dfe6fa;
+	line-height: 1.25;
+	margin-top: 1mm;
+	max-width: 52mm;
+}
 
 /* ---------- back ---------- */
 .face.back {
@@ -272,12 +290,13 @@ CARD_CSS = """
 
 # ---------------------------------------------------------------- faces
 def front(lang, prefix=""):
-    """Name, role, portrait. Everything else lives on the back."""
+    """Name, role, school, portrait. Everything else lives on the back."""
     t = L[lang]
-    caps = " caps" if t["upper"] else ""
     # Each card is written in one language only: no Latin name on the Chinese
     # card, no Chinese name on the English or French ones.
     pcls = " cjk" if lang == "zh" else ""
+    # The school is spelled out rather than abbreviated to UTC, which means
+    # nothing outside France, and the English and Chinese cards name the country.
     return f"""<div class="face front">
 	<div class="inner">
 		<div class="portrait-col">
@@ -286,7 +305,8 @@ def front(lang, prefix=""):
 		<div class="info-col">
 			<div class="name{pcls}">{t['name']}</div>
 			<div class="accent"></div>
-			<div class="role{caps}">{t['role']}</div>
+			<div class="role">{t['role']}</div>
+			<div class="org">{t['org']}</div>
 		</div>
 	</div>
 </div>"""
@@ -296,6 +316,11 @@ def back(lang, prefix=""):
     """The QR, and every way of reaching me."""
     t = L[lang]
     caps = " caps" if t["upper"] else ""
+    phones = "\n\t\t\t".join(
+        f'<li><img class="ic" src="{IC["phone_d"]}" alt="" />'
+        f'<a href="tel:{p.replace(" ", "")}">{p}</a></li>'
+        for p in PHONES[lang]
+    )
     return f"""<div class="face back">
 	<div class="inner">
 		<div class="qr-col">
@@ -304,7 +329,7 @@ def back(lang, prefix=""):
 		</div>
 		<ul class="contact">
 			<li><img class="ic" src="{IC['mail_d']}" alt="" /><a href="mailto:{EMAIL}">{EMAIL}</a></li>
-			<li><img class="ic" src="{IC['phone_d']}" alt="" /><a href="tel:+33621222993">{PHONE}</a></li>
+			{phones}
 			<li><img class="ic" src="{IC['globe_d']}" alt="" /><a href="{SITE}">jerome-kai.github.io</a></li>
 			<li><img class="ic" src="{IC['github_d']}" alt="" />{GITHUB}</li>
 			<li><img class="ic" src="{IC['linkedin_d']}" alt="" />{LINKEDIN_TXT}</li>
@@ -624,12 +649,17 @@ def outline_text(pdf_path):
 
 
 def build_qr():
-    """One QR per language, each pointing at that language's projects page."""
+    """One QR per language, each landing on that language's home page.
+
+    English uses the bare site root rather than /index.html: it is the canonical
+    form the page itself declares, and the shorter payload needs fewer modules,
+    so each one prints larger at the same 27mm.
+    """
     import qrcode
     from qrcode.constants import ERROR_CORRECT_H
     for lang in LANGS:
         qr = qrcode.QRCode(error_correction=ERROR_CORRECT_H, box_size=16, border=2)
-        qr.add_data(f"{SITE}/{L[lang]['projects']}")
+        qr.add_data(L[lang]['qr_url'])
         qr.make(fit=True)
         img = qr.make_image(fill_color=NAVY, back_color="white").convert("RGB")
         img.save(REPO / L[lang]["qr"])

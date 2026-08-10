@@ -8,12 +8,12 @@
 	<head>
 		<title>Business Card · Jerome-Kai Wu</title>
 		<meta charset="utf-8" />
-		<meta name="description" content="Digital business card of Jerome-Kai Wu, with contact details and a QR code to his engineering projects." />
+		<meta name="description" content="Digital business card of Jerome-Kai Wu, with contact details and a QR code to his website." />
 		<meta name="author" content="Jerome-Kai Wu" />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Jerome-Kai Wu" />
 		<meta property="og:title" content="Business Card · Jerome-Kai Wu" />
-		<meta property="og:description" content="Digital business card of Jerome-Kai Wu, with contact details and a QR code to his engineering projects." />
+		<meta property="og:description" content="Digital business card of Jerome-Kai Wu, with contact details and a QR code to his website." />
 		<meta property="og:url" content="https://jerome-kai.github.io/card.html" />
 		<meta property="og:image" content="https://jerome-kai.github.io/images/social-card.png" />
 		<meta name="twitter:card" content="summary_large_image" />
@@ -129,7 +129,7 @@
 .face.front {
 	background: linear-gradient(135deg, #242943 0%, #2a2f4a 55%, #363c62 100%);
 	color: #fff;
-	--rule: rgba(155, 241, 255, 0.32);
+	--rule: rgba(214, 222, 245, 0.55);
 }
 
 /* No panel or rule here: any hard edge near the trim line shows up as a sliver
@@ -141,8 +141,8 @@
 }
 
 .face.front .portrait-col img {
-	width: 22.5mm;
-	height: 22.5mm;
+	width: 21mm;
+	height: 21mm;
 	object-fit: cover;
 	object-position: top center;
 	border-radius: 50%;
@@ -154,8 +154,8 @@
 .face.front .inner {
 	align-items: center;
 	justify-content: center;
-	gap: 4.5mm;
-	padding: 0 4.5mm;
+	gap: 4mm;
+	padding: 0 4mm;
 }
 
 .face.front .info-col {
@@ -166,27 +166,37 @@
 }
 
 .face .name {
-	font-size: 15pt;
+	font-size: 16pt;
 	font-weight: 600;
 	letter-spacing: 0.005em;
 	line-height: 1.05;
 }
 
-.face .name.cjk { font-size: 19pt; font-weight: 500; letter-spacing: 0.06em; }
+.face .name.cjk { font-size: 20pt; font-weight: 500; letter-spacing: 0.06em; }
 
 .face .accent {
-	height: 0.45mm;
-	width: 11mm;
+	height: 0.6mm;
+	width: 12mm;
 	background: #9bf1ff;
-	margin: 2.6mm 0;
+	margin: 2.2mm 0;
 }
 
 .face .role {
-	font-size: 6.2pt;
-	color: #9bf1ff;
+	font-size: 8.6pt;
+	font-weight: 600;
+	color: #ffffff;
+	line-height: 1.2;
 }
 
-.face .role.caps { letter-spacing: 0.09em; text-transform: uppercase; }
+/* Reversed-out text is far less forgiving than dark-on-white: the first proof
+   failed at 6.2pt, so this line is kept well clear of that. */
+.face .org {
+	font-size: 7.6pt;
+	color: #dfe6fa;
+	line-height: 1.25;
+	margin-top: 1mm;
+	max-width: 52mm;
+}
 
 /* ---------- back ---------- */
 .face.back {
@@ -306,7 +316,8 @@
 		<div class="info-col">
 			<div class="name">Jerome-Kai Wu</div>
 			<div class="accent"></div>
-			<div class="role caps">Mechanical Engineering Student · UTC</div>
+			<div class="role">Mechanical Engineering Student</div>
+			<div class="org">University of Technology of Compi&egrave;gne (France)</div>
 		</div>
 	</div>
 </div></div>
@@ -316,8 +327,8 @@
 				<div class="frame"><div class="face back">
 	<div class="inner">
 		<div class="qr-col">
-			<img class="qr" src="images/qr-projects.png" alt="" />
-			<span class="cap caps">My projects</span>
+			<img class="qr" src="images/qr-home.png" alt="" />
+			<span class="cap caps">My website</span>
 		</div>
 		<ul class="contact">
 			<li><img class="ic" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%233d4468%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%222.5%22%20y%3D%225%22%20width%3D%2219%22%20height%3D%2214%22%20rx%3D%222%22/%3E%3Cpath%20d%3D%22M3%207l9%206%209-6%22/%3E%3C/svg%3E" alt="" /><a href="mailto:wu.jerome.kai@gmail.com">wu.jerome.kai@gmail.com</a></li>
