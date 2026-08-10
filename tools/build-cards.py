@@ -36,7 +36,8 @@ L = {
         "title": "Business Card · Jerome-Kai Wu",
         "desc": "Digital business card of Jerome-Kai Wu, with contact details and a QR code to his engineering projects.",
         "h1": "Business Card",
-        "role": "Mechanical Engineering Student · UTC",
+        "role": "Mechanical Engineering Student",
+        "org": "University of Technology of Compi&egrave;gne (France)",
         "qr_cap": "My projects",
         "front_label": "Front",
         "back_label": "Back",
@@ -58,7 +59,8 @@ L = {
         "title": "Carte de visite · Jérôme-Kai Wu",
         "desc": "Carte de visite numérique de Jérôme-Kai Wu, avec ses coordonnées et un QR code vers ses projets d'ingénierie.",
         "h1": "Carte de visite",
-        "role": "Étudiant en ingénierie mécanique · UTC",
+        "role": "&Eacute;tudiant en ing&eacute;nierie m&eacute;canique",
+        "org": "Universit&eacute; de Technologie de Compi&egrave;gne",
         "qr_cap": "Mes projets",
         "front_label": "Recto",
         "back_label": "Verso",
@@ -80,7 +82,8 @@ L = {
         "title": "名片 · 吴锴",
         "desc": "吴锴的电子名片，包含联系方式和通往工程项目页的二维码。",
         "h1": "名片",
-        "role": "机械工程专业学生 · 贡比涅技术大学",
+        "role": "机械工程专业学生",
+        "org": "贡比涅技术大学（法国）",
         "qr_cap": "我的项目",
         "front_label": "正面",
         "back_label": "背面",
@@ -172,7 +175,7 @@ CARD_CSS = """
 .face.front {
 	background: linear-gradient(135deg, #242943 0%, #2a2f4a 55%, #363c62 100%);
 	color: #fff;
-	--rule: rgba(155, 241, 255, 0.32);
+	--rule: rgba(214, 222, 245, 0.55);
 }
 
 /* No panel or rule here: any hard edge near the trim line shows up as a sliver
@@ -184,8 +187,8 @@ CARD_CSS = """
 }
 
 .face.front .portrait-col img {
-	width: 22.5mm;
-	height: 22.5mm;
+	width: 21mm;
+	height: 21mm;
 	object-fit: cover;
 	object-position: top center;
 	border-radius: 50%;
@@ -197,8 +200,8 @@ CARD_CSS = """
 .face.front .inner {
 	align-items: center;
 	justify-content: center;
-	gap: 4.5mm;
-	padding: 0 4.5mm;
+	gap: 4mm;
+	padding: 0 4mm;
 }
 
 .face.front .info-col {
@@ -209,27 +212,37 @@ CARD_CSS = """
 }
 
 .face .name {
-	font-size: 15pt;
+	font-size: 16pt;
 	font-weight: 600;
 	letter-spacing: 0.005em;
 	line-height: 1.05;
 }
 
-.face .name.cjk { font-size: 19pt; font-weight: 500; letter-spacing: 0.06em; }
+.face .name.cjk { font-size: 20pt; font-weight: 500; letter-spacing: 0.06em; }
 
 .face .accent {
-	height: 0.45mm;
-	width: 11mm;
+	height: 0.6mm;
+	width: 12mm;
 	background: #9bf1ff;
-	margin: 2.6mm 0;
+	margin: 2.2mm 0;
 }
 
 .face .role {
-	font-size: 6.2pt;
-	color: #9bf1ff;
+	font-size: 8.6pt;
+	font-weight: 600;
+	color: #ffffff;
+	line-height: 1.2;
 }
 
-.face .role.caps { letter-spacing: 0.09em; text-transform: uppercase; }
+/* Reversed-out text is far less forgiving than dark-on-white: the first proof
+   failed at 6.2pt, so this line is kept well clear of that. */
+.face .org {
+	font-size: 7.6pt;
+	color: #dfe6fa;
+	line-height: 1.25;
+	margin-top: 1mm;
+	max-width: 52mm;
+}
 
 /* ---------- back ---------- */
 .face.back {
@@ -277,12 +290,13 @@ CARD_CSS = """
 
 # ---------------------------------------------------------------- faces
 def front(lang, prefix=""):
-    """Name, role, portrait. Everything else lives on the back."""
+    """Name, role, school, portrait. Everything else lives on the back."""
     t = L[lang]
-    caps = " caps" if t["upper"] else ""
     # Each card is written in one language only: no Latin name on the Chinese
     # card, no Chinese name on the English or French ones.
     pcls = " cjk" if lang == "zh" else ""
+    # The school is spelled out rather than abbreviated to UTC, which means
+    # nothing outside France, and the English and Chinese cards name the country.
     return f"""<div class="face front">
 	<div class="inner">
 		<div class="portrait-col">
@@ -291,7 +305,8 @@ def front(lang, prefix=""):
 		<div class="info-col">
 			<div class="name{pcls}">{t['name']}</div>
 			<div class="accent"></div>
-			<div class="role{caps}">{t['role']}</div>
+			<div class="role">{t['role']}</div>
+			<div class="org">{t['org']}</div>
 		</div>
 	</div>
 </div>"""
