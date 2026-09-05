@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <style>@media (prefers-color-scheme: light){[stroke="#9bf1ff"]{stroke:#0e7490}[fill="#9bf1ff"]{fill:#0e7490}}</style>
   <rect x="40" y="52" width="320" height="200" rx="12" fill="none" stroke="#9bf1ff" stroke-width="5"/>
   <line x1="40" y1="96" x2="360" y2="96" stroke="#9bf1ff" stroke-width="4"/>
   <circle cx="66" cy="74" r="6" fill="#9bf1ff"/>

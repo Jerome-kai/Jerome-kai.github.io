@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+  <style>@media (prefers-color-scheme: light){[stroke="#9bf1ff"]{stroke:#0e7490}[fill="#9bf1ff"]{fill:#0e7490}}</style>
   <!-- camera body -->
   <rect x="120" y="140" width="360" height="210" rx="18" fill="none" stroke="#9bf1ff" stroke-width="5"/>
   <!-- hot shoe -->
