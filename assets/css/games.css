@@ -25,6 +25,15 @@
 	--g-slider1: #c3c9d6;
 	--g-slider2: #949cae;
 	--g-overlay: rgba(18, 21, 35, 0.88);
+	--g-gear-in: #8fdcea;
+	--g-gear-out: #e3b688;
+	--g-gear-done: #8fd3ad;
+	--g-led: #ffcf5c;
+	--g-led-edge: #ffcf5c;
+	--g-face-top: #e4e8f2;
+	--g-face-front: #a9b3cc;
+	--g-face-side: #7a86a6;
+	--g-edge: #151927;
 	margin: 0 0 3.5em;
 	padding: 2.5em 0 0;
 	border-top: 1px solid rgba(212, 212, 255, 0.12);
@@ -47,6 +56,15 @@
 		--g-ground: #c6ccda;
 		--g-hill: #dbe2ed;
 		--g-overlay: rgba(255, 255, 255, 0.93);
+		--g-gear-in: #93d2e2;
+		--g-gear-out: #efc58e;
+		--g-gear-done: #9cd6b1;
+		--g-led: #f2b600;
+		--g-led-edge: #9a6a00;
+		--g-face-top: #f3f5fa;
+		--g-face-front: #c5cde0;
+		--g-face-side: #97a3c0;
+		--g-edge: #1e2436;
 		border-top-color: rgba(30, 36, 54, 0.12);
 	}
 }
@@ -96,7 +114,7 @@
 	gap: 0.8em 1.6em;
 	margin: 1.2em 0 0;
 }
-.game__seg { display: flex; align-items: center; gap: 0.4em; }
+.game__seg { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4em; }
 
 .game button.game__chip {
 	height: 2.5em;
@@ -116,11 +134,11 @@
 /* Earned stars are filled and coloured, unearned ones outlined and muted: two
    differences at once, since filled-versus-hollow alone is too close to read at
    chip size and colour alone fails for some readers. Both stay legible. */
-.pid__stars { margin-left: 0.5em; letter-spacing: 0.05em; }
-.pid__stars .on { color: var(--g-warn); }
-.pid__stars .off { color: var(--g-muted); }
-.game__chip[aria-pressed="true"] .pid__stars .on,
-.game__chip[aria-pressed="true"] .pid__stars .off { color: inherit; }
+.game__stars { margin-left: 0.5em; letter-spacing: 0.05em; }
+.game__stars .on { color: var(--g-warn); }
+.game__stars .off { color: var(--g-muted); }
+.game__chip[aria-pressed="true"] .game__stars .on,
+.game__chip[aria-pressed="true"] .game__stars .off { color: inherit; }
 
 /* ---------- drone pad: hold-to-fly buttons ---------- */
 .game__controls {
@@ -169,7 +187,7 @@
 .game__answer button[hidden] { display: none; }
 
 /* ---------- PID ---------- */
-.pid__brief { margin: 1.1em 0 0; max-width: 56em; }
+.game__brief { margin: 1.1em 0 0; max-width: 56em; }
 .pid__controls {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
@@ -222,4 +240,124 @@
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
 	white-space: nowrap;
+}
+
+/* ---------- gear train ---------- */
+.gears__stages { list-style: none; margin: 1.2em 0 0; padding: 0; }
+.gears__stage {
+	display: grid;
+	grid-template-columns: 6em minmax(0, 1fr) auto minmax(0, 1fr) auto;
+	align-items: end;
+	gap: 0.6em 1em;
+	padding: 0.7em 0;
+	border-bottom: 1px solid var(--g-grid);
+}
+.gears__n { font-weight: 600; align-self: center; }
+.game label.gears__pick {
+	margin: 0;
+	font-size: 1em;
+	font-weight: 400;
+	letter-spacing: 0;
+	text-transform: none;
+}
+.gears__pick span { display: block; font-size: 0.8em; color: var(--g-muted); margin-bottom: 0.2em; }
+.game .gears__pick select { height: 2.6em; box-shadow: inset 0 0 0 1px var(--g-grid); }
+.game .gears__stage button.game__chip { height: 3.1em; line-height: 3.1em; }
+.gears__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8em; margin: 1.1em 0 0; }
+.gears__readout { margin-left: auto; }
+
+/* ---------- three views ---------- */
+.views__board {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+	gap: 1.4em;
+	align-items: start;
+	margin: 1.2em 0 0;
+}
+.views__picture { margin: 0; padding: 1em; display: flex; justify-content: center; align-items: center; min-height: 16em; }
+.views__picture svg { display: block; width: 100%; max-height: 22em; }
+/* each face is stroked in its own colour, so neighbouring cubes show no seam */
+.views__picture polygon { stroke-width: 0.8; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.views__picture polygon.views__top { fill: var(--g-face-top); stroke: var(--g-face-top); }
+.views__picture polygon.views__front { fill: var(--g-face-front); stroke: var(--g-face-front); }
+.views__picture polygon.views__side { fill: var(--g-face-side); stroke: var(--g-face-side); }
+.views__picture .views__edge { fill: none; stroke: var(--g-edge); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: butt; vector-effect: non-scaling-stroke; }
+.views__arrow path { stroke: var(--g-muted); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.views__arrow polygon { fill: var(--g-muted); }
+.views__arrow text { fill: var(--g-muted); font-size: 0.5px; font-weight: 600; letter-spacing: 0; }
+.views__arrow polygon { stroke: none; }
+.views__arrow.is-ask path { stroke: var(--g-accent); stroke-width: 3; }
+.views__arrow.is-ask polygon, .views__arrow.is-ask text { fill: var(--g-accent); }
+.views__ask { font-weight: 600; margin: 0 0 0.8em; }
+.views__choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8em; }
+.game button.views__choice {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: auto;
+	line-height: 1;
+	padding: 1.6em 0.8em 0.8em;
+	font-size: 1em;
+	letter-spacing: 0;
+	text-transform: none;
+	white-space: normal;
+	border-radius: 6px;
+	background-color: var(--g-panel);
+	box-shadow: inset 0 0 0 1px var(--g-grid);
+	color: var(--g-ink) !important;
+}
+.game button.views__choice:hover { box-shadow: inset 0 0 0 2px var(--g-accent); }
+.game button.views__choice:focus-visible { outline: 2px solid var(--g-accent); outline-offset: 2px; }
+.game button.views__choice:disabled { opacity: 1; cursor: default; pointer-events: none; }
+.game button.views__choice:disabled:not(.is-answer):not(.is-wrong) { opacity: 0.45; }
+.game button.views__choice.is-answer { box-shadow: inset 0 0 0 3px var(--g-good); }
+.game button.views__choice.is-wrong { box-shadow: inset 0 0 0 3px var(--g-bad); }
+.views__letter { position: absolute; top: 0.45em; left: 0.7em; font-weight: 700; font-size: 0.85em; color: var(--g-muted); }
+.is-answer .views__letter { color: var(--g-good); }
+.is-wrong .views__letter { color: var(--g-bad); }
+.views__art svg { display: block; width: 100%; height: 7.5em; }
+.views__art .views__line { fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: square; }
+.views__art .views__hidden { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-dasharray: 5 3.5; opacity: 0.85; }
+.views__bar { display: flex; flex-wrap: wrap; align-items: center; gap: 1em; margin: 1.1em 0 0; min-height: 2.8em; }
+.views__bar button[hidden] { display: none; }
+
+/* ---------- logic ---------- */
+.logic__controls {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	gap: 1em 1.6em;
+	margin: 1.2em 0 0;
+}
+.game button.logic__switch { font-variant-numeric: tabular-nums; min-width: 5.2em; }
+.logic__slots { display: flex; flex-wrap: wrap; gap: 0.8em 1em; }
+.logic__pick select { min-width: 11em; }
+.logic__done { margin-left: 0.4em; color: var(--g-good); font-weight: 700; }
+.game__chip[aria-pressed="true"] .logic__done { color: inherit; }
+.logic__table { margin: 1.4em 0 0; font-variant-numeric: tabular-nums; width: auto; min-width: 18em; }
+.logic__table td, .logic__table th { padding: 0.45em 1em; text-align: center; }
+.logic__table td.is-ok { color: var(--g-good); font-weight: 700; }
+.logic__table td.is-bad { color: var(--g-bad); font-weight: 700; }
+.logic__table tr.is-now td { box-shadow: inset 0 1px 0 var(--g-accent), inset 0 -1px 0 var(--g-accent); font-weight: 700; }
+
+/* Forty draws the select chevron at 10% white, which vanishes on a pale page. */
+.game select {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M4 7l6 6 6-6' fill='none' stroke='rgba(255,255,255,0.7)' stroke-width='2'/%3E%3C/svg%3E");
+	background-size: 1em;
+}
+@media (prefers-color-scheme: light) {
+	.game select {
+		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M4 7l6 6 6-6' fill='none' stroke='%235c6580' stroke-width='2'/%3E%3C/svg%3E");
+	}
+	.game select option { color: #1e2436; background: #ffffff; }
+}
+
+@media screen and (max-width: 736px) {
+	.views__board { grid-template-columns: minmax(0, 1fr); }
+	.views__picture { min-height: 12em; }
+	.views__art svg { height: 5.5em; }
+	.gears__stage { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; }
+	.gears__n { grid-column: 1 / -1; }
+	.gears__stage .gears__idler { grid-row: 3; grid-column: 1 / 3; justify-self: start; }
+	.gears__readout { margin-left: 0; flex-basis: 100%; }
 }

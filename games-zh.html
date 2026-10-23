@@ -8,12 +8,12 @@
 	<head>
 		<title>小游戏 · 吴锴</title>
 		<meta charset="utf-8" />
-		<meta name="description" content="吴锴的三个浏览器小游戏：降落无人机、读游标卡尺、调节 PID 控制器。免费，无需安装。" />
+		<meta name="description" content="吴锴的六个浏览器小游戏：降落无人机、读游标卡尺、调节 PID 控制器、搭配齿轮传动、识读三视图、连接逻辑门。免费，无需安装。" />
 		<meta name="author" content="Jérôme-Kai Wu" />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Jérôme-Kai Wu" />
 		<meta property="og:title" content="小游戏 · 吴锴" />
-		<meta property="og:description" content="吴锴的三个浏览器小游戏：降落无人机、读游标卡尺、调节 PID 控制器。免费，无需安装。" />
+		<meta property="og:description" content="吴锴的六个浏览器小游戏：降落无人机、读游标卡尺、调节 PID 控制器、搭配齿轮传动、识读三视图、连接逻辑门。免费，无需安装。" />
 		<meta property="og:url" content="https://jerome-kai.github.io/games-zh.html" />
 		<meta property="og:image" content="https://jerome-kai.github.io/images/social-card.png" />
 		<meta name="twitter:card" content="summary_large_image" />
@@ -73,11 +73,14 @@
 								<header class="major">
 									<h1>小游戏</h1>
 								</header>
-								<p class="games-intro">三个小游戏，主题都来自我真正在做的事：飞无人机、读测量工具、调控制回路。它们都在浏览器里运行，最高分只保存在你自己的设备上。</p>
+								<p class="games-intro">六个小游戏，主题都来自我真正在做的事：飞无人机、读测量工具、调控制回路、给电机配减速齿轮、识读工程图和搭逻辑电路。它们都在浏览器里运行，最高分只保存在你自己的设备上。</p>
 								<ul class="games-nav">
 									<li><a href="#drone">平稳降落</a></li>
 									<li><a href="#caliper">读游标卡尺</a></li>
 									<li><a href="#pid">PID 调参</a></li>
+									<li><a href="#gears">齿轮传动</a></li>
+									<li><a href="#views">三视图</a></li>
+									<li><a href="#logic">点亮 LED</a></li>
 								</ul>
 
 								<section class="game game--drone" id="drone">
@@ -138,13 +141,13 @@
 									</header>
 									<div class="game__toolbar">
 										<div class="game__seg" role="group" aria-label="关卡">
-											<button type="button" class="game__chip" data-level="1" aria-pressed="true" aria-label="第 1 关">1<span class="pid__stars" aria-hidden="true"></span></button>
-											<button type="button" class="game__chip" data-level="2" aria-pressed="false" aria-label="第 2 关">2<span class="pid__stars" aria-hidden="true"></span></button>
-											<button type="button" class="game__chip" data-level="3" aria-pressed="false" aria-label="第 3 关">3<span class="pid__stars" aria-hidden="true"></span></button>
-											<button type="button" class="game__chip" data-level="4" aria-pressed="false" aria-label="第 4 关">4<span class="pid__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="1" aria-pressed="true" aria-label="第 1 关">1<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="2" aria-pressed="false" aria-label="第 2 关">2<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="3" aria-pressed="false" aria-label="第 3 关">3<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="4" aria-pressed="false" aria-label="第 4 关">4<span class="game__stars" aria-hidden="true"></span></button>
 										</div>
 									</div>
-									<p class="pid__brief"><strong class="pid__name"></strong> <span class="pid__hint"></span></p>
+									<p class="game__brief"><strong class="game__name"></strong> <span class="game__hint"></span></p>
 									<div class="game__stage">
 										<canvas role="img" aria-label="PID 调参"></canvas>
 										<noscript><p class="game__noscript">这个游戏需要启用 JavaScript。</p></noscript>
@@ -157,6 +160,96 @@
 									</div>
 									<div class="table-wrapper">
 										<table class="pid__metrics"><thead></thead><tbody></tbody></table>
+									</div>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+								<section class="game game--gears" id="gears">
+									<header class="game__head">
+										<h2>齿轮传动</h2>
+										<p>电机以 1200 r/min 顺时针转动。选择齿轮，让输出轴以目标转速和目标方向转动，齿轮用得越少越好。</p>
+										<p class="game__how">每一级是一个齿轮带动另一个齿轮；在两者之间加一个惰轮可以保持转向。最多三级，齿轮齿数为 12 到 60。动画比实际转速慢，便于看清轮齿。</p>
+									</header>
+									<div class="game__toolbar">
+										<div class="game__seg" role="group" aria-label="关卡">
+											<button type="button" class="game__chip" data-level="1" aria-pressed="true" aria-label="第 1 关">1<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="2" aria-pressed="false" aria-label="第 2 关">2<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="3" aria-pressed="false" aria-label="第 3 关">3<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="4" aria-pressed="false" aria-label="第 4 关">4<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="5" aria-pressed="false" aria-label="第 5 关">5<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="6" aria-pressed="false" aria-label="第 6 关">6<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="7" aria-pressed="false" aria-label="第 7 关">7<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="8" aria-pressed="false" aria-label="第 8 关">8<span class="game__stars" aria-hidden="true"></span></button>
+										</div>
+									</div>
+									<p class="game__brief"><strong class="game__name"></strong> <span class="game__hint"></span></p>
+									<div class="game__stage">
+										<canvas role="img" aria-label="齿轮传动"></canvas>
+										<noscript><p class="game__noscript">这个游戏需要启用 JavaScript。</p></noscript>
+									</div>
+									<ol class="gears__stages"></ol>
+									<div class="gears__actions">
+										<button type="button" class="button small" data-act="add">添加一级</button>
+										<button type="button" class="button small" data-act="reset">重新开始</button>
+										<span class="game__meta gears__readout"></span>
+									</div>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+								<section class="game game--views" id="views">
+									<header class="game__head">
+										<h2>三视图</h2>
+										<p>一个由小方块堆成的物体，以轴测图画出。从四个图中选出它的主视图、俯视图或侧视图，就像工程图纸上画的那样。</p>
+										<p class="game__how">虚线表示被物体挡住的不可见轮廓线。俯视图中物体的正面朝向图纸下方。共八题，物体由小到大；也可以按 A 到 D 键作答。</p>
+									</header>
+									<div class="views__board">
+										<div class="game__stage views__picture"><noscript><p class="game__noscript">这个游戏需要启用 JavaScript。</p></noscript></div>
+										<div class="views__side">
+											<p class="views__ask"></p>
+											<div class="views__choices">
+												<button type="button" class="views__choice" aria-label="图 A"><span class="views__letter" aria-hidden="true">A</span><span class="views__art"></span></button>
+												<button type="button" class="views__choice" aria-label="图 B"><span class="views__letter" aria-hidden="true">B</span><span class="views__art"></span></button>
+												<button type="button" class="views__choice" aria-label="图 C"><span class="views__letter" aria-hidden="true">C</span><span class="views__art"></span></button>
+												<button type="button" class="views__choice" aria-label="图 D"><span class="views__letter" aria-hidden="true">D</span><span class="views__art"></span></button>
+											</div>
+										</div>
+									</div>
+									<div class="views__bar">
+										<button type="button" class="button primary small" data-act="next" hidden>下一题</button>
+										<span class="game__meta"></span>
+									</div>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+								<section class="game game--logic" id="logic">
+									<header class="game__head">
+										<h2>点亮 LED</h2>
+										<p>在每个空位上放一个逻辑门，让 LED 按规则亮灭。七个小电路都来自真实的机器，从安全压力机到无人机的解锁逻辑。</p>
+										<p class="game__how">从每个下拉列表中选择逻辑门，或点击图中的门依次切换。拨动开关可以试一种情况；下面的真值表会一次检查所有情况。符号采用 IEC 标准：&amp; 表示与，≥1 表示或，=1 表示异或，小圆圈表示取反。</p>
+									</header>
+									<div class="game__toolbar">
+										<div class="game__seg" role="group" aria-label="关卡">
+											<button type="button" class="game__chip" data-level="1" aria-pressed="true" aria-label="第 1 关">1<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="2" aria-pressed="false" aria-label="第 2 关">2<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="3" aria-pressed="false" aria-label="第 3 关">3<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="4" aria-pressed="false" aria-label="第 4 关">4<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="5" aria-pressed="false" aria-label="第 5 关">5<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="6" aria-pressed="false" aria-label="第 6 关">6<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="7" aria-pressed="false" aria-label="第 7 关">7<span class="logic__done" aria-hidden="true"></span></button>
+										</div>
+									</div>
+									<p class="game__brief"><strong class="game__name"></strong> <span class="game__hint"></span></p>
+									<div class="game__stage">
+										<canvas role="img" aria-label="点亮 LED"></canvas>
+										<noscript><p class="game__noscript">这个游戏需要启用 JavaScript。</p></noscript>
+									</div>
+									<div class="logic__controls">
+										<div class="game__seg logic__switches" role="group" aria-label="开关"></div>
+										<div class="logic__slots" role="group" aria-label="逻辑门"></div>
+										<button type="button" class="button small" data-act="reset">清空逻辑门</button>
+									</div>
+									<div class="table-wrapper">
+										<table class="logic__table"><thead></thead><tbody></tbody></table>
 									</div>
 									<p class="game__status" aria-live="polite"></p>
 								</section>
@@ -243,6 +336,9 @@
 			<script src="assets/js/games/drone.js"></script>
 			<script src="assets/js/games/caliper.js"></script>
 			<script src="assets/js/games/pid.js"></script>
+			<script src="assets/js/games/gears.js"></script>
+			<script src="assets/js/games/views.js"></script>
+			<script src="assets/js/games/logic.js"></script>
 
 	</body>
 

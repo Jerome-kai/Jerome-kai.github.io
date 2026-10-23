@@ -36,7 +36,8 @@
 	var VARS = [['bg', 'bg'], ['panel', 'panel'], ['ink', 'ink'], ['muted', 'muted'], ['grid', 'grid'],
 		['accent', 'accent'], ['good', 'good'], ['bad', 'bad'], ['warn', 'warn'], ['sky1', 'sky1'],
 		['sky2', 'sky2'], ['ground', 'ground'], ['hill', 'hill'], ['metal1', 'metal1'], ['metal2', 'metal2'],
-		['metalInk', 'metal-ink'], ['slider1', 'slider1'], ['slider2', 'slider2'], ['overlay', 'overlay']];
+		['metalInk', 'metal-ink'], ['slider1', 'slider1'], ['slider2', 'slider2'], ['overlay', 'overlay'],
+		['gearIn', 'gear-in'], ['gearOut', 'gear-out'], ['gearDone', 'gear-done'], ['led', 'led'], ['ledEdge', 'led-edge']];
 
 	function palette(el) {
 		var cs = getComputedStyle(el), p = {};
@@ -145,9 +146,20 @@
 		ctx.restore();
 	}
 
+	/* n of 3 stars into el: earned ones filled, the rest outlined (see games.css). */
+	function stars(el, n) {
+		el.textContent = '';
+		var on = document.createElement('span'), off = document.createElement('span');
+		on.className = 'on'; on.textContent = '★'.repeat(n);
+		off.className = 'off'; off.textContent = '☆'.repeat(3 - n);
+		el.appendChild(on); el.appendChild(off);
+	}
+
+	var reducedMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+
 	root.JKGames = {
 		lang: lang, t: t, num: num, parseNum: parseNum, palette: palette, font: font,
 		Stage: Stage, store: store, watchVisible: watchVisible, onScheme: onScheme,
-		roundRect: roundRect, banner: banner, games: {}
+		roundRect: roundRect, banner: banner, stars: stars, reducedMotion: reducedMotion, games: {}
 	};
 })(window);
