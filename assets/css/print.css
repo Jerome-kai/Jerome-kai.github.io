@@ -131,6 +131,12 @@
 	code, pre { background: none !important; color: #1a1f2e !important; border: 0.2mm solid #b9c0d0 !important; font-size: 8.5pt; }
 	pre { white-space: pre-wrap; break-inside: avoid; }
 
+	/* Games: a canvas and its controls mean nothing on paper. The title and the
+	   description of each game still print. */
+	.game__stage, .game__controls, .game__toolbar, .game__answer, .game__status,
+	.pid__brief, .pid__controls, .pid__metrics, .games-nav { display: none !important; }
+	.game { border-top: 0.3mm solid #d3d8e4 !important; padding-top: 4mm !important; margin: 0 0 4mm !important; }
+
 	h1, h2, h3, h4 { break-after: avoid; }
 	p, li { orphans: 3; widows: 3; }
 

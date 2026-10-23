@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="en">
+	<head>
+		<title>Mini Games · Jerome-Kai Wu</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Three small browser games by Jerome-Kai Wu: land a drone, read a vernier caliper and tune a PID controller. Free, nothing to install." />
+		<meta name="author" content="Jerome-Kai Wu" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Jerome-Kai Wu" />
+		<meta property="og:title" content="Mini Games · Jerome-Kai Wu" />
+		<meta property="og:description" content="Three small browser games by Jerome-Kai Wu: land a drone, read a vernier caliper and tune a PID controller. Free, nothing to install." />
+		<meta property="og:url" content="https://jerome-kai.github.io/games.html" />
+		<meta property="og:image" content="https://jerome-kai.github.io/images/social-card.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="canonical" href="https://jerome-kai.github.io/games.html" />
+		<link rel="alternate" hreflang="en" href="https://jerome-kai.github.io/games.html" />
+		<link rel="alternate" hreflang="fr" href="https://jerome-kai.github.io/games-fr.html" />
+		<link rel="alternate" hreflang="zh-Hans" href="https://jerome-kai.github.io/games-zh.html" />
+		<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+		<link rel="alternate icon" href="favicon-32.png" sizes="32x32" />
+		<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#242943" />
+		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f6fb" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/site.css" />
+		<link rel="stylesheet" href="assets/css/theme-light.css" />
+		<link rel="stylesheet" href="assets/css/games.css" />
+		<link rel="stylesheet" href="assets/css/print.css" media="print" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<a href="index.html" class="logo"><strong>Jerome-Kai Wu</strong> <span>Personal Website</span></a>
+						<nav>
+							<a href="games-fr.html" class="lang-link" hreflang="fr" title="Français">FR</a>
+							<a href="games-zh.html" class="lang-link" hreflang="zh-Hans" title="中文">中文</a>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Introduction</a></li>
+							<li><a href="landing.html">About Me</a></li>
+							<li><a href="projects.html">Projects</a></li>
+							<li><a href="skills.html">Skills / Interests</a></li>
+							<li><a href="cv.html">CV / Resume</a></li>
+							<li><a href="card.html">Business Card</a></li>
+							<li><a href="games.html">Mini Games</a></li>
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="mailto:wu.jerome.kai@gmail.com" class="button primary fit">Contact me by email</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main" class="alt">
+
+					<!-- One -->
+						<section id="one">
+							<div class="inner">
+								<header class="major">
+									<h1>Mini Games</h1>
+								</header>
+								<p class="games-intro">Three small games built around things I actually work with: flying drones, reading measuring tools and tuning control loops. They run in your browser, and your best scores are kept on this device only.</p>
+								<ul class="games-nav">
+									<li><a href="#drone">Soft Landing</a></li>
+									<li><a href="#caliper">Read the Caliper</a></li>
+									<li><a href="#pid">Tune the Loop</a></li>
+								</ul>
+
+								<section class="game game--drone" id="drone">
+									<header class="game__head">
+										<h2>Soft Landing</h2>
+										<p>Bring the drone down onto the pad gently enough not to break it, before the battery runs out. Every level the wind picks up and the pad gets narrower.</p>
+										<p class="game__how">Keyboard: ↑, W or Space for thrust, ← → or A D to drift, after clicking the screen. Touch: hold the buttons under it.</p>
+									</header>
+									<div class="game__stage game__stage--drone" tabindex="0" aria-label="Drone game. Click here, then fly with the keyboard.">
+										<canvas role="img" aria-label="Soft Landing"></canvas>
+										<noscript><p class="game__noscript">This game needs JavaScript.</p></noscript>
+									</div>
+									<div class="game__controls">
+										<button type="button" class="game__pad" data-hold="left" aria-label="Drift left"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 5 7 12l9 7z"/></svg></button>
+										<button type="button" class="game__pad" data-hold="thrust" aria-label="Thrust"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 16 12 7l7 9z"/></svg></button>
+										<button type="button" class="game__pad" data-hold="right" aria-label="Drift right"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5l9 7-9 7z"/></svg></button>
+										<button type="button" class="button primary small" data-act="go">Start</button>
+									</div>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+								<section class="game game--caliper" id="caliper">
+									<header class="game__head">
+										<h2>Read the Caliper</h2>
+										<p>Ten readings against the clock. Take the last main-scale line before the vernier’s zero, then add the vernier line that lines up exactly with a line on the main scale.</p>
+										<p class="game__how">Type the reading in millimetres and press Enter. Zoom in when the lines are hard to tell apart: a real one is often read under a loupe too.</p>
+									</header>
+									<div class="game__toolbar">
+										<div class="game__seg" role="group" aria-label="Resolution">
+											<button type="button" class="game__chip" data-mode="0.1" aria-pressed="true">0.1 mm</button>
+											<button type="button" class="game__chip" data-mode="0.05" aria-pressed="false">0.05 mm</button>
+										</div>
+										<div class="game__seg" role="group" aria-label="Zoom">
+											<button type="button" class="game__chip" data-zoom="-" aria-label="Zoom out">&minus;</button>
+											<span class="caliper__zoom">1×</span>
+											<button type="button" class="game__chip" data-zoom="+" aria-label="Zoom in">+</button>
+										</div>
+										<span class="game__meta"></span>
+									</div>
+									<div class="game__stage game__stage--scroll">
+										<canvas role="img" aria-label="Read the Caliper"></canvas>
+										<noscript><p class="game__noscript">This game needs JavaScript.</p></noscript>
+									</div>
+									<form class="game__answer" autocomplete="off">
+										<label for="caliper-answer" class="visually-hidden">Your reading in millimetres</label>
+										<input id="caliper-answer" type="text" inputmode="decimal" placeholder="e.g. 23.4" autocomplete="off" spellcheck="false" />
+										<button type="submit" class="button primary small">Check</button>
+										<button type="button" class="button small" data-act="start">Start</button>
+									</form>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+								<section class="game game--pid" id="pid">
+									<header class="game__head">
+										<h2>Tune the Loop</h2>
+										<p>Set the three gains of a PID controller so the system reaches its target quickly, without overshooting too far, and stays there. Four systems, each needing something different.</p>
+										<p class="game__how">Drag the sliders and the response redraws as you go. Meeting every target earns a star; settling faster earns the second and third.</p>
+									</header>
+									<div class="game__toolbar">
+										<div class="game__seg" role="group" aria-label="Levels">
+											<button type="button" class="game__chip" data-level="1" aria-pressed="true" aria-label="Level 1">1<span class="pid__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="2" aria-pressed="false" aria-label="Level 2">2<span class="pid__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="3" aria-pressed="false" aria-label="Level 3">3<span class="pid__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="4" aria-pressed="false" aria-label="Level 4">4<span class="pid__stars" aria-hidden="true"></span></button>
+										</div>
+									</div>
+									<p class="pid__brief"><strong class="pid__name"></strong> <span class="pid__hint"></span></p>
+									<div class="game__stage">
+										<canvas role="img" aria-label="Tune the Loop"></canvas>
+										<noscript><p class="game__noscript">This game needs JavaScript.</p></noscript>
+									</div>
+									<div class="pid__controls">
+										<label class="pid__gain"><span>K<sub>p</sub></span><input type="range" data-gain="kp" /><output>0</output></label>
+										<label class="pid__gain"><span>K<sub>i</sub></span><input type="range" data-gain="ki" /><output>0</output></label>
+										<label class="pid__gain"><span>K<sub>d</sub></span><input type="range" data-gain="kd" /><output>0</output></label>
+										<button type="button" class="button small" data-act="reset">Reset gains</button>
+									</div>
+									<div class="table-wrapper">
+										<table class="pid__metrics"><thead></thead><tbody></tbody></table>
+									</div>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+							</div>
+						</section>
+
+					</div>
+
+				<!-- Contact -->
+				<!-- Contact -->
+					<section id="contact">
+						<div class="inner">
+							<section>
+								<form method="post" action="https://formspree.io/f/meorezqb">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" required/>
+										</div>
+
+										<div class="field half">
+										<label for="email">Email</label>
+										<input type="email" name="email" id="email" required/>
+										</div>
+
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6" required></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Clear" /></li>
+									</ul>
+								</form>
+							</section>
+							<section class="split">
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-envelope"></span>
+										<h3>Email</h3>
+										<a href="mailto:wu.jerome.kai@gmail.com">wu.jerome.kai@gmail.com</a>
+									</div>
+								</section>
+							</section>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/Jerome-kai" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="https://www.linkedin.com/in/jerome-kai-wu-137653386/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+								<li><a href="wechat.html" class="icon brands alt fa-weixin"><span class="label">WeChat</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>Jerome-Kai Wu</li><li>Based on a template by <a href="https://html5up.net/forty" target="_blank">@ajlkn</a>,modified by Me. Licensed under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">
+				CC BY 3.0
+				</a>.</li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/games/common.js"></script>
+			<script src="assets/js/games/drone.js"></script>
+			<script src="assets/js/games/caliper.js"></script>
+			<script src="assets/js/games/pid.js"></script>
+
+	</body>
+
+</html>

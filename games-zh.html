@@ -1,0 +1,249 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="zh-Hans">
+	<head>
+		<title>小游戏 · 吴锴</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="吴锴的三个浏览器小游戏：降落无人机、读游标卡尺、调节 PID 控制器。免费，无需安装。" />
+		<meta name="author" content="Jérôme-Kai Wu" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Jérôme-Kai Wu" />
+		<meta property="og:title" content="小游戏 · 吴锴" />
+		<meta property="og:description" content="吴锴的三个浏览器小游戏：降落无人机、读游标卡尺、调节 PID 控制器。免费，无需安装。" />
+		<meta property="og:url" content="https://jerome-kai.github.io/games-zh.html" />
+		<meta property="og:image" content="https://jerome-kai.github.io/images/social-card.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="canonical" href="https://jerome-kai.github.io/games-zh.html" />
+		<link rel="alternate" hreflang="en" href="https://jerome-kai.github.io/games.html" />
+		<link rel="alternate" hreflang="fr" href="https://jerome-kai.github.io/games-fr.html" />
+		<link rel="alternate" hreflang="zh-Hans" href="https://jerome-kai.github.io/games-zh.html" />
+		<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+		<link rel="alternate icon" href="favicon-32.png" sizes="32x32" />
+		<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#242943" />
+		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f6fb" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/site.css" />
+		<link rel="stylesheet" href="assets/css/theme-light.css" />
+		<link rel="stylesheet" href="assets/css/games.css" />
+		<link rel="stylesheet" href="assets/css/print.css" media="print" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<a href="index-zh.html" class="logo"><strong>吴锴</strong> <span>个人网站</span></a>
+						<nav>
+							<a href="games.html" class="lang-link" hreflang="en" title="English">EN</a>
+							<a href="games-fr.html" class="lang-link" hreflang="fr" title="Français">FR</a>
+							<a href="#menu">菜单</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index-zh.html">首页</a></li>
+							<li><a href="about-zh.html">关于我</a></li>
+							<li><a href="projects-zh.html">项目</a></li>
+							<li><a href="skills-zh.html">Skills / 兴趣</a></li>
+							<li><a href="cv-zh.html">简历</a></li>
+							<li><a href="card-zh.html">名片</a></li>
+							<li><a href="games-zh.html">小游戏</a></li>
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="mailto:wu.jerome.kai@gmail.com" class="button primary fit">发邮件联系我</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main" class="alt">
+
+					<!-- One -->
+						<section id="one">
+							<div class="inner">
+								<header class="major">
+									<h1>小游戏</h1>
+								</header>
+								<p class="games-intro">三个小游戏，主题都来自我真正在做的事：飞无人机、读测量工具、调控制回路。它们都在浏览器里运行，最高分只保存在你自己的设备上。</p>
+								<ul class="games-nav">
+									<li><a href="#drone">平稳降落</a></li>
+									<li><a href="#caliper">读游标卡尺</a></li>
+									<li><a href="#pid">PID 调参</a></li>
+								</ul>
+
+								<section class="game game--drone" id="drone">
+									<header class="game__head">
+										<h2>平稳降落</h2>
+										<p>在电池耗尽之前，把无人机轻轻降落到停机坪上，别摔坏它。每过一关，风会更大，停机坪会更窄。</p>
+										<p class="game__how">键盘：先点击画面，然后用 ↑、W 或空格键加推力，← → 或 A D 左右平移。触屏：按住画面下方的按钮。</p>
+									</header>
+									<div class="game__stage game__stage--drone" tabindex="0" aria-label="无人机游戏。点击这里后用键盘操作。">
+										<canvas role="img" aria-label="平稳降落"></canvas>
+										<noscript><p class="game__noscript">这个游戏需要启用 JavaScript。</p></noscript>
+									</div>
+									<div class="game__controls">
+										<button type="button" class="game__pad" data-hold="left" aria-label="向左平移"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 5 7 12l9 7z"/></svg></button>
+										<button type="button" class="game__pad" data-hold="thrust" aria-label="推力"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 16 12 7l7 9z"/></svg></button>
+										<button type="button" class="game__pad" data-hold="right" aria-label="向右平移"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5l9 7-9 7z"/></svg></button>
+										<button type="button" class="button primary small" data-act="go">开始</button>
+									</div>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+								<section class="game game--caliper" id="caliper">
+									<header class="game__head">
+										<h2>读游标卡尺</h2>
+										<p>限时读数十次。先读出游标零线左侧最近的主尺刻度，再加上与主尺刻度完全对齐的那条游标刻线。</p>
+										<p class="game__how">输入以毫米为单位的读数，按回车确认。刻线难以分辨时可以放大，真正的卡尺也常常要借助放大镜来读。</p>
+									</header>
+									<div class="game__toolbar">
+										<div class="game__seg" role="group" aria-label="分度值">
+											<button type="button" class="game__chip" data-mode="0.1" aria-pressed="true">0.1 mm</button>
+											<button type="button" class="game__chip" data-mode="0.05" aria-pressed="false">0.05 mm</button>
+										</div>
+										<div class="game__seg" role="group" aria-label="缩放">
+											<button type="button" class="game__chip" data-zoom="-" aria-label="缩小">&minus;</button>
+											<span class="caliper__zoom">1×</span>
+											<button type="button" class="game__chip" data-zoom="+" aria-label="放大">+</button>
+										</div>
+										<span class="game__meta"></span>
+									</div>
+									<div class="game__stage game__stage--scroll">
+										<canvas role="img" aria-label="读游标卡尺"></canvas>
+										<noscript><p class="game__noscript">这个游戏需要启用 JavaScript。</p></noscript>
+									</div>
+									<form class="game__answer" autocomplete="off">
+										<label for="caliper-answer" class="visually-hidden">你的读数（毫米）</label>
+										<input id="caliper-answer" type="text" inputmode="decimal" placeholder="例如 23.4" autocomplete="off" spellcheck="false" />
+										<button type="submit" class="button primary small">确定</button>
+										<button type="button" class="button small" data-act="start">开始</button>
+									</form>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+								<section class="game game--pid" id="pid">
+									<header class="game__head">
+										<h2>PID 调参</h2>
+										<p>调节 PID 控制器的三个增益，让系统快速到达目标值、超调不过大，并稳定在那里。四个被控对象，各有不同的难点。</p>
+										<p class="game__how">拖动滑块，响应曲线会实时重绘。达到所有指标得一颗星，调节得更快可得第二、第三颗星。</p>
+									</header>
+									<div class="game__toolbar">
+										<div class="game__seg" role="group" aria-label="关卡">
+											<button type="button" class="game__chip" data-level="1" aria-pressed="true" aria-label="第 1 关">1<span class="pid__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="2" aria-pressed="false" aria-label="第 2 关">2<span class="pid__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="3" aria-pressed="false" aria-label="第 3 关">3<span class="pid__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="4" aria-pressed="false" aria-label="第 4 关">4<span class="pid__stars" aria-hidden="true"></span></button>
+										</div>
+									</div>
+									<p class="pid__brief"><strong class="pid__name"></strong> <span class="pid__hint"></span></p>
+									<div class="game__stage">
+										<canvas role="img" aria-label="PID 调参"></canvas>
+										<noscript><p class="game__noscript">这个游戏需要启用 JavaScript。</p></noscript>
+									</div>
+									<div class="pid__controls">
+										<label class="pid__gain"><span>K<sub>p</sub></span><input type="range" data-gain="kp" /><output>0</output></label>
+										<label class="pid__gain"><span>K<sub>i</sub></span><input type="range" data-gain="ki" /><output>0</output></label>
+										<label class="pid__gain"><span>K<sub>d</sub></span><input type="range" data-gain="kd" /><output>0</output></label>
+										<button type="button" class="button small" data-act="reset">重置增益</button>
+									</div>
+									<div class="table-wrapper">
+										<table class="pid__metrics"><thead></thead><tbody></tbody></table>
+									</div>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+							</div>
+						</section>
+
+					</div>
+
+				<!-- Contact -->
+				<!-- Contact -->
+					<section id="contact">
+						<div class="inner">
+							<section>
+								<form method="post" action="https://formspree.io/f/meorezqb">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">姓名</label>
+											<input type="text" name="name" id="name" required/>
+										</div>
+
+										<div class="field half">
+										<label for="email">邮箱</label>
+										<input type="email" name="email" id="email" required/>
+										</div>
+
+										<div class="field">
+											<label for="message">留言</label>
+											<textarea name="message" id="message" rows="6" required></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="发送" class="primary" /></li>
+										<li><input type="reset" value="清空" /></li>
+									</ul>
+								</form>
+							</section>
+							<section class="split">
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-envelope"></span>
+										<h3>邮箱</h3>
+										<a href="mailto:wu.jerome.kai@gmail.com">wu.jerome.kai@gmail.com</a>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-phone"></span>
+										<h3>电话</h3>
+										<a href="tel:+8613472704378">+86 134 7270 4378</a>
+									</div>
+								</section>
+							</section>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/Jerome-kai" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="https://www.linkedin.com/in/jerome-kai-wu-137653386/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+								<li><a href="wechat.html" class="icon brands alt fa-weixin"><span class="label">微信</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>Jerome-Kai Wu</li><li>基于模板作者 <a href="https://html5up.net/forty" target="_blank">@ajlkn</a>，由我修改。许可协议 <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">
+				CC BY 3.0
+				</a>.</li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/games/common.js"></script>
+			<script src="assets/js/games/drone.js"></script>
+			<script src="assets/js/games/caliper.js"></script>
+			<script src="assets/js/games/pid.js"></script>
+
+	</body>
+
+</html>
