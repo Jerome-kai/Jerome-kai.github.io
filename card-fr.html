@@ -284,6 +284,23 @@
 			@media (max-width: 480px) { :root { --scale: 1.08; } body { padding: 1.5rem 0.6rem 2.5rem 0.6rem; } }
 			@media (max-width: 380px) { :root { --scale: 0.95; } }
 
+			/* The page around the cards follows the system theme. The cards themselves
+			   do not: they are artwork for print and have to look the same either way,
+			   which is why the faces use literal colours and only the chrome uses the
+			   --accent variable. */
+			@media (prefers-color-scheme: light) {
+				:root { --accent: #0e7490; }
+				html { color-scheme: light; }
+				body { background: #f4f6fb; color: #1e2436; }
+				.lang-switch a, .lang-switch .current { color: #1e2436; border-color: rgba(14, 116, 144, 0.4); }
+				.lang-switch a:hover { background: rgba(14, 116, 144, 0.1); }
+				.lang-switch .current { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+				.slot .cap, .block h2, .block .note { color: #5b6480; }
+				.actions a, .actions button { color: #1e2436; }
+				.actions a:hover, .actions button:hover { background: var(--accent); color: #ffffff; }
+				.actions.subtle a { border-color: rgba(14, 116, 144, 0.4); }
+			}
+
 			@media print {
 				body { background: #fff; padding: 0; gap: 0; display: block; }
 				h1, .lang-switch, .block, .slot .cap { display: none; }
@@ -346,6 +363,7 @@
 		<div class="block">
 			<div class="actions">
 				<button onclick="window.print()">Imprimer / Enregistrer en PDF</button>
+				<a href="downloads/contact-fr.vcf" download>Enregistrer le contact</a>
 				<a href="index-fr.html">Retour au site</a>
 			</div>
 		</div>

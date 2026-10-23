@@ -1,0 +1,228 @@
+/* Light theme.
+ *
+ * The site's own look is the dark one; this file only restates surfaces and ink
+ * for visitors whose system asks for light, and does nothing at all otherwise.
+ * Everything sits inside one media query, so nothing here can affect the dark
+ * default - which stays exactly as it was.
+ *
+ * The banner is the deliberate exception: it is a photograph behind a navy
+ * scrim, and a dark hero above a light page is a normal thing rather than an
+ * oversight. Inverting it would mean either washing out the photo or dropping
+ * it.
+ */
+
+@media (prefers-color-scheme: light) {
+
+	:root {
+		--bg:        #f4f6fb;   /* page */
+		--bg-sunken: #e9edf7;   /* media wells, banded sections */
+		--surface:   #ffffff;   /* cards, panels, CV entries */
+		--ink:       #1e2436;
+		--ink-2:     #464e66;
+		--ink-3:     #5c6580;   /* dark enough to clear 4.5:1 on --bg-sunken too */
+		/* The cyan is unreadable on white, so the accent moves down the same
+		   hue to something that clears 4.5:1 against both page and surface. */
+		--accent:    #0e7490;
+		--accent-hi: #0a5a70;
+		--rule:      rgba(30, 36, 54, 0.12);
+		--rule-2:    rgba(30, 36, 54, 0.22);
+	}
+
+	/* let the browser style scrollbars, form controls and the like to match */
+	html { color-scheme: light; }
+
+	/* ---------- page shell ---------- */
+	body,
+	body.is-preload { background-color: var(--bg); color: var(--ink-2); }
+
+	#wrapper > * { background-color: transparent; }
+	#main { background-color: var(--bg); }
+
+	h1, h2, h3, h4, h5, h6,
+	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+	strong, b { color: var(--ink); }
+
+	p, li, td, dd, label { color: var(--ink-2); }
+
+	a { color: var(--accent); }
+	a:hover { color: var(--accent-hi); }
+
+	hr { border-bottom-color: var(--rule); }
+
+	/* ---------- header and the slide-out menu ---------- */
+	#header { background-color: rgba(244, 246, 251, 0.92); }
+	#header .logo,
+	#header nav a { color: var(--ink); }
+	#header nav a:hover,
+	#header nav a.lang-link:hover { color: var(--accent); }
+	#header nav a.lang-link { color: var(--ink-3); }
+
+	/* On the six pages that have one, the header floats over the banner before
+	   you scroll - dark photo, dark scrim - so there it keeps its light text.
+	   Once Forty drops .alt on scroll the header gets its light background back
+	   and the rules above take over again. */
+	/* .logo strong is a white chip with coloured text in both themes, so it is
+	   deliberately left out of this - colouring it white blanks the name. */
+	#wrapper:has(#banner) #header.alt,
+	#wrapper:has(#banner) #header.alt .logo,
+	#wrapper:has(#banner) #header.alt nav a { color: #ffffff; }
+	#wrapper:has(#banner) #header.alt nav a.lang-link { color: rgba(255, 255, 255, 0.75); }
+	#wrapper:has(#banner) #header.alt nav a:hover,
+	#wrapper:has(#banner) #header.alt nav a.lang-link:hover { color: #9bf1ff; }
+
+	#menu { background-color: rgba(255, 255, 255, 0.97); box-shadow: 0 0 0 1px var(--rule); }
+	#menu ul.links > li { border-top-color: var(--rule); }
+	#menu ul.links > li > a { color: var(--ink); }
+	#menu ul.links > li > a:hover { color: var(--accent); }
+	#menu .close { color: var(--ink-3); }
+	#menu .close:hover { color: var(--ink); }
+
+	/* ---------- banner: photo plus scrim, left dark on purpose ---------- */
+	#banner h1, #banner p, #banner .content { color: #ffffff; }
+	#banner a { color: #ffffff; }
+	/* including its button, which would otherwise take the page's dark ink and
+	   land dark-on-dark against the scrim */
+	#banner .button {
+		box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+		color: #ffffff !important;
+	}
+	#banner .button:hover {
+		box-shadow: inset 0 0 0 2px #ffffff;
+		color: #ffffff !important;
+	}
+
+	/* ---------- buttons ---------- */
+	input[type="submit"], input[type="reset"], input[type="button"],
+	button, .button {
+		background-color: transparent;
+		box-shadow: inset 0 0 0 2px var(--rule-2);
+		color: var(--ink) !important;
+	}
+	input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover,
+	button:hover, .button:hover {
+		box-shadow: inset 0 0 0 2px var(--accent);
+		color: var(--accent) !important;
+	}
+	input[type="submit"].primary, button.primary, .button.primary {
+		background-color: var(--accent);
+		box-shadow: none;
+		color: #ffffff !important;
+	}
+	input[type="submit"].primary:hover, button.primary:hover, .button.primary:hover {
+		background-color: var(--accent-hi);
+		color: #ffffff !important;
+	}
+
+	/* ---------- forms ---------- */
+	input[type="text"], input[type="email"], input[type="password"],
+	select, textarea {
+		background-color: var(--surface);
+		border-color: var(--rule-2);
+		color: var(--ink);
+	}
+	input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+		border-color: var(--accent);
+		box-shadow: 0 0 0 1px var(--accent);
+	}
+	::placeholder { color: var(--ink-3); }
+
+	/* ---------- contact section and footer ---------- */
+	#contact { background-color: var(--bg-sunken); }
+	#contact .contact-method h3 { color: var(--ink); }
+	#contact .contact-method a { color: var(--accent); }
+	#contact .icon.solid.alt { background-color: var(--accent); color: #ffffff; }
+
+	#footer { background-color: var(--bg-sunken); color: var(--ink-3); }
+	#footer .copyright li,
+	#footer .copyright { color: var(--ink-3); }
+	#footer .icons li a { color: var(--ink-2); }
+	#footer .icons li a:hover { color: var(--accent); }
+
+	/* ---------- cards, panels, CV entries ---------- */
+	.panel,
+	.project-card {
+		background-color: var(--surface);
+		border-color: var(--rule);
+		box-shadow: 0 1px 2px rgba(30, 36, 54, 0.05);
+	}
+	.project-card:hover { border-color: var(--accent); box-shadow: 0 4px 14px rgba(30, 36, 54, 0.1); }
+
+	.panel__figure,
+	.project-card__media,
+	.cv-entry__figure {
+		background-color: var(--bg-sunken);
+		background-image: none;
+		border-color: var(--rule);
+	}
+
+	.panel__body h3,
+	.project-card__title,
+	.project-card__title a,
+	.cv-entry__body h3 { color: var(--ink); }
+	.project-card__title a:hover { color: var(--accent); }
+
+	.panel__body p, .panel__body ul,
+	.project-card__body p,
+	.project-card__body ul:not(.actions):not(.project-tags):not(.project-figures),
+	.projects-intro p { color: var(--ink-2); }
+
+	.cv-entry { border-top-color: var(--rule); }
+	.cv-entry__meta,
+	.project-card__meta,
+	.level { color: var(--accent); }
+
+	.project-tags li {
+		color: var(--accent-hi);
+		background-color: rgba(14, 116, 144, 0.08);
+		border-color: rgba(14, 116, 144, 0.28);
+	}
+
+	.portrait,
+	.figure img,
+	.project-figures a { border-color: var(--rule); }
+	.figure figcaption { color: var(--ink-3); }
+
+	/* ---------- About page spotlight blocks ---------- */
+	.spotlights > section { background-color: var(--surface); border-color: var(--rule); }
+	.spotlights > section:nth-child(2n) { background-color: var(--bg-sunken); }
+	.spotlights > section .content h3,
+	.spotlights > section .content h2 { color: var(--ink); }
+	.spotlights > section .content p { color: var(--ink-2); }
+
+	/* ---------- tiles keep their own palette ---------- */
+	/* Each tile is a pastel at 85% over a navy scrim: a saturated block in either
+	   theme, and white is the only text colour that works on it. */
+	/* The pastel is only 85% opaque, so on a light page the page itself showed
+	   through and washed the tiles out - measurably worse than in dark mode.
+	   Pinning the backdrop makes a tile render identically in both themes. */
+	.tiles article { background-color: #2a2f4a; }
+	.tiles article h1, .tiles article h2, .tiles article h3,
+	.tiles article p, .tiles article a { color: #ffffff !important; }
+
+	/* fallback text, shown only where the browser cannot play the video */
+	video { color: #ffffff; }
+
+	/* ---------- language switcher ---------- */
+	.lang-switch a { color: var(--ink-2); }
+	.lang-switch a:hover { color: var(--accent); border-color: var(--accent); }
+	.lang-switch span {
+		color: #ffffff;
+		background-color: var(--accent);
+		border-color: var(--accent);
+	}
+
+	/* ---------- odds and ends ---------- */
+	code, pre code { background-color: var(--bg-sunken); color: var(--ink); border-color: var(--rule); }
+	blockquote { border-left-color: var(--rule-2); color: var(--ink-2); }
+	table tbody tr { border-color: var(--rule); }
+	table tbody tr:nth-child(2n + 1) { background-color: var(--bg-sunken); }
+	table th { color: var(--ink); }
+	table thead { border-bottom-color: var(--rule-2); }
+
+	/* the 3D viewers carry their dark background as an inline style */
+	model-viewer { background-color: var(--bg-sunken) !important; }
+
+	.back-btn { box-shadow: inset 0 0 0 2px var(--rule-2); color: var(--ink); }
+	.back-btn:hover { box-shadow: inset 0 0 0 2px var(--accent); color: var(--accent); }
+
+}

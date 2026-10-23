@@ -1,0 +1,142 @@
+/* Print.
+ *
+ * The site is light-on-dark, and browsers do not print backgrounds by default,
+ * so without this a printed page is white text on white paper: a CV came out as
+ * nine near-blank pages with the menu and language switcher still on them.
+ *
+ * Everything here is inside one print media query, so it cannot touch the
+ * screen. Loaded last, after the theme, so it wins in either colour scheme.
+ */
+
+@media print {
+
+	@page { margin: 14mm 15mm; }
+
+	html, body {
+		background: #ffffff !important;
+		color: #1a1f2e !important;
+		font-size: 10.5pt;
+		/* the screen weight is 300, which reads as grey on paper */
+		font-weight: 400 !important;
+		line-height: 1.45;
+		min-width: 0 !important;
+	}
+
+	/* Forty reserves space at the top for its fixed header and indents the
+	   content to a centred column; neither means anything once the header is
+	   gone and the page is the width of the paper. */
+	#wrapper { padding: 0 !important; }
+	#main, #main.alt, #one, section { padding-top: 0 !important; padding-bottom: 0 !important; margin-top: 0 !important; }
+	.inner { width: auto !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
+	#one > .inner { padding-top: 0 !important; }
+	header.major { margin: 0 0 4mm !important; padding: 0 !important; }
+
+	/* Forty fades the page in from .is-preload; make sure print never catches it
+	   mid-transition. */
+	body, body.is-preload, #wrapper, #main, section, article, div { opacity: 1 !important; }
+
+	#wrapper, #main, #main.alt, section, .inner, article, header.major {
+		background: none !important;
+		box-shadow: none !important;
+		border-radius: 0 !important;
+	}
+
+	/* ---------- ink ---------- */
+	h1, h2, h3, h4, h5, h6, strong, b { color: #0b1020 !important; }
+	h1 { font-size: 20pt; }
+	h2 { font-size: 14pt; margin: 1.2em 0 0.4em; }
+	h3 { font-size: 11.5pt; }
+	p, li, td, th, dd, label, span, em, figcaption { color: #1a1f2e !important; }
+	a { color: #0e5f75 !important; text-decoration: none !important; border-bottom: 0 !important; }
+	hr, header.major:after, .major h1:after, .major h2:after { border-color: #b9c0d0 !important; background: #b9c0d0 !important; }
+
+	/* ---------- chrome that is meaningless on paper ---------- */
+	#header, #menu, #footer .icons, .lang-switch, .lang-link,
+	.actions, .button, button, input[type="submit"], input[type="reset"],
+	#contact form, #contact .fields, .back-btn,
+	video, model-viewer, .lightbox, .project-figures,
+	#banner:before, #banner:after, .tiles article:before, .tiles article:after,
+	.scrolly, .next { display: none !important; }
+
+	/* The contact blocks stay: that is how someone reaches you from paper. */
+	#contact { padding: 0 !important; }
+	#contact .inner { display: block !important; }
+	.contact-method { margin: 0.3em 0 !important; padding: 0 !important; }
+	.contact-method .icon { display: none !important; }
+	.contact-method h3 { display: inline; font-size: 10.5pt; margin-right: 0.6em; }
+	.contact-method h3:after { content: ":"; }
+
+	#footer { padding: 6mm 0 0 !important; border-top: 0.3mm solid #b9c0d0; margin-top: 8mm; }
+	#footer .copyright, #footer .copyright li { color: #5a6277 !important; font-size: 8.5pt; padding: 0 !important; }
+
+	/* ---------- home / about banner: a heading block, not a photograph ---------- */
+	#banner {
+		background: none !important;
+		height: auto !important; min-height: 0 !important; max-height: none !important;
+		margin: 0 0 6mm !important; top: 0 !important; padding: 0 !important;
+		display: block !important;
+	}
+	#banner h1, #banner p, #banner .content, #banner a { color: #0b1020 !important; }
+
+	/* ---------- the four home tiles become a plain list ---------- */
+	.tiles { display: block !important; }
+	/* main.js appends a blank full-tile overlay link to each tile; its height is
+	   what made them tall empty boxes on paper. */
+	.tiles article > a.link.primary { display: none !important; }
+	.tiles article {
+		width: auto !important; height: auto !important; min-height: 0 !important;
+		background: none !important;
+		border: 0.3mm solid #b9c0d0 !important;
+		margin: 0 0 3mm !important; padding: 3mm 4mm !important;
+		break-inside: avoid;
+	}
+	.tiles article header.major { padding: 0 !important; margin: 0 !important; }
+
+	/* About page spotlights */
+	.spotlights > section { display: block !important; margin: 0 0 4mm !important; padding: 0 !important; }
+	.spotlights .image { display: none !important; }
+	.spotlights .content { padding: 0 !important; width: auto !important; }
+
+	/* ---------- CV ---------- */
+	.cv-header { display: flex !important; gap: 6mm; align-items: flex-start; }
+	.cv-header .portrait, .portrait { width: 32mm !important; height: auto !important; border: 0 !important; border-radius: 0 !important; }
+	.cv-entry { display: block !important; break-inside: avoid; border-top: 0.3mm solid #d3d8e4 !important; padding: 3mm 0 !important; }
+	.cv-entry__figure { display: none !important; }
+	.cv-entry__body { padding: 0 !important; width: auto !important; }
+	.cv-entry__meta, .project-card__meta, .level { color: #0e5f75 !important; letter-spacing: 0.05em; }
+
+	/* ---------- projects and skills: one column, no hero media ---------- */
+	.project-grid, .panel-grid { display: block !important; }
+	.project-grid > li, .panel-grid > li { display: block !important; width: auto !important; padding: 0 !important; margin: 0 0 4mm !important; }
+	.project-card, .panel {
+		display: block !important; background: none !important;
+		border: 0.3mm solid #b9c0d0 !important; box-shadow: none !important;
+		break-inside: avoid;
+	}
+	.project-card__media, .panel__figure { max-height: 52mm; overflow: hidden; border: 0 !important; background: none !important; }
+	.project-card__media img, .panel__figure img { max-height: 52mm; width: auto !important; max-width: 100% !important; }
+	.project-card__body, .panel__body { padding: 3mm 4mm !important; }
+	.project-tags li {
+		background: none !important; color: #1a1f2e !important;
+		border: 0.25mm solid #9aa3b8 !important;
+	}
+	.is-featured .project-card { display: block !important; }
+
+	/* ---------- long pages: figures, tables, code ---------- */
+	.figure, figure, .table-wrapper { break-inside: avoid; margin: 3mm 0 !important; }
+	figure img, .figure img { max-width: 100% !important; max-height: 85mm !important; width: auto !important; height: auto !important; border: 0 !important; }
+	.figure, figure { text-align: center; }
+	table { width: 100% !important; font-size: 9pt; }
+	table th, table td { border: 0.2mm solid #b9c0d0 !important; background: none !important; }
+	code, pre { background: none !important; color: #1a1f2e !important; border: 0.2mm solid #b9c0d0 !important; font-size: 8.5pt; }
+	pre { white-space: pre-wrap; break-inside: avoid; }
+
+	h1, h2, h3, h4 { break-after: avoid; }
+	p, li { orphans: 3; widows: 3; }
+
+	/* Print the address of an external link: on paper there is nothing to click. */
+	#main a[href^="http"]:not(.button):after {
+		content: " (" attr(href) ")";
+		font-size: 8pt; color: #5a6277 !important; word-break: break-all;
+	}
+}

@@ -1,7 +1,7 @@
 # Single source for the business card: builds card.html / card-fr.html / card-zh.html
 # and the print-ready PDFs. Every dimension is in mm so the on-screen preview and the
 # printed sheet come out of the same CSS.
-import os, pathlib, shutil, subprocess, tempfile, urllib.parse
+import base64, html as htmllib, io, os, pathlib, shutil, subprocess, sys, tempfile, urllib.parse
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 HERE = pathlib.Path(tempfile.mkdtemp(prefix="cards-"))
@@ -47,6 +47,7 @@ L = {
         "shop_head": "For a print shop",
         "shop_note": "Trim size 85.6 × 54 mm. The files below add 3 mm bleed and crop marks.",
         "pdf_all": "All 3 languages",
+        "vcf": "Save contact",
         "upper": True,
     },
     "fr": {
@@ -70,6 +71,7 @@ L = {
         "shop_head": "Pour un imprimeur",
         "shop_note": "Format coupé 85,6 × 54 mm. Les fichiers ci-dessous ajoutent 3 mm de fond perdu et les traits de coupe.",
         "pdf_all": "Les 3 langues",
+        "vcf": "Enregistrer le contact",
         "upper": True,
     },
     "zh": {
@@ -93,6 +95,7 @@ L = {
         "shop_head": "交付印刷厂",
         "shop_note": "成品尺寸 85.6 × 54 毫米。下列文件已加 3 毫米出血和裁切线。",
         "pdf_all": "三语合一",
+        "vcf": "保存联系人",
         "upper": True,
     },
 }
@@ -495,6 +498,23 @@ def screen_page(lang):
 			@media (max-width: 480px) {{ :root {{ --scale: 1.08; }} body {{ padding: 1.5rem 0.6rem 2.5rem 0.6rem; }} }}
 			@media (max-width: 380px) {{ :root {{ --scale: 0.95; }} }}
 
+			/* The page around the cards follows the system theme. The cards themselves
+			   do not: they are artwork for print and have to look the same either way,
+			   which is why the faces use literal colours and only the chrome uses the
+			   --accent variable. */
+			@media (prefers-color-scheme: light) {{
+				:root {{ --accent: #0e7490; }}
+				html {{ color-scheme: light; }}
+				body {{ background: #f4f6fb; color: #1e2436; }}
+				.lang-switch a, .lang-switch .current {{ color: #1e2436; border-color: rgba(14, 116, 144, 0.4); }}
+				.lang-switch a:hover {{ background: rgba(14, 116, 144, 0.1); }}
+				.lang-switch .current {{ background: var(--accent); color: #ffffff; border-color: var(--accent); }}
+				.slot .cap, .block h2, .block .note {{ color: #5b6480; }}
+				.actions a, .actions button {{ color: #1e2436; }}
+				.actions a:hover, .actions button:hover {{ background: var(--accent); color: #ffffff; }}
+				.actions.subtle a {{ border-color: rgba(14, 116, 144, 0.4); }}
+			}}
+
 			@media print {{
 				body {{ background: #fff; padding: 0; gap: 0; display: block; }}
 				h1, .lang-switch, .block, .slot .cap {{ display: none; }}
@@ -529,6 +549,7 @@ def screen_page(lang):
 		<div class="block">
 			<div class="actions">
 				<button onclick="window.print()">{t['print']}</button>
+				<a href="downloads/contact-{lang}.vcf" download>{t['vcf']}</a>
 				<a href="{t['home']}">{t['back_site']}</a>
 			</div>
 		</div>
@@ -666,6 +687,78 @@ def build_qr():
         img.save(REPO / L[lang]["qr"])
 
 
+# ---------------------------------------------------------------- vCard
+def _vc_escape(s):
+    """vCard 3.0 text escaping: backslash first, then the separators and newlines."""
+    return (s.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n"))
+
+
+def _vc_fold(line):
+    """Fold at 75 octets, continuing with a space, never splitting a UTF-8 character."""
+    raw = line.encode("utf-8")
+    if len(raw) <= 75:
+        return line
+    parts, cur = [], b""
+    limit = 75
+    for ch in line:
+        b = ch.encode("utf-8")
+        if len(cur) + len(b) > limit:
+            parts.append(cur.decode("utf-8"))
+            cur, limit = b, 74          # continuation lines spend one octet on the leading space
+        else:
+            cur += b
+    parts.append(cur.decode("utf-8"))
+    return "\r\n ".join(parts)
+
+
+def _vc_photo():
+    """A small square crop of the portrait, top-aligned like the card face."""
+    from PIL import Image
+    im = Image.open(REPO / "images/profile.jpg").convert("RGB")
+    side = min(im.size)
+    im = im.crop((0, 0, side, side)).resize((256, 256), Image.LANCZOS)
+    buf = io.BytesIO()
+    im.save(buf, "JPEG", quality=85, optimize=True)
+    return base64.b64encode(buf.getvalue()).decode("ascii")
+
+
+def vcard(lang, photo):
+    """One contact per language, carrying exactly what that language's card does.
+
+    That includes the phone numbers: the +86 number is on the Chinese card only,
+    so it is in the Chinese contact only.
+    """
+    t = L[lang]
+    name = htmllib.unescape(t["name"])
+    if lang == "zh":                          # family name first, then the given name
+        family, given = name[0], name[1:]
+    else:
+        given, family = name.rsplit(" ", 1)
+    lines = ["BEGIN:VCARD", "VERSION:3.0",
+             f"N:{_vc_escape(family)};{_vc_escape(given)};;;",
+             f"FN:{_vc_escape(name)}",
+             f"ORG:{_vc_escape(htmllib.unescape(t['org']))}",
+             f"TITLE:{_vc_escape(htmllib.unescape(t['role']))}"]
+    for i, num in enumerate(PHONES[lang]):
+        lines.append(f"TEL;TYPE=CELL,VOICE{',PREF' if i == 0 else ''}:{num}")
+    lines += [f"EMAIL;TYPE=INTERNET,PREF:{EMAIL}",
+              f"URL:{t['qr_url']}",
+              f"URL:https://{GITHUB}",
+              f"URL:{LINKEDIN_URL}",
+              f"PHOTO;ENCODING=b;TYPE=JPEG:{photo}",
+              "END:VCARD"]
+    return "\r\n".join(_vc_fold(ln) for ln in lines) + "\r\n"
+
+
+def build_vcards():
+    out = REPO / "downloads"
+    out.mkdir(exist_ok=True)
+    photo = _vc_photo()
+    for lang in LANGS:
+        (out / f"contact-{lang}.vcf").write_bytes(vcard(lang, photo).encode("utf-8"))
+    print("vcards built")
+
+
 def build():
     out = REPO / "downloads"
     out.mkdir(exist_ok=True)
@@ -695,8 +788,24 @@ def build():
     h.write_text(print_doc(faces, FONT_ALL, False), encoding="utf-8")
     to_pdf(h, out / "business-card-all.pdf")
 
+    build_vcards()
     print("built")
 
 
+def build_pages():
+    for lang in LANGS:
+        (REPO / L[lang]["page"]).write_text(screen_page(lang), encoding="utf-8")
+    print("pages built")
+
+
 if __name__ == "__main__":
-    build()
+    # No argument rebuilds everything, PDFs included. "pages" and "vcf" rebuild
+    # just those, which avoids regenerating the PDFs - and their timestamps and
+    # fonts - when only the HTML or the contacts changed.
+    what = sys.argv[1:] or ["all"]
+    if "all" in what:
+        build()
+    if "pages" in what:
+        build_pages()
+    if "vcf" in what:
+        build_vcards()

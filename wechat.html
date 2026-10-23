@@ -6,6 +6,8 @@
 <link rel="canonical" href="https://jerome-kai.github.io/wechat.html" />
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="alternate icon" href="favicon-32.png" sizes="32x32" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#242943">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f6fb">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
@@ -63,6 +65,15 @@
         }
         .back-btn:hover {
             background: #242943;
+        }
+
+        /* follows the system setting, like the rest of the site */
+        @media (prefers-color-scheme: light) {
+            html { color-scheme: light; }
+            body { background: #f4f6fb; }
+            .qr-container { background: #ffffff; border-color: rgba(30, 36, 54, 0.15); color: #1e2436; }
+            .back-btn { box-shadow: inset 0 0 0 2px rgba(30, 36, 54, 0.22); color: #1e2436; }
+            .back-btn:hover { box-shadow: inset 0 0 0 2px #0e7490; color: #0e7490; }
         }
     </style>
 </head>
