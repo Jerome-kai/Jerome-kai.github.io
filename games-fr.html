@@ -8,12 +8,12 @@
 	<head>
 		<title>Mini-jeux · Jérôme-Kai Wu</title>
 		<meta charset="utf-8" />
-		<meta name="description" content="Trois petits jeux de Jérôme-Kai Wu dans le navigateur : poser un drone, lire un pied à coulisse et régler un correcteur PID. Gratuit, sans installation." />
+		<meta name="description" content="Six petits jeux de Jérôme-Kai Wu : poser un drone, lire un pied à coulisse, régler un PID, choisir des engrenages, lire un dessin technique, câbler de la logique." />
 		<meta name="author" content="Jérôme-Kai Wu" />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Jérôme-Kai Wu" />
 		<meta property="og:title" content="Mini-jeux · Jérôme-Kai Wu" />
-		<meta property="og:description" content="Trois petits jeux de Jérôme-Kai Wu dans le navigateur : poser un drone, lire un pied à coulisse et régler un correcteur PID. Gratuit, sans installation." />
+		<meta property="og:description" content="Six petits jeux de Jérôme-Kai Wu : poser un drone, lire un pied à coulisse, régler un PID, choisir des engrenages, lire un dessin technique, câbler de la logique." />
 		<meta property="og:url" content="https://jerome-kai.github.io/games-fr.html" />
 		<meta property="og:image" content="https://jerome-kai.github.io/images/social-card.png" />
 		<meta name="twitter:card" content="summary_large_image" />
@@ -73,11 +73,14 @@
 								<header class="major">
 									<h1>Mini-jeux</h1>
 								</header>
-								<p class="games-intro">Trois petits jeux autour de choses avec lesquelles je travaille vraiment : piloter des drones, lire des instruments de mesure et régler des boucles de régulation. Ils tournent dans votre navigateur, et vos meilleurs scores ne sont gardés que sur cet appareil.</p>
+								<p class="games-intro">Six petits jeux autour de choses avec lesquelles je travaille vraiment : piloter des drones, lire des instruments de mesure, régler des boucles de régulation, réduire la vitesse d’un moteur, lire un dessin technique et câbler de la logique. Ils tournent dans votre navigateur, et vos meilleurs scores ne sont gardés que sur cet appareil.</p>
 								<ul class="games-nav">
 									<li><a href="#drone">Atterrissage en douceur</a></li>
 									<li><a href="#caliper">Lire le pied à coulisse</a></li>
 									<li><a href="#pid">Régler la boucle</a></li>
+									<li><a href="#gears">Train d’engrenages</a></li>
+									<li><a href="#views">Trois vues</a></li>
+									<li><a href="#logic">Allumer la LED</a></li>
 								</ul>
 
 								<section class="game game--drone" id="drone">
@@ -138,13 +141,13 @@
 									</header>
 									<div class="game__toolbar">
 										<div class="game__seg" role="group" aria-label="Niveaux">
-											<button type="button" class="game__chip" data-level="1" aria-pressed="true" aria-label="Niveau 1">1<span class="pid__stars" aria-hidden="true"></span></button>
-											<button type="button" class="game__chip" data-level="2" aria-pressed="false" aria-label="Niveau 2">2<span class="pid__stars" aria-hidden="true"></span></button>
-											<button type="button" class="game__chip" data-level="3" aria-pressed="false" aria-label="Niveau 3">3<span class="pid__stars" aria-hidden="true"></span></button>
-											<button type="button" class="game__chip" data-level="4" aria-pressed="false" aria-label="Niveau 4">4<span class="pid__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="1" aria-pressed="true" aria-label="Niveau 1">1<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="2" aria-pressed="false" aria-label="Niveau 2">2<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="3" aria-pressed="false" aria-label="Niveau 3">3<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="4" aria-pressed="false" aria-label="Niveau 4">4<span class="game__stars" aria-hidden="true"></span></button>
 										</div>
 									</div>
-									<p class="pid__brief"><strong class="pid__name"></strong> <span class="pid__hint"></span></p>
+									<p class="game__brief"><strong class="game__name"></strong> <span class="game__hint"></span></p>
 									<div class="game__stage">
 										<canvas role="img" aria-label="Régler la boucle"></canvas>
 										<noscript><p class="game__noscript">Ce jeu nécessite JavaScript.</p></noscript>
@@ -157,6 +160,96 @@
 									</div>
 									<div class="table-wrapper">
 										<table class="pid__metrics"><thead></thead><tbody></tbody></table>
+									</div>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+								<section class="game game--gears" id="gears">
+									<header class="game__head">
+										<h2>Train d’engrenages</h2>
+										<p>Le moteur tourne à 1200 tr/min dans le sens horaire. Choisissez les roues pour que l’arbre de sortie tourne à la vitesse et dans le sens demandés, avec le moins de roues possible.</p>
+										<p class="game__how">Chaque étage est une roue qui en mène une autre ; une roue intermédiaire placée entre les deux conserve le sens. Jusqu’à trois étages, avec des roues de 12 à 60 dents. L’animation est ralentie pour qu’on puisse suivre les dents.</p>
+									</header>
+									<div class="game__toolbar">
+										<div class="game__seg" role="group" aria-label="Niveaux">
+											<button type="button" class="game__chip" data-level="1" aria-pressed="true" aria-label="Niveau 1">1<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="2" aria-pressed="false" aria-label="Niveau 2">2<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="3" aria-pressed="false" aria-label="Niveau 3">3<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="4" aria-pressed="false" aria-label="Niveau 4">4<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="5" aria-pressed="false" aria-label="Niveau 5">5<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="6" aria-pressed="false" aria-label="Niveau 6">6<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="7" aria-pressed="false" aria-label="Niveau 7">7<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="8" aria-pressed="false" aria-label="Niveau 8">8<span class="game__stars" aria-hidden="true"></span></button>
+										</div>
+									</div>
+									<p class="game__brief"><strong class="game__name"></strong> <span class="game__hint"></span></p>
+									<div class="game__stage">
+										<canvas role="img" aria-label="Train d’engrenages"></canvas>
+										<noscript><p class="game__noscript">Ce jeu nécessite JavaScript.</p></noscript>
+									</div>
+									<ol class="gears__stages"></ol>
+									<div class="gears__actions">
+										<button type="button" class="button small" data-act="add">Ajouter un étage</button>
+										<button type="button" class="button small" data-act="reset">Recommencer</button>
+										<span class="game__meta gears__readout"></span>
+									</div>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+								<section class="game game--views" id="views">
+									<header class="game__head">
+										<h2>Trois vues</h2>
+										<p>Un bloc de cubes, dessiné en perspective. Choisissez le dessin qui est sa vue de face, de dessus ou de côté, telle qu’elle figurerait sur un dessin technique.</p>
+										<p class="game__how">Les traits interrompus sont les arêtes cachées derrière le bloc. Sur la vue de dessus, l’avant du bloc est en bas de la feuille. Huit questions, des petits blocs aux plus grands ; les touches A à D répondent aussi.</p>
+									</header>
+									<div class="views__board">
+										<div class="game__stage views__picture"><noscript><p class="game__noscript">Ce jeu nécessite JavaScript.</p></noscript></div>
+										<div class="views__side">
+											<p class="views__ask"></p>
+											<div class="views__choices">
+												<button type="button" class="views__choice" aria-label="Dessin A"><span class="views__letter" aria-hidden="true">A</span><span class="views__art"></span></button>
+												<button type="button" class="views__choice" aria-label="Dessin B"><span class="views__letter" aria-hidden="true">B</span><span class="views__art"></span></button>
+												<button type="button" class="views__choice" aria-label="Dessin C"><span class="views__letter" aria-hidden="true">C</span><span class="views__art"></span></button>
+												<button type="button" class="views__choice" aria-label="Dessin D"><span class="views__letter" aria-hidden="true">D</span><span class="views__art"></span></button>
+											</div>
+										</div>
+									</div>
+									<div class="views__bar">
+										<button type="button" class="button primary small" data-act="next" hidden>Suivant</button>
+										<span class="game__meta"></span>
+									</div>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+								<section class="game game--logic" id="logic">
+									<header class="game__head">
+										<h2>Allumer la LED</h2>
+										<p>Placez une porte logique dans chaque emplacement vide pour que la LED suive la règle, dans sept petits circuits tirés de vraies machines, de la presse à l’armement d’un drone.</p>
+										<p class="game__how">Choisissez une porte dans chaque liste, ou cliquez sur la porte du schéma pour les faire défiler. Basculez les interrupteurs pour essayer un cas ; le tableau vérifie tous les cas d’un coup. Symboles CEI : &amp; pour ET, ≥1 pour OU, =1 pour OU exclusif, un rond inverse.</p>
+									</header>
+									<div class="game__toolbar">
+										<div class="game__seg" role="group" aria-label="Niveaux">
+											<button type="button" class="game__chip" data-level="1" aria-pressed="true" aria-label="Niveau 1">1<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="2" aria-pressed="false" aria-label="Niveau 2">2<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="3" aria-pressed="false" aria-label="Niveau 3">3<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="4" aria-pressed="false" aria-label="Niveau 4">4<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="5" aria-pressed="false" aria-label="Niveau 5">5<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="6" aria-pressed="false" aria-label="Niveau 6">6<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="7" aria-pressed="false" aria-label="Niveau 7">7<span class="logic__done" aria-hidden="true"></span></button>
+										</div>
+									</div>
+									<p class="game__brief"><strong class="game__name"></strong> <span class="game__hint"></span></p>
+									<div class="game__stage">
+										<canvas role="img" aria-label="Allumer la LED"></canvas>
+										<noscript><p class="game__noscript">Ce jeu nécessite JavaScript.</p></noscript>
+									</div>
+									<div class="logic__controls">
+										<div class="game__seg logic__switches" role="group" aria-label="Interrupteurs"></div>
+										<div class="logic__slots" role="group" aria-label="Portes"></div>
+										<button type="button" class="button small" data-act="reset">Vider les portes</button>
+									</div>
+									<div class="table-wrapper">
+										<table class="logic__table"><thead></thead><tbody></tbody></table>
 									</div>
 									<p class="game__status" aria-live="polite"></p>
 								</section>
@@ -236,6 +329,9 @@
 			<script src="assets/js/games/drone.js"></script>
 			<script src="assets/js/games/caliper.js"></script>
 			<script src="assets/js/games/pid.js"></script>
+			<script src="assets/js/games/gears.js"></script>
+			<script src="assets/js/games/views.js"></script>
+			<script src="assets/js/games/logic.js"></script>
 
 	</body>
 

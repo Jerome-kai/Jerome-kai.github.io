@@ -8,12 +8,12 @@
 	<head>
 		<title>Mini Games · Jerome-Kai Wu</title>
 		<meta charset="utf-8" />
-		<meta name="description" content="Three small browser games by Jerome-Kai Wu: land a drone, read a vernier caliper and tune a PID controller. Free, nothing to install." />
+		<meta name="description" content="Six small browser games by Jerome-Kai Wu: land a drone, read a caliper, tune a PID loop, size a gear train, read technical drawings, wire logic gates." />
 		<meta name="author" content="Jerome-Kai Wu" />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Jerome-Kai Wu" />
 		<meta property="og:title" content="Mini Games · Jerome-Kai Wu" />
-		<meta property="og:description" content="Three small browser games by Jerome-Kai Wu: land a drone, read a vernier caliper and tune a PID controller. Free, nothing to install." />
+		<meta property="og:description" content="Six small browser games by Jerome-Kai Wu: land a drone, read a caliper, tune a PID loop, size a gear train, read technical drawings, wire logic gates." />
 		<meta property="og:url" content="https://jerome-kai.github.io/games.html" />
 		<meta property="og:image" content="https://jerome-kai.github.io/images/social-card.png" />
 		<meta name="twitter:card" content="summary_large_image" />
@@ -73,11 +73,14 @@
 								<header class="major">
 									<h1>Mini Games</h1>
 								</header>
-								<p class="games-intro">Three small games built around things I actually work with: flying drones, reading measuring tools and tuning control loops. They run in your browser, and your best scores are kept on this device only.</p>
+								<p class="games-intro">Six small games built around things I actually work with: flying drones, reading measuring tools, tuning control loops, gearing a motor, reading technical drawings and wiring logic. They run in your browser, and your best scores are kept on this device only.</p>
 								<ul class="games-nav">
 									<li><a href="#drone">Soft Landing</a></li>
 									<li><a href="#caliper">Read the Caliper</a></li>
 									<li><a href="#pid">Tune the Loop</a></li>
+									<li><a href="#gears">Gear Train</a></li>
+									<li><a href="#views">Three Views</a></li>
+									<li><a href="#logic">Light the LED</a></li>
 								</ul>
 
 								<section class="game game--drone" id="drone">
@@ -138,13 +141,13 @@
 									</header>
 									<div class="game__toolbar">
 										<div class="game__seg" role="group" aria-label="Levels">
-											<button type="button" class="game__chip" data-level="1" aria-pressed="true" aria-label="Level 1">1<span class="pid__stars" aria-hidden="true"></span></button>
-											<button type="button" class="game__chip" data-level="2" aria-pressed="false" aria-label="Level 2">2<span class="pid__stars" aria-hidden="true"></span></button>
-											<button type="button" class="game__chip" data-level="3" aria-pressed="false" aria-label="Level 3">3<span class="pid__stars" aria-hidden="true"></span></button>
-											<button type="button" class="game__chip" data-level="4" aria-pressed="false" aria-label="Level 4">4<span class="pid__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="1" aria-pressed="true" aria-label="Level 1">1<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="2" aria-pressed="false" aria-label="Level 2">2<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="3" aria-pressed="false" aria-label="Level 3">3<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="4" aria-pressed="false" aria-label="Level 4">4<span class="game__stars" aria-hidden="true"></span></button>
 										</div>
 									</div>
-									<p class="pid__brief"><strong class="pid__name"></strong> <span class="pid__hint"></span></p>
+									<p class="game__brief"><strong class="game__name"></strong> <span class="game__hint"></span></p>
 									<div class="game__stage">
 										<canvas role="img" aria-label="Tune the Loop"></canvas>
 										<noscript><p class="game__noscript">This game needs JavaScript.</p></noscript>
@@ -157,6 +160,96 @@
 									</div>
 									<div class="table-wrapper">
 										<table class="pid__metrics"><thead></thead><tbody></tbody></table>
+									</div>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+								<section class="game game--gears" id="gears">
+									<header class="game__head">
+										<h2>Gear Train</h2>
+										<p>The motor turns at 1200 rpm clockwise. Pick the gears so the output shaft turns at the target speed and in the target direction, with as few gears as you can.</p>
+										<p class="game__how">Each stage is one gear driving another; an idler between them keeps the direction. Up to three stages, with gears of 12 to 60 teeth. The animation runs slower than life so the teeth can be followed.</p>
+									</header>
+									<div class="game__toolbar">
+										<div class="game__seg" role="group" aria-label="Levels">
+											<button type="button" class="game__chip" data-level="1" aria-pressed="true" aria-label="Level 1">1<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="2" aria-pressed="false" aria-label="Level 2">2<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="3" aria-pressed="false" aria-label="Level 3">3<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="4" aria-pressed="false" aria-label="Level 4">4<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="5" aria-pressed="false" aria-label="Level 5">5<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="6" aria-pressed="false" aria-label="Level 6">6<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="7" aria-pressed="false" aria-label="Level 7">7<span class="game__stars" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="8" aria-pressed="false" aria-label="Level 8">8<span class="game__stars" aria-hidden="true"></span></button>
+										</div>
+									</div>
+									<p class="game__brief"><strong class="game__name"></strong> <span class="game__hint"></span></p>
+									<div class="game__stage">
+										<canvas role="img" aria-label="Gear Train"></canvas>
+										<noscript><p class="game__noscript">This game needs JavaScript.</p></noscript>
+									</div>
+									<ol class="gears__stages"></ol>
+									<div class="gears__actions">
+										<button type="button" class="button small" data-act="add">Add a stage</button>
+										<button type="button" class="button small" data-act="reset">Start over</button>
+										<span class="game__meta gears__readout"></span>
+									</div>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+								<section class="game game--views" id="views">
+									<header class="game__head">
+										<h2>Three Views</h2>
+										<p>A block of cubes, drawn in perspective. Pick the drawing that is its front, top or side view, as it would appear on an engineering drawing.</p>
+										<p class="game__how">Dashed lines are edges hidden behind the block. The top view has the front of the block at the bottom of the sheet. Eight questions, from small blocks to larger ones; keys A to D also answer.</p>
+									</header>
+									<div class="views__board">
+										<div class="game__stage views__picture"><noscript><p class="game__noscript">This game needs JavaScript.</p></noscript></div>
+										<div class="views__side">
+											<p class="views__ask"></p>
+											<div class="views__choices">
+												<button type="button" class="views__choice" aria-label="Drawing A"><span class="views__letter" aria-hidden="true">A</span><span class="views__art"></span></button>
+												<button type="button" class="views__choice" aria-label="Drawing B"><span class="views__letter" aria-hidden="true">B</span><span class="views__art"></span></button>
+												<button type="button" class="views__choice" aria-label="Drawing C"><span class="views__letter" aria-hidden="true">C</span><span class="views__art"></span></button>
+												<button type="button" class="views__choice" aria-label="Drawing D"><span class="views__letter" aria-hidden="true">D</span><span class="views__art"></span></button>
+											</div>
+										</div>
+									</div>
+									<div class="views__bar">
+										<button type="button" class="button primary small" data-act="next" hidden>Next</button>
+										<span class="game__meta"></span>
+									</div>
+									<p class="game__status" aria-live="polite"></p>
+								</section>
+
+								<section class="game game--logic" id="logic">
+									<header class="game__head">
+										<h2>Light the LED</h2>
+										<p>Fill each empty slot with a logic gate so the LED follows the rule, in seven small circuits taken from real machines, from a safety press to a drone’s arming logic.</p>
+										<p class="game__how">Pick a gate from each list, or click the gate in the drawing to cycle through them. Flip the switches to try a case; the table checks every case at once. Symbols are IEC: &amp; is AND, ≥1 is OR, =1 is XOR, and a circle inverts.</p>
+									</header>
+									<div class="game__toolbar">
+										<div class="game__seg" role="group" aria-label="Levels">
+											<button type="button" class="game__chip" data-level="1" aria-pressed="true" aria-label="Level 1">1<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="2" aria-pressed="false" aria-label="Level 2">2<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="3" aria-pressed="false" aria-label="Level 3">3<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="4" aria-pressed="false" aria-label="Level 4">4<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="5" aria-pressed="false" aria-label="Level 5">5<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="6" aria-pressed="false" aria-label="Level 6">6<span class="logic__done" aria-hidden="true"></span></button>
+											<button type="button" class="game__chip" data-level="7" aria-pressed="false" aria-label="Level 7">7<span class="logic__done" aria-hidden="true"></span></button>
+										</div>
+									</div>
+									<p class="game__brief"><strong class="game__name"></strong> <span class="game__hint"></span></p>
+									<div class="game__stage">
+										<canvas role="img" aria-label="Light the LED"></canvas>
+										<noscript><p class="game__noscript">This game needs JavaScript.</p></noscript>
+									</div>
+									<div class="logic__controls">
+										<div class="game__seg logic__switches" role="group" aria-label="Switches"></div>
+										<div class="logic__slots" role="group" aria-label="Gates"></div>
+										<button type="button" class="button small" data-act="reset">Clear the gates</button>
+									</div>
+									<div class="table-wrapper">
+										<table class="logic__table"><thead></thead><tbody></tbody></table>
 									</div>
 									<p class="game__status" aria-live="polite"></p>
 								</section>
@@ -236,6 +329,9 @@
 			<script src="assets/js/games/drone.js"></script>
 			<script src="assets/js/games/caliper.js"></script>
 			<script src="assets/js/games/pid.js"></script>
+			<script src="assets/js/games/gears.js"></script>
+			<script src="assets/js/games/views.js"></script>
+			<script src="assets/js/games/logic.js"></script>
 
 	</body>
 

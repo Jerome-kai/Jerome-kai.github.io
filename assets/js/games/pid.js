@@ -129,7 +129,7 @@
 
 	var canvas = section.querySelector('canvas');
 	var statusEl = section.querySelector('.game__status');
-	var nameEl = section.querySelector('.pid__name'), hintEl = section.querySelector('.pid__hint');
+	var nameEl = section.querySelector('.game__name'), hintEl = section.querySelector('.game__hint');
 	var tbody = section.querySelector('.pid__metrics tbody'), thead = section.querySelector('.pid__metrics thead');
 	var sliders = {}, outputs = {};
 	section.querySelectorAll('[data-gain]').forEach(function (inp) {
@@ -176,16 +176,9 @@
 		lastRes = res;
 	}
 
-	function starSpans(el, n) {
-		el.textContent = '';
-		var on = document.createElement('span'), off = document.createElement('span');
-		on.className = 'on'; on.textContent = '★'.repeat(n);
-		off.className = 'off'; off.textContent = '☆'.repeat(3 - n);
-		el.appendChild(on); el.appendChild(off);
-	}
 	function paintStars() {
 		section.querySelectorAll('[data-level]').forEach(function (b, j) {
-			starSpans(b.querySelector('.pid__stars'), stars[j]);
+			G.stars(b.querySelector('.game__stars'), stars[j]);
 			// the stars are hidden from screen readers, so the count goes in the name
 			b.setAttribute('aria-label', tr('level', { n: j + 1 }) + (G.lang === 'zh' ? '，' : ', ') + tr('stars', { n: stars[j] }));
 		});
@@ -220,8 +213,8 @@
 		td.className = m.pass ? 'is-ok' : 'is-bad';
 		if (m.pass) {
 			td.textContent = tr('pass') + ' · ';
-			var st = document.createElement('span'); st.className = 'pid__stars'; st.setAttribute('aria-hidden', 'true');
-			starSpans(st, m.stars); td.appendChild(st);
+			var st = document.createElement('span'); st.className = 'game__stars'; st.setAttribute('aria-hidden', 'true');
+			G.stars(st, m.stars); td.appendChild(st);
 			var sr = document.createElement('span'); sr.className = 'visually-hidden'; sr.textContent = tr('stars', { n: m.stars });
 			td.appendChild(sr);
 		} else td.textContent = m.unstable ? tr('unstable') : tr('fail');
