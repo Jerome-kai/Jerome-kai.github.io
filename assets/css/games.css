@@ -1,0 +1,225 @@
+/* Mini games (games.html).
+ *
+ * The canvases read their colours from the --g-* properties below, so both
+ * themes are defined here once and a change of system theme reaches the games
+ * without a reload. The metal of the caliper stays metal in either theme.
+ */
+
+.game {
+	--g-bg: #242943;
+	--g-panel: #1d2237;
+	--g-ink: #ffffff;
+	--g-muted: rgba(255, 255, 255, 0.66);
+	--g-grid: rgba(212, 212, 255, 0.13);
+	--g-accent: #9bf1ff;
+	--g-good: #8fd3ad;
+	--g-bad: #f09a8f;
+	--g-warn: #e7b788;
+	--g-sky1: #151a2c;
+	--g-sky2: #2c3354;
+	--g-ground: #2a2f4a;
+	--g-hill: #232842;
+	--g-metal1: #dde1e9;
+	--g-metal2: #aab1c1;
+	--g-metal-ink: #151927;
+	--g-slider1: #c3c9d6;
+	--g-slider2: #949cae;
+	--g-overlay: rgba(18, 21, 35, 0.88);
+	margin: 0 0 3.5em;
+	padding: 2.5em 0 0;
+	border-top: 1px solid rgba(212, 212, 255, 0.12);
+	scroll-margin-top: 4em;
+}
+
+@media (prefers-color-scheme: light) {
+	.game {
+		--g-bg: #f4f6fb;
+		--g-panel: #ffffff;
+		--g-ink: #1e2436;
+		--g-muted: #5c6580;
+		--g-grid: rgba(30, 36, 54, 0.11);
+		--g-accent: #0e7490;
+		--g-good: #166a40;
+		--g-bad: #b42318;
+		--g-warn: #8f5500;
+		--g-sky1: #dbe9f5;
+		--g-sky2: #eef4fb;
+		--g-ground: #c6ccda;
+		--g-hill: #dbe2ed;
+		--g-overlay: rgba(255, 255, 255, 0.93);
+		border-top-color: rgba(30, 36, 54, 0.12);
+	}
+}
+
+.games-intro { max-width: 46em; }
+
+.games-nav {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4em 1.6em;
+	margin: 0 0 1em;
+	padding: 0;
+}
+.games-nav li { padding: 0; }
+
+.game__head h2 { margin-bottom: 0.4em; }
+.game__head p { margin-bottom: 0.6em; max-width: 52em; }
+.game__how { font-size: 0.9em; opacity: 0.85; }
+
+/* ---------- the stage ---------- */
+.game__stage {
+	position: relative;
+	border-radius: 6px;
+	overflow: hidden;
+	background: var(--g-panel);
+	box-shadow: 0 0 0 1px var(--g-grid);
+	margin: 1.2em 0 0;
+}
+.game__stage:focus { outline: none; }
+.game__stage:focus-visible { box-shadow: 0 0 0 2px var(--g-accent); }
+.game__stage canvas { display: block; touch-action: manipulation; }
+.game__stage--drone { max-width: 880px; margin-left: auto; margin-right: auto; cursor: pointer; }
+.game__stage--scroll { overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; }
+.game__noscript { padding: 2em; margin: 0; text-align: center; }
+
+.game__status { min-height: 1.6em; margin: 0.9em 0 0; font-weight: 600; }
+.game.is-right .game__status { color: var(--g-good); }
+.game.is-wrong .game__status { color: var(--g-bad); }
+.game__meta { font-size: 0.85em; color: var(--g-muted); font-variant-numeric: tabular-nums; }
+
+/* ---------- toolbars and chips ---------- */
+.game__toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.8em 1.6em;
+	margin: 1.2em 0 0;
+}
+.game__seg { display: flex; align-items: center; gap: 0.4em; }
+
+.game button.game__chip {
+	height: 2.5em;
+	line-height: 2.5em;
+	padding: 0 1em;
+	font-size: 0.7em;
+	letter-spacing: 0.12em;
+	min-width: 2.8em;
+}
+.game button.game__chip[aria-pressed="true"] {
+	background-color: var(--g-accent);
+	color: var(--g-panel) !important;
+	box-shadow: none;
+}
+.game button.game__chip:disabled { opacity: 0.4; cursor: default; }
+.caliper__zoom { min-width: 2.6em; text-align: center; font-variant-numeric: tabular-nums; }
+/* Earned stars are filled and coloured, unearned ones outlined and muted: two
+   differences at once, since filled-versus-hollow alone is too close to read at
+   chip size and colour alone fails for some readers. Both stay legible. */
+.pid__stars { margin-left: 0.5em; letter-spacing: 0.05em; }
+.pid__stars .on { color: var(--g-warn); }
+.pid__stars .off { color: var(--g-muted); }
+.game__chip[aria-pressed="true"] .pid__stars .on,
+.game__chip[aria-pressed="true"] .pid__stars .off { color: inherit; }
+
+/* ---------- drone pad: hold-to-fly buttons ---------- */
+.game__controls {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 0.7em;
+	margin: 1em auto 0;
+	max-width: 880px;
+}
+.game button.game__pad {
+	width: 4.2em;
+	height: 3.4em;
+	line-height: 3.4em;
+	padding: 0;
+	font-size: 1em;
+	letter-spacing: 0;
+	touch-action: none;
+	user-select: none;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+}
+.game button.game__pad.is-held {
+	background-color: var(--g-accent);
+	color: var(--g-panel) !important;
+	box-shadow: none;
+}
+.game__controls .button { margin-left: 0.8em; }
+.game button.game__pad svg { width: 1.25em; height: 1.25em; vertical-align: middle; fill: currentColor; }
+
+/* ---------- caliper answer ---------- */
+.game__answer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.7em;
+	margin: 1.1em 0 0;
+}
+.game__answer input[type="text"] {
+	max-width: 11em;
+	font-variant-numeric: tabular-nums;
+	box-shadow: inset 0 0 0 1px var(--g-grid);     /* the field needs an edge on a pale page */
+}
+.game__answer input[type="text"]:focus { box-shadow: inset 0 0 0 2px var(--g-accent); }
+.game__answer button[hidden] { display: none; }
+
+/* ---------- PID ---------- */
+.pid__brief { margin: 1.1em 0 0; max-width: 56em; }
+.pid__controls {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+	align-items: center;
+	gap: 1em 1.6em;
+	margin: 1.3em 0 0;
+}
+.game label.pid__gain {
+	display: grid;
+	grid-template-columns: 2.2em minmax(0, 1fr) 3.2em;
+	align-items: center;
+	gap: 0.6em;
+	margin: 0;
+	font-size: 1em;
+	letter-spacing: 0;
+	text-transform: none;
+}
+/* Forty resets every input to appearance:none, which strips the native slider
+   down to a bare white box. Put the native control back: it is themed through
+   accent-color and keeps its keyboard behaviour. */
+.game .pid__gain input[type="range"] {
+	-webkit-appearance: auto;
+	-moz-appearance: auto;
+	appearance: auto;
+	background: transparent;
+	height: 1.6em;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	accent-color: var(--g-accent);
+	cursor: pointer;
+}
+.pid__gain output { text-align: right; font-variant-numeric: tabular-nums; }
+.pid__metrics { margin: 1.4em 0 0; font-variant-numeric: tabular-nums; }
+.pid__metrics td, .pid__metrics th { padding: 0.55em 0.8em; }
+.pid__metrics td:nth-child(n+2), .pid__metrics th:nth-child(n+2) { text-align: right; white-space: nowrap; }
+.pid__metrics td.is-ok { color: var(--g-good); font-weight: 600; }
+.pid__metrics td.is-bad { color: var(--g-bad); font-weight: 600; }
+.pid__metrics .pid__result td { text-align: left; font-weight: 600; }
+
+@media screen and (max-width: 736px) {
+	.pid__controls { grid-template-columns: minmax(0, 1fr); }
+	.game__controls .button { margin-left: 0; }
+}
+
+.visually-hidden {
+	position: absolute !important;
+	width: 1px; height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
